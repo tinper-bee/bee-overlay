@@ -1,13 +1,78 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Portal from './Portal';
 import Position from './Position';
 import RootCloseWrapper from './RootCloseWrapper';
 import elementType from 'react-prop-types/lib/elementType';
 
+const propTypes = {
+    ...Portal.propTypes,
+    ...Position.propTypes,
+
+    /**
+     * 是否显示
+     */
+    show: React.PropTypes.bool,
+
+    /**
+     * 点击其他地方，是否隐藏overlay
+     */
+    rootClose: React.PropTypes.bool,
+
+    /**
+     * 当rootClose为true的时候，触发的隐藏方法
+     * @type func
+     */
+    onHide(props, ...args) {
+      let propType = React.PropTypes.func;
+      if (props.rootClose) {
+        propType = propType.isRequired;
+      }
+
+      return propType(props, ...args)
+    },
+
+    /**
+     * 过渡动画组件
+     */
+    transition: elementType,
+
+    /**
+     * overlay添加动画前的钩子函数
+     */
+    onEnter: React.PropTypes.func,
+
+    /**
+     * 开始动画的钩子函数
+     */
+    onEntering: React.PropTypes.func,
+
+    /**
+     * 渲染之后的钩子函数
+     */
+    onEntered: React.PropTypes.func,
+
+    /**
+     * 关闭开始时的钩子函数
+     */
+    onExit: React.PropTypes.func,
+
+    /**
+     * 关闭时的钩子函数
+     */
+    onExiting: React.PropTypes.func,
+
+    /**
+     * 关闭后的钩子函数
+     */
+    onExited: React.PropTypes.func
+}
+
+const defaultProps = {};
+
 /**
  * Built on top of `<Position/>` and `<Portal/>`, the overlay component is great for custom tooltip overlays.
  */
-class Overlay extends React.Component {
+class Overlay extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -21,6 +86,14 @@ class Overlay extends React.Component {
     } else if (!nextProps.transition) {
       // Otherwise let handleHidden take care of marking exited.
       this.setState({exited: true});
+    }
+  }
+
+  handleHidden(...args) {
+    this.setState({exited: true});
+
+    if (this.props.onExited) {
+      this.props.onExited(...args);
     }
   }
 
@@ -49,7 +122,13 @@ class Overlay extends React.Component {
     // Position is be inner-most because it adds inline styles into the child,
     // which the other wrappers don't forward correctly.
     child = (
-      <Position {...{container, containerPadding, target, placement, shouldUpdatePosition}}>
+      <Position
+      {...{
+         container,
+         containerPadding,
+         target,
+         placement,
+         shouldUpdatePosition}}>
         {child}
       </Position>
     );
@@ -91,80 +170,10 @@ class Overlay extends React.Component {
     );
   }
 
-  handleHidden(...args) {
-    this.setState({exited: true});
 
-    if (this.props.onExited) {
-      this.props.onExited(...args);
-    }
-  }
 }
 
-Overlay.propTypes = {
-  ...Portal.propTypes,
-  ...Position.propTypes,
-
-  /**
-   * Set the visibility of the Overlay
-   */
-  show: React.PropTypes.bool,
-
-  /**
-   * Specify whether the overlay should trigger `onHide` when the user clicks outside the overlay
-   */
-  rootClose: React.PropTypes.bool,
-
-  /**
-   * A Callback fired by the Overlay when it wishes to be hidden.
-   *
-   * __required__ when `rootClose` is `true`.
-   *
-   * @type func
-   */
-  onHide(props, ...args) {
-    let propType = React.PropTypes.func;
-    if (props.rootClose) {
-      propType = propType.isRequired;
-    }
-
-    return propType(props, ...args)
-  },
-
-  /**
-   * A `<Transition/>` component used to animate the overlay changes visibility.
-   */
-  transition: elementType,
-
-  /**
-   * Callback fired before the Overlay transitions in
-   */
-  onEnter: React.PropTypes.func,
-
-  /**
-   * Callback fired as the Overlay begins to transition in
-   */
-  onEntering: React.PropTypes.func,
-
-  /**
-   * Callback fired after the Overlay finishes transitioning in
-   */
-  onEntered: React.PropTypes.func,
-
-  /**
-   * Callback fired right before the Overlay transitions out
-   */
-  onExit: React.PropTypes.func,
-
-  /**
-   * Callback fired as the Overlay begins to transition out
-   */
-  onExiting: React.PropTypes.func,
-
-  /**
-   * Callback fired after the Overlay finishes transitioning out
-   */
-  onExited: React.PropTypes.func
-};
-
+Overlay.propTypes = propTypes;
+Overlay.defaultProps = defaultProps;
 
 export default Overlay;
