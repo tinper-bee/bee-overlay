@@ -4,7 +4,7 @@ import getOffset from 'dom-helpers/query/offset';
 import getOffsetParent from 'dom-helpers/query/offsetParent';
 import getScrollTop from 'dom-helpers/query/scrollTop';
 import requestAnimationFrame from 'dom-helpers/util/requestAnimationFrame';
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import addEventListener from './utils/addEventListener';
@@ -12,11 +12,92 @@ import getDocumentHeight from './utils/getDocumentHeight';
 import ownerDocument from './utils/ownerDocument';
 import ownerWindow from './utils/ownerWindow';
 
+
+const propTypes = {
+  /**
+   * 到屏幕顶部偏移的像素
+   */
+  offsetTop: React.PropTypes.number,
+
+  /**
+   * 添加时,到窗口的偏移像素
+   */
+  viewportOffsetTop: React.PropTypes.number,
+
+  /**
+   * 到屏幕的底部的偏移像素
+   */
+  offsetBottom: React.PropTypes.number,
+
+  /**
+   * 在顶部时添加的class
+   */
+  topClassName: React.PropTypes.string,
+
+  /**
+   * 在顶部添加的style
+   */
+  topStyle: React.PropTypes.object,
+
+  /**
+   * 当固定定位时，添加的class
+   */
+  affixClassName: React.PropTypes.string,
+  /**
+   * 当固定定位时，添加的style
+   */
+  affixStyle: React.PropTypes.object,
+
+  /**
+   * 在底部时添加的class
+   */
+  bottomClassName: React.PropTypes.string,
+
+  /**
+   * 在底部时添加的style
+   */
+  bottomStyle: React.PropTypes.object,
+
+  /**
+   * 在affixstyle和affixClassName添加之前的钩子函数
+   */
+  onAffix: React.PropTypes.func,
+  /**
+   * 在affixstyle和affixClassName添加之后的钩子函数
+   */
+  onAffixed: React.PropTypes.func,
+
+  /**
+   * 在topStyle和topClassName添加之前的钩子函数
+   */
+  onAffixTop: React.PropTypes.func,
+
+  /**
+   * 在topStyle和topClassName添加之后的钩子函数
+   */
+  onAffixedTop: React.PropTypes.func,
+
+  /**
+   * 在bottomStyle和bottomClassName添加之前的钩子函数
+   */
+  onAffixBottom: React.PropTypes.func,
+
+  /**
+   * 在bottomStyle和bottomClassName添加之后的钩子函数
+   */
+  onAffixedBottom: React.PropTypes.func
+};
+
+const defaultProps = {
+    offsetTop: 0,
+    viewportOffsetTop: null,
+    offsetBottom: 0
+};
+
 /**
- * The `<Affix/>` component toggles `position: fixed;` on and off, emulating
- * the effect found with `position: sticky;`.
+ * Affix组件是用来提供fixed定位,并在顶部和顶部将定位转化为absoluted
  */
-class Affix extends React.Component {
+class Affix extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -63,15 +144,19 @@ class Affix extends React.Component {
       this._documentClickListener.remove();
     }
   }
-
+/**
+ * 屏幕滑动时更新
+**/
   onWindowScroll() {
     this.onUpdate();
   }
-
+  /**
+   * 屏幕点击时更新
+  **/
   onDocumentClick() {
     requestAnimationFrame(() => this.onUpdate());
   }
-
+//更新位置时状态的更新
   onUpdate() {
     if (!this._isMounted) {
       return;
@@ -90,9 +175,7 @@ class Affix extends React.Component {
       if (this.state.affixed === 'bottom') {
         this.updateStateAtBottom();
       } else {
-        // Setting position away from `fixed` can change the offset parent of
-        // the affix, so we can't calculate the correct position until after
-        // we've updated its position.
+        // 设置位置远离“fixed”可以更改affix的偏移父对象，所以我们不能在更新其位置之后计算正确的位置。
         this.setState({
           affixed: 'bottom',
           position: 'absolute',
@@ -140,7 +223,7 @@ class Affix extends React.Component {
       }
     });
   }
-
+//在底部时的更新函数
   updateStateAtBottom() {
     const positionTopMax = this.getPositionTopMax();
     const offsetParent = getOffsetParent(ReactDOM.findDOMNode(this));
@@ -176,85 +259,8 @@ class Affix extends React.Component {
   }
 }
 
-Affix.propTypes = {
-  /**
-   * Pixels to offset from top of screen when calculating position
-   */
-  offsetTop: React.PropTypes.number,
+Affix.propTypes = propTypes;
 
-  /**
-   * When affixed, pixels to offset from top of viewport
-   */
-  viewportOffsetTop: React.PropTypes.number,
-
-  /**
-   * Pixels to offset from bottom of screen when calculating position
-   */
-  offsetBottom: React.PropTypes.number,
-
-  /**
-   * CSS class or classes to apply when at top
-   */
-  topClassName: React.PropTypes.string,
-
-  /**
-   * Style to apply when at top
-   */
-  topStyle: React.PropTypes.object,
-
-  /**
-   * CSS class or classes to apply when affixed
-   */
-  affixClassName: React.PropTypes.string,
-  /**
-   * Style to apply when affixed
-   */
-  affixStyle: React.PropTypes.object,
-
-  /**
-   * CSS class or classes to apply when at bottom
-   */
-  bottomClassName: React.PropTypes.string,
-
-  /**
-   * Style to apply when at bottom
-   */
-  bottomStyle: React.PropTypes.object,
-
-  /**
-   * Callback fired when the right before the `affixStyle` and `affixStyle` props are rendered
-   */
-  onAffix: React.PropTypes.func,
-  /**
-   * Callback fired after the component `affixStyle` and `affixClassName` props have been rendered.
-   */
-  onAffixed: React.PropTypes.func,
-
-  /**
-   * Callback fired when the right before the `topStyle` and `topClassName` props are rendered
-   */
-  onAffixTop: React.PropTypes.func,
-
-  /**
-   * Callback fired after the component `topStyle` and `topClassName` props have been rendered.
-   */
-  onAffixedTop: React.PropTypes.func,
-
-  /**
-   * Callback fired when the right before the `bottomStyle` and `bottomClassName` props are rendered
-   */
-  onAffixBottom: React.PropTypes.func,
-
-  /**
-   * Callback fired after the component `bottomStyle` and `bottomClassName` props have been rendered.
-   */
-  onAffixedBottom: React.PropTypes.func
-};
-
-Affix.defaultProps = {
-  offsetTop: 0,
-  viewportOffsetTop: null,
-  offsetBottom: 0
-};
+Affix.defaultProps = defaultProps;
 
 export default Affix;

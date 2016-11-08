@@ -1,6 +1,6 @@
 import getOffset from 'dom-helpers/query/offset';
 import requestAnimationFrame from 'dom-helpers/util/requestAnimationFrame';
-import React from 'react';
+import React, { Component } from 'react';
 import componentOrElement from 'react-prop-types/lib/componentOrElement';
 
 import Affix from './Affix';
@@ -10,11 +10,31 @@ import getDocumentHeight from './utils/getDocumentHeight';
 import ownerDocument from './utils/ownerDocument';
 import ownerWindow from './utils/ownerWindow';
 
+const propTypes = {
+    ...Affix.propTypes,
+    /**
+     * The logical container node or component for determining offset from bottom
+     * of viewport, or a function that returns it
+     */
+    container: React.PropTypes.oneOfType([
+      componentOrElement,
+      React.PropTypes.func
+    ]),
+    /**
+     * Automatically set width when affixed
+     */
+    autoWidth: React.PropTypes.bool
+};
+
+const defaultProps = {
+  viewportOffsetTop: 0,
+  autoWidth: true
+};
+
 /**
- * The `<AutoAffix/>` component wraps `<Affix/>` to automatically calculate
- * offsets in many common cases.
+ * 对Affix进行包装，提供自动计算偏移量
  */
-class AutoAffix extends React.Component {
+class AutoAffix extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -148,27 +168,8 @@ class AutoAffix extends React.Component {
   }
 }
 
-AutoAffix.propTypes = {
-  ...Affix.propTypes,
-  /**
-   * The logical container node or component for determining offset from bottom
-   * of viewport, or a function that returns it
-   */
-  container: React.PropTypes.oneOfType([
-    componentOrElement,
-    React.PropTypes.func
-  ]),
-  /**
-   * Automatically set width when affixed
-   */
-  autoWidth: React.PropTypes.bool
-};
+AutoAffix.propTypes = propTypes;
 
-// This intentionally doesn't inherit default props from `<Affix>`, so that the
-// auto-calculated offsets can apply.
-AutoAffix.defaultProps = {
-  viewportOffsetTop: 0,
-  autoWidth: true
-};
+AutoAffix.defaultProps = defaultProps;
 
 export default AutoAffix;

@@ -15,31 +15,30 @@ function findIndexOf(arr, cb){
   return idx;
 }
 
+//查找容器
 function findContainer(data, modal) {
   return findIndexOf(data,
     d => d.modals.indexOf(modal) !== -1);
 }
 
+//设置容器style
 function setContainerStyle(state, container) {
   let style = { overflow: 'hidden' };
 
-  // we are only interested in the actual `style` here
-  // becasue we will override it
   state.style = {
     overflow: container.style.overflow,
     paddingRight: container.style.paddingRight
   }
 
   if (state.overflowing) {
-    // use computed style, here to get the real padding
-    // to add our scrollbar width
+    //设置内边距，和添加滚动条宽度
     style.paddingRight =
       parseInt(css(container, 'paddingRight') || 0, 10) + getScrollbarSize() + 'px';
   }
 
   css(container, style);
 }
-
+//移除容器style
 function removeContainerStyle({ style }, container) {
 
   Object.keys(style).forEach(
@@ -47,9 +46,7 @@ function removeContainerStyle({ style }, container) {
 
 }
 /**
- * Proper state managment for containers and the modals in those containers.
- *
- * @internal Used by the Modal to ensure proper styling of containers.
+ * 容器的正确状态管理和那些容器中的模态。
  */
 class ModalManager {
 
