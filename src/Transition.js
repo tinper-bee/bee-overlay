@@ -6,20 +6,94 @@ import classnames from 'classnames';
 
 let transitionEndEvent = transitionInfo.end;
 
+//设置状态码
 export const UNMOUNTED = 0;
 export const EXITED = 1;
 export const ENTERING = 2;
 export const ENTERED = 3;
 export const EXITING = 4;
 
+const propTypes = {
+  /**
+   * 是否触发动画
+   */
+  in: React.PropTypes.bool,
+
+  /**
+   * 不显示的时候是否移除组件
+   */
+  unmountOnExit: React.PropTypes.bool,
+
+  /**
+   * 如果设置为默认显示，挂载时显示动画
+   */
+  transitionAppear: React.PropTypes.bool,
+
+  /**
+   * 设置超时时间，防止出现问题，可设置为>=动画时间
+   */
+  timeout: React.PropTypes.number,
+
+  /**
+   * 退出组件时添加的class
+   */
+  exitedClassName: React.PropTypes.string,
+  /**
+   * 退出组件中添加的class
+   */
+  exitingClassName: React.PropTypes.string,
+  /**
+   * 退出后添加的class
+   */
+  enteredClassName: React.PropTypes.string,
+  /**
+   * 进入动画时添加的class
+   */
+  enteringClassName: React.PropTypes.string,
+
+  /**
+   * 进入动画开始时的钩子函数
+   */
+  onEnter: React.PropTypes.func,
+  /**
+   * 进入动画中的钩子函数
+   */
+  onEntering: React.PropTypes.func,
+  /**
+   * 进入动画后的钩子函数
+   */
+  onEntered: React.PropTypes.func,
+  /**
+   * 退出动画开始时的钩子函数
+   */
+  onExit: React.PropTypes.func,
+  /**
+   * 退出动画中的钩子函数
+   */
+  onExiting: React.PropTypes.func,
+  /**
+   * 退出动画后的钩子函数
+   */
+  onExited: React.PropTypes.func
+};
+
+function noop() {}
+
+const defaultProps = {
+  in: false,
+  unmountOnExit: false,
+  transitionAppear: false,
+  timeout: 5000,
+  onEnter: noop,
+  onEntering: noop,
+  onEntered: noop,
+  onExit: noop,
+  onExiting: noop,
+  onExited: noop
+};
+
 /**
- * The Transition component lets you define and run css transitions with a simple declarative api.
- * It works similar to React's own [CSSTransitionGroup](http://facebook.github.io/react/docs/animation.html#high-level-api-reactcsstransitiongroup)
- * but is specifically optimized for transitioning a single child "in" or "out".
- *
- * You don't even need to use class based css transitions if you don't want to (but it is easiest).
- * The extensive set of lifecyle callbacks means you have control over
- * the transitioning now at each step of the way.
+ * 动画组件
  */
 class Transition extends React.Component {
   constructor(props, context) {
@@ -27,7 +101,7 @@ class Transition extends React.Component {
 
     let initialStatus;
     if (props.in) {
-      // Start enter transition in componentDidMount.
+      // 在componentdidmount时开始执行动画
       initialStatus = props.transitionAppear ? EXITED : ENTERED;
     } else {
       initialStatus = props.unmountOnExit ? UNMOUNTED : EXITED;
@@ -46,7 +120,7 @@ class Transition extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.in && this.props.unmountOnExit) {
       if (this.state.status === UNMOUNTED) {
-        // Start enter transition in componentDidUpdate.
+        // 在componentDidUpdate执行动画.
         this.setState({status: EXITED});
       }
     }
@@ -59,8 +133,7 @@ class Transition extends React.Component {
     const status = this.state.status;
 
     if (this.props.unmountOnExit && status === EXITED) {
-      // EXITED is always a transitional state to either ENTERING or UNMOUNTED
-      // when using unmountOnExit.
+      // 当使用unmountOnExit时，exited为exiting和unmont的过渡状态
       if (this.props.in) {
         this.performEnter(this.props);
       } else {
@@ -70,7 +143,7 @@ class Transition extends React.Component {
       return
     }
 
-    // guard ensures we are only responding to prop changes
+    // 确保只响应prop变化
     if (this._needsUpdate) {
       this._needsUpdate = false;
 
@@ -81,12 +154,12 @@ class Transition extends React.Component {
         else if (status === EXITED) {
           this.performEnter(this.props);
         }
-        // Otherwise we're already entering or entered.
+        // 其他，当我们已经输入或输出
       } else {
         if (status === ENTERING || status === ENTERED) {
           this.performExit(this.props);
         }
-        // Otherwise we're already exited or exiting.
+        // 我们已经输入或输出完成
       }
     }
   }
@@ -99,7 +172,7 @@ class Transition extends React.Component {
     this.cancelNextCallback();
     const node = ReactDOM.findDOMNode(this);
 
-    // Not this.props, because we might be about to receive new props.
+    // 这里接收新props
     props.onEnter(node);
 
     this.safeSetState({status: ENTERING}, () => {
@@ -117,7 +190,7 @@ class Transition extends React.Component {
     this.cancelNextCallback();
     const node = ReactDOM.findDOMNode(this);
 
-    // Not this.props, because we might be about to receive new props.
+
     props.onExit(node);
 
     this.safeSetState({status: EXITING}, () => {
@@ -139,9 +212,7 @@ class Transition extends React.Component {
   }
 
   safeSetState(nextState, callback) {
-    // This shouldn't be necessary, but there are weird race conditions with
-    // setState callbacks and unmounting in testing, so always make sure that
-    // we can cancel any pending setState callbacks after we unmount.
+    // 确保在组件销毁后挂起的setState被消除
     this.setState(nextState, this.setNextCallback(callback));
   }
 
@@ -210,95 +281,8 @@ class Transition extends React.Component {
   }
 }
 
-Transition.propTypes = {
-  /**
-   * Show the component; triggers the enter or exit animation
-   */
-  in: React.PropTypes.bool,
+Transition.propTypes = propTypes;
 
-  /**
-   * Unmount the component (remove it from the DOM) when it is not shown
-   */
-  unmountOnExit: React.PropTypes.bool,
-
-  /**
-   * Run the enter animation when the component mounts, if it is initially
-   * shown
-   */
-  transitionAppear: React.PropTypes.bool,
-
-  /**
-   * A Timeout for the animation, in milliseconds, to ensure that a node doesn't
-   * transition indefinately if the browser transitionEnd events are
-   * canceled or interrupted.
-   *
-   * By default this is set to a high number (5 seconds) as a failsafe. You should consider
-   * setting this to the duration of your animation (or a bit above it).
-   */
-  timeout: React.PropTypes.number,
-
-  /**
-   * CSS class or classes applied when the component is exited
-   */
-  exitedClassName: React.PropTypes.string,
-  /**
-   * CSS class or classes applied while the component is exiting
-   */
-  exitingClassName: React.PropTypes.string,
-  /**
-   * CSS class or classes applied when the component is entered
-   */
-  enteredClassName: React.PropTypes.string,
-  /**
-   * CSS class or classes applied while the component is entering
-   */
-  enteringClassName: React.PropTypes.string,
-
-  /**
-   * Callback fired before the "entering" classes are applied
-   */
-  onEnter: React.PropTypes.func,
-  /**
-   * Callback fired after the "entering" classes are applied
-   */
-  onEntering: React.PropTypes.func,
-  /**
-   * Callback fired after the "enter" classes are applied
-   */
-  onEntered: React.PropTypes.func,
-  /**
-   * Callback fired before the "exiting" classes are applied
-   */
-  onExit: React.PropTypes.func,
-  /**
-   * Callback fired after the "exiting" classes are applied
-   */
-  onExiting: React.PropTypes.func,
-  /**
-   * Callback fired after the "exited" classes are applied
-   */
-  onExited: React.PropTypes.func
-};
-
-// Name the function so it is clearer in the documentation
-function noop() {}
-
-Transition.displayName = 'Transition';
-
-Transition.defaultProps = {
-  in: false,
-  unmountOnExit: false,
-  transitionAppear: false,
-
-  timeout: 5000,
-
-  onEnter: noop,
-  onEntering: noop,
-  onEntered: noop,
-
-  onExit: noop,
-  onExiting: noop,
-  onExited: noop
-};
+Transition.defaultProps = defaultProps;
 
 export default Transition;

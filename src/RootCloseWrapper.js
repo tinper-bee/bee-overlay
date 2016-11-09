@@ -8,14 +8,12 @@ import ownerDocument from './utils/ownerDocument';
 const propTypes = {
     onRootClose: PropTypes.func,
     children: PropTypes.element,
-
     /**
-     * Disable the the RootCloseWrapper, preventing it from triggering
-     * `onRootClose`.
+     * 是否禁用
      */
     disabled: PropTypes.bool,
     /**
-     * Choose which document mouse event to bind to
+     * 触发事件选择
      */
     event: PropTypes.oneOf(['click', 'mousedown'])
 };
@@ -63,9 +61,7 @@ class RootCloseWrapper extends Component {
     const { event } = this.props;
     const doc = ownerDocument(this);
 
-    // Use capture for this listener so it fires before React's listener, to
-    // avoid false positives in the contains() check below if the target DOM
-    // element is removed in the React mouse callback.
+    // 避免react的监听事件触发引起判断的不准确
     this.documentMouseCaptureListener =
       addEventListener(doc, event, this.handleMouseCapture, true);
 
