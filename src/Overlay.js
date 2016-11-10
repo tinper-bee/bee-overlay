@@ -67,10 +67,15 @@ const propTypes = {
     onExited: React.PropTypes.func
 }
 
-const defaultProps = {};
+function noop() {}
+
+const defaultProps = {
+    show: false,
+    rootClose: true
+};
 
 /**
- * Built on top of `<Position/>` and `<Portal/>`, the overlay component is great for custom tooltip overlays.
+ * 悬浮组件
  */
 class Overlay extends Component {
   constructor(props, context) {

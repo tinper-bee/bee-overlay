@@ -56,12 +56,7 @@ const propTypes = {
     ]),
 
     /**
-     * A function that returns a backdrop component. Useful for custom
-     * backdrop rendering.
-     *
-     * ```js
-     *  renderBackdrop={props => <MyBackdrop {...props} />}
-     * ```
+     *返回背景组件的函数
      */
     renderBackdrop: React.PropTypes.func,
 

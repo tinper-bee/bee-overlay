@@ -43,7 +43,7 @@ const propTypes = {
    */
   exitingClassName: React.PropTypes.string,
   /**
-   * 退出后添加的class
+   * 进入动画后添加的class
    */
   enteredClassName: React.PropTypes.string,
   /**

@@ -13,15 +13,14 @@ import ownerWindow from './utils/ownerWindow';
 const propTypes = {
     ...Affix.propTypes,
     /**
-     * The logical container node or component for determining offset from bottom
-     * of viewport, or a function that returns it
+     * 容器组件
      */
     container: React.PropTypes.oneOfType([
       componentOrElement,
       React.PropTypes.func
     ]),
     /**
-     * Automatically set width when affixed
+     * 是否自适应宽度
      */
     autoWidth: React.PropTypes.bool
 };
