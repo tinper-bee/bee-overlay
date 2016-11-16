@@ -1,8 +1,6 @@
 /*eslint-disable react/prop-types */
-import React, { Component, cloneElement } from 'react';
+import React, { Component, cloneElement, PropTypes } from 'react';
 import warning from 'warning';
-import componentOrElement from 'react-prop-types/lib/componentOrElement';
-import elementType from 'react-prop-types/lib/elementType';
 
 import Portal from './Portal';
 import ModalManager from './ModalManager';
@@ -27,128 +25,133 @@ const propTypes = {
     /**
      * 是否显示
      */
-    show: React.PropTypes.bool,
+    show: PropTypes.bool,
 
     /**
      * 容器
      */
-    container: React.PropTypes.oneOfType([
-      componentOrElement,
-      React.PropTypes.func
+    container: PropTypes.oneOfType([
+        PropTypes.element,
+        PropTypes.string,
+        PropTypes.func
     ]),
 
     /**
      * 当模态框打开时的钩子函数
      */
-    onShow: React.PropTypes.func,
+    onShow: PropTypes.func,
 
     /**
      * 当show参数为false时触发的模态框关闭时的钩子函数
      */
-    onHide: React.PropTypes.func,
+    onHide: PropTypes.func,
 
     /**
      * 是否包含背景
      */
-    backdrop: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.oneOf(['static'])
+    backdrop: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.oneOf(['static'])
     ]),
 
     /**
      *返回背景组件的函数
      */
-    renderBackdrop: React.PropTypes.func,
+    renderBackdrop: PropTypes.func,
 
     /**
      * 设置esc键特殊钩子函数
      */
-    onEscapeKeyUp: React.PropTypes.func,
+    onEscapeKeyUp: PropTypes.func,
 
     /**
      * 当点击背景时触发的函数
      */
-    onBackdropClick: React.PropTypes.func,
+    onBackdropClick: PropTypes.func,
 
     /**
      * 背景的style
      */
-    backdropStyle: React.PropTypes.object,
+    backdropStyle: PropTypes.object,
 
     /**
      * 背景的class
      */
-    backdropClassName: React.PropTypes.string,
+    backdropClassName: PropTypes.string,
 
     /**
      *容器的class
      */
-    containerClassName: React.PropTypes.string,
+    containerClassName: PropTypes.string,
 
     /**
      * 按esc键是否关闭模态框
      */
-    keyboard: React.PropTypes.bool,
+    keyboard: PropTypes.bool,
 
     /**
      * 动画组件
      */
-    transition: elementType,
+    transition: PropTypes.oneOfType([
+        PropTypes.element,
+        PropTypes.string,
+        PropTypes.func
+    ]),
 
     /**
      * 设置动画超时时间
      */
-    dialogTransitionTimeout: React.PropTypes.number,
+    dialogTransitionTimeout: PropTypes.number,
 
     /**
      * 设置背景动画超时时间
      */
-    backdropTransitionTimeout: React.PropTypes.number,
+    backdropTransitionTimeout: PropTypes.number,
 
     /**
      * 是否自动设置焦点
      */
-    autoFocus: React.PropTypes.bool,
+    autoFocus: PropTypes.bool,
 
     /**
      * 防止焦点离开模态框
      */
-    enforceFocus: React.PropTypes.bool,
+    enforceFocus: PropTypes.bool,
 
     /**
      * 模态框进入时的钩子函数
      */
-    onEnter: React.PropTypes.func,
+    onEnter: PropTypes.func,
 
     /**
      * 模态框开始进入时的钩子函数
      */
-    onEntering: React.PropTypes.func,
+    onEntering: PropTypes.func,
 
     /**
      * 模态框进入后的钩子函数
      */
-    onEntered: React.PropTypes.func,
+    onEntered: PropTypes.func,
 
     /**
      * 模态框退出时的钩子函数
      */
-    onExit: React.PropTypes.func,
+    onExit: PropTypes.func,
 
     /**
      * 模态框开始退出时的钩子函数
      */
-    onExiting: React.PropTypes.func,
+    onExiting: PropTypes.func,
 
     /**
      * 模态框推出后的钩子函数
      */
-    onExited: React.PropTypes.func,
+    onExited: PropTypes.func,
 
     /**
      *管理model状态的实例
      */
-    manager: React.PropTypes.object.isRequired
+    manager: PropTypes.object.isRequired
 };
 
 const defaultProps = {
@@ -178,19 +181,19 @@ class Modal extends Component {
         // Otherwise let handleHidden take care of marking exited.
         this.setState({exited: true});
       }
-    },
+    }
 
     componentWillUpdate(nextProps){
       if (!this.props.show && nextProps.show) {
         this.checkForFocus();
       }
-    },
+    }
 
     componentDidMount() {
       if (this.props.show) {
         this.onShow();
       }
-    },
+    }
 
     componentDidUpdate(prevProps) {
       let { transition } = this.props;
@@ -202,7 +205,7 @@ class Modal extends Component {
       else if (!prevProps.show && this.props.show) {
         this.onShow();
       }
-    },
+    }
 
     componentWillUnmount() {
       let { show, transition } = this.props;
@@ -210,7 +213,7 @@ class Modal extends Component {
       if (show || (transition && !this.state.exited)) {
         this.onHide();
       }
-    },
+    }
 
     onShow() {
       let doc = ownerDocument(this);
@@ -229,7 +232,7 @@ class Modal extends Component {
      if (this.props.onShow) {
        this.props.onShow();
      }
-    },
+    }
 
     onHide() {
       this.props.manager.remove(this);
@@ -239,11 +242,11 @@ class Modal extends Component {
       this._onFocusinListener.remove();
 
       this.restoreLastFocus();
-    },
+    }
 
     setMountNode(ref) {
       this.mountNode = ref ? ref.getMountNode() : ref;
-    },
+    }
 
     handleHidden(...args) {
       this.setState({ exited: true });
@@ -252,7 +255,7 @@ class Modal extends Component {
       if (this.props.onExited) {
         this.props.onExited(...args);
       }
-    },
+    }
 
     handleBackdropClick(e) {
       if (e.target !== e.currentTarget) {
@@ -266,7 +269,7 @@ class Modal extends Component {
       if (this.props.backdrop === true){
         this.props.onHide();
       }
-    },
+    }
 
     handleDocumentKeyUp(e) {
       if (this.props.keyboard && e.keyCode === 27 && this.isTopModal()) {
@@ -275,13 +278,13 @@ class Modal extends Component {
         }
         this.props.onHide();
       }
-    },
+    }
 
     checkForFocus() {
       if (canUseDom) {
         this.lastFocus = activeElement();
       }
-    },
+    }
 
     focus() {
       let autoFocus = this.props.autoFocus;
@@ -301,7 +304,7 @@ class Modal extends Component {
 
         modalContent.focus();
       }
-    },
+    }
 
     restoreLastFocus() {
       // Support: <=IE11 doesn't support `focus()` on svg elements (RB: #917)
@@ -309,7 +312,7 @@ class Modal extends Component {
         this.lastFocus.focus();
         this.lastFocus = null;
       }
-    },
+    }
 
     enforceFocus() {
       let { enforceFocus } = this.props;
@@ -324,17 +327,17 @@ class Modal extends Component {
       if (modal && modal !== active && !contains(modal, active)) {
         modal.focus();
       }
-    },
+    }
 
     //instead of a ref, which might conflict with one the parent applied.
     getDialogElement() {
       let node = this.refs.modal;
       return node && node.lastChild;
-    },
+    }
 
     isTopModal() {
       return this.props.manager.isTopModal(this);
-  },
+  }
 
   renderBackdrop() {
     let {
@@ -372,7 +375,7 @@ class Modal extends Component {
     }
 
     return backdrop;
-},
+}
 
 
   render() {

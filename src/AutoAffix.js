@@ -1,7 +1,6 @@
 import getOffset from 'dom-helpers/query/offset';
 import requestAnimationFrame from 'dom-helpers/util/requestAnimationFrame';
-import React, { Component } from 'react';
-import componentOrElement from 'react-prop-types/lib/componentOrElement';
+import React, { Component, PropTypes } from 'react';
 
 import Affix from './Affix';
 import addEventListener from './utils/addEventListener';
@@ -15,14 +14,15 @@ const propTypes = {
     /**
      * 容器组件
      */
-    container: React.PropTypes.oneOfType([
-      componentOrElement,
-      React.PropTypes.func
+    container: PropTypes.oneOfType([
+        PropTypes.element,
+        PropTypes.string,
+        PropTypes.func
     ]),
     /**
      * 是否自适应宽度
      */
-    autoWidth: React.PropTypes.bool
+    autoWidth: PropTypes.bool
 };
 
 const defaultProps = {

@@ -1,181 +1,103 @@
-import React, { Component } from 'react';
-import Portal from './Portal';
-import Position from './Position';
-import RootCloseWrapper from './RootCloseWrapper';
-import elementType from 'react-prop-types/lib/elementType';
+import classNames from 'classnames';
+import React, { cloneElement, PropTypes, Component } from 'react';
+import BaseOverlay from './BaseOverlay';
+
+import Fade from './Fade';
 
 const propTypes = {
-    ...Portal.propTypes,
-    ...Position.propTypes,
+  ...BaseOverlay.propTypes,
 
-    /**
-     * 是否显示
-     */
-    show: React.PropTypes.bool,
+  /**
+   * 是否显示
+   */
+  show: PropTypes.bool,
+  /**
+   * 是
+   */
+  rootClose: PropTypes.bool,
+  /**
+   * 当点击rootClose触发close时的回调函数
+   */
+  onHide: PropTypes.func,
 
-    /**
-     * 点击其他地方，是否隐藏overlay
-     */
-    rootClose: React.PropTypes.bool,
+  /**
+   * 使用动画
+   */
+  animation: React.PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func
+  ]),
 
-    /**
-     * 当rootClose为true的时候，触发的隐藏方法
-     * @type func
-     */
-    onHide(props, ...args) {
-      let propType = React.PropTypes.func;
-      if (props.rootClose) {
-        propType = propType.isRequired;
-      }
+  /**
+   * Callback fired before the Overlay transitions in
+   */
+  onEnter: React.PropTypes.func,
 
-      return propType(props, ...args)
-    },
+  /**
+   * Callback fired as the Overlay begins to transition in
+   */
+  onEntering: React.PropTypes.func,
 
-    /**
-     * 过渡动画组件
-     */
-    transition: elementType,
+  /**
+   * Callback fired after the Overlay finishes transitioning in
+   */
+  onEntered: React.PropTypes.func,
 
-    /**
-     * overlay添加动画前的钩子函数
-     */
-    onEnter: React.PropTypes.func,
+  /**
+   * Callback fired right before the Overlay transitions out
+   */
+  onExit: React.PropTypes.func,
 
-    /**
-     * 开始动画的钩子函数
-     */
-    onEntering: React.PropTypes.func,
+  /**
+   * Callback fired as the Overlay begins to transition out
+   */
+  onExiting: React.PropTypes.func,
 
-    /**
-     * 渲染之后的钩子函数
-     */
-    onEntered: React.PropTypes.func,
+  /**
+   * Callback fired after the Overlay finishes transitioning out
+   */
+  onExited: React.PropTypes.func,
 
-    /**
-     * 关闭开始时的钩子函数
-     */
-    onExit: React.PropTypes.func,
-
-    /**
-     * 关闭时的钩子函数
-     */
-    onExiting: React.PropTypes.func,
-
-    /**
-     * 关闭后的钩子函数
-     */
-    onExited: React.PropTypes.func
-}
-
-function noop() {}
-
-const defaultProps = {
-    show: false,
-    rootClose: true
+  /**
+   * Sets the direction of the Overlay.
+   */
+  placement: React.PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
 };
 
-/**
- * 悬浮组件
- */
+const defaultProps = {
+  animation: Fade,
+  rootClose: false,
+  show: false,
+  placement: 'right',
+};
+
 class Overlay extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {exited: !props.show};
-    this.onHiddenListener = this.handleHidden.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.show) {
-      this.setState({exited: false});
-    } else if (!nextProps.transition) {
-      // Otherwise let handleHidden take care of marking exited.
-      this.setState({exited: true});
-    }
-  }
-
-  handleHidden(...args) {
-    this.setState({exited: true});
-
-    if (this.props.onExited) {
-      this.props.onExited(...args);
-    }
-  }
-
   render() {
-    let {
-        container
-      , containerPadding
-      , target
-      , placement
-      , shouldUpdatePosition
-      , rootClose
-      , children
-      , transition: Transition
-      , ...props } = this.props;
+    const { animation, children, ...props } = this.props;
 
+    const transition = animation === true ? Fade : animation || null;
 
-    // Don't un-render the overlay while it's transitioning out.
-    const mountOverlay = props.show || (Transition && !this.state.exited);
-    if (!mountOverlay) {
-      // Don't bother showing anything if we don't have to.
-      return null;
-    }
+    let child;
 
-    let child = children;
-
-    // Position is be inner-most because it adds inline styles into the child,
-    // which the other wrappers don't forward correctly.
-    child = (
-      <Position
-      {...{
-         container,
-         containerPadding,
-         target,
-         placement,
-         shouldUpdatePosition}}>
-        {child}
-      </Position>
-    );
-
-    if (Transition) {
-      let { onExit, onExiting, onEnter, onEntering, onEntered } = props;
-
-      // This animates the child node by injecting props, so it must precede
-      // anything that adds a wrapping div.
-      child = (
-        <Transition
-          in={props.show}
-          transitionAppear
-          onExit={onExit}
-          onExiting={onExiting}
-          onExited={this.onHiddenListener}
-          onEnter={onEnter}
-          onEntering={onEntering}
-          onEntered={onEntered}
-        >
-          {child}
-        </Transition>
-      );
-    }
-
-    // This goes after everything else because it adds a wrapping div.
-    if (rootClose) {
-      child = (
-        <RootCloseWrapper onRootClose={props.onHide}>
-          {child}
-        </RootCloseWrapper>
-      );
+    if (!transition) {
+      child = cloneElement(children, {
+        className: classNames(children.props.className, 'in'),
+      });
+    } else {
+      child = children;
     }
 
     return (
-      <Portal container={container}>
+      <BaseOverlay
+        {...props}
+        transition={transition}
+      >
         {child}
-      </Portal>
+      </BaseOverlay>
     );
   }
-
-
 }
 
 Overlay.propTypes = propTypes;

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import React, { cloneElement } from 'react';
+import React, { cloneElement, PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
-import componentOrElement from 'react-prop-types/lib/componentOrElement';
+
 
 import calculatePosition from './utils/calculatePosition';
 import getContainer from './utils/getContainer';
@@ -11,30 +11,32 @@ const propTypes = {
   /**
    * 要设置定位的元素
    */
-  target: React.PropTypes.oneOfType([
-    componentOrElement,
-    React.PropTypes.func
+  target: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.string,
+      PropTypes.func
   ]),
 
   /**
    * 存放的容器元素
    */
-  container: React.PropTypes.oneOfType([
-    componentOrElement,
-    React.PropTypes.func
+  container: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.string,
+      PropTypes.func
   ]),
   /**
    * 容器padding值
    */
-  containerPadding: React.PropTypes.number,
+  containerPadding: PropTypes.number,
   /**
    * 位置设置
    */
-  placement: React.PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   /**
    * 是否需要更新位置
    */
-  shouldUpdatePosition: React.PropTypes.bool
+  shouldUpdatePosition: PropTypes.bool
 };
 
 const defaultProps = {
@@ -48,7 +50,7 @@ const defaultProps = {
 /**
  * 计算子组件的位置的组件
  */
-class Position extends React.Component {
+class Position extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -59,8 +61,8 @@ class Position extends React.Component {
       arrowOffsetTop: null
     };
 
-    this._needsFlush = false;
-    this._lastTarget = null;
+    this.needsFlush = false;
+    this.lastTarget = null;
   }
 
   componentDidMount() {
@@ -68,12 +70,12 @@ class Position extends React.Component {
   }
 
   componentWillReceiveProps() {
-    this._needsFlush = true;
+    this.needsFlush = true;
   }
 
   componentDidUpdate(prevProps) {
-    if (this._needsFlush) {
-      this._needsFlush = false;
+    if (this.needsFlush) {
+      this.needsFlush = false;
       this.maybeUpdatePosition(this.props.placement !== prevProps.placement);
     }
   }
@@ -94,7 +96,7 @@ class Position extends React.Component {
 
     if (
       !this.props.shouldUpdatePosition &&
-      target === this._lastTarget &&
+      target === this.lastTarget &&
       !placementChanged
     ) {
       return;
@@ -107,7 +109,7 @@ class Position extends React.Component {
  */
 
   updatePosition(target) {
-    this._lastTarget = target;
+    this.lastTarget = target;
 
     if (!target) {
       this.setState({

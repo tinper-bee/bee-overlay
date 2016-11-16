@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
 import transitionInfo from 'dom-helpers/transition/properties';
 import addEventListener from 'dom-helpers/events/on';
@@ -17,64 +17,64 @@ const propTypes = {
   /**
    * 是否触发动画
    */
-  in: React.PropTypes.bool,
+  in: PropTypes.bool,
 
   /**
    * 不显示的时候是否移除组件
    */
-  unmountOnExit: React.PropTypes.bool,
+  unmountOnExit: PropTypes.bool,
 
   /**
    * 如果设置为默认显示，挂载时显示动画
    */
-  transitionAppear: React.PropTypes.bool,
+  transitionAppear: PropTypes.bool,
 
   /**
    * 设置超时时间，防止出现问题，可设置为>=动画时间
    */
-  timeout: React.PropTypes.number,
+  timeout: PropTypes.number,
 
   /**
    * 退出组件时添加的class
    */
-  exitedClassName: React.PropTypes.string,
+  exitedClassName: PropTypes.string,
   /**
    * 退出组件中添加的class
    */
-  exitingClassName: React.PropTypes.string,
+  exitingClassName: PropTypes.string,
   /**
    * 进入动画后添加的class
    */
-  enteredClassName: React.PropTypes.string,
+  enteredClassName: PropTypes.string,
   /**
    * 进入动画时添加的class
    */
-  enteringClassName: React.PropTypes.string,
+  enteringClassName: PropTypes.string,
 
   /**
    * 进入动画开始时的钩子函数
    */
-  onEnter: React.PropTypes.func,
+  onEnter: PropTypes.func,
   /**
    * 进入动画中的钩子函数
    */
-  onEntering: React.PropTypes.func,
+  onEntering: PropTypes.func,
   /**
    * 进入动画后的钩子函数
    */
-  onEntered: React.PropTypes.func,
+  onEntered: PropTypes.func,
   /**
    * 退出动画开始时的钩子函数
    */
-  onExit: React.PropTypes.func,
+  onExit: PropTypes.func,
   /**
    * 退出动画中的钩子函数
    */
-  onExiting: React.PropTypes.func,
+  onExiting: PropTypes.func,
   /**
    * 退出动画后的钩子函数
    */
-  onExited: React.PropTypes.func
+  onExited: PropTypes.func
 };
 
 function noop() {}
@@ -95,7 +95,7 @@ const defaultProps = {
 /**
  * 动画组件
  */
-class Transition extends React.Component {
+class Transition extends Component {
   constructor(props, context) {
     super(props, context);
 

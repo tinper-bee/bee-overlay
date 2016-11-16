@@ -31,13 +31,13 @@
 |placement|显示位置设置|top\left\bottom\right|right|
 |shouldUpdatePosition|是否需要更新位置|boolean|false|
 
-- Overlay 悬浮组件，依赖于Portal，Position组件，继承Portal，Position组件接口。
+- BaseOverlay 基础悬浮组件，依赖于Portal，Position组件，继承Portal，Position组件接口。
 
 |参数|说明|类型|默认值|
 |:--|:---:|:--:|---:|
 |show|是否显示|boolean|false|
 |rootClose|是否点击除弹出层任意地方隐藏|boolean|true|
-|onHide|当rootClose设置为false时，可设置为隐藏方法|-|
+|onHide|当rootClose设置为false时，可设置为隐藏方法|function|-|
 |transition|过度动画组件|component|-|
 |onEnter|开始显示时的钩子函数|function|-|
 |onEntering|显示时的钩子函数|function|-|
@@ -45,6 +45,41 @@
 |onExit|隐藏开始时的钩子函数|function|-|
 |onExiting|隐藏进行时的钩子函数|function|-|
 |onExited|隐藏结束时的钩子函数|function|-|
+
+- Overlay 悬浮组件，依赖于BaseOverlay，继承BaseOverlay的组件接口
+
+|参数|说明|类型|默认值|
+|:--|:---:|:--:|---:|
+|show|是否显示|boolean|false|
+|rootClose|是否点击除弹出层任意地方隐藏|boolean|true|
+|onHide|当rootClose设置为false时，可设置为隐藏方法|function|-|
+|transition|过度动画组件|component|-|
+|onEnter|开始显示时的钩子函数|function|-|
+|onEntering|显示时的钩子函数|function|-|
+|onEntered|显示完成后的钩子函数|function|-|
+|onExit|隐藏开始时的钩子函数|function|-|
+|onExiting|隐藏进行时的钩子函数|function|-|
+|onExited|隐藏结束时的钩子函数|function|-|
+|placement|显示位置设置|top\left\bottom\right|right|
+
+- OverlayTrigger 挂载组件，依赖Overlay组件，继承Overlay组件的接口
+
+|参数|说明|类型|默认值|
+|:--|:---:|:--:|---:|
+|trigger|触发叠加层的事件|click/hover/focus|hover/focus|
+|delay|叠加层显示和隐藏的延迟时间|number|-|
+|delayShow|叠加层显示的延迟时间|number|-|
+|delayHide|叠加层隐藏的延迟时间|number|-|
+|defaultOverlayShown|覆盖Overlay设置的默认显隐状态|boolean|false|
+|overlay|叠加层|element/string/function|-|
+|onBlur|失去焦点触发的时间|function|-|
+|onClick|点击事件|function|-|
+|onFocus|焦点事件|function|-|
+|onMouseOut|鼠标离开事件|function|-|
+|onMouseOver|鼠标滑过事件|function|-|
+|target|当前触发叠加层的元素|function|-|
+|onHide|隐藏事件|function|-|
+|show|显示事件|function|-|
 
 - RootCloseWrapper 代理外部组件事件
 

@@ -4,7 +4,7 @@ import getScrollbarSize from 'dom-helpers/util/scrollbarSize';
 import isOverflowing from './utils/isOverflowing';
 import { hideSiblings, showSiblings, ariaHidden } from './utils/manageAriaHidden';
 
-function findIndexOf(arr, cb){
+function findIndexOf (arr, cb) {
   let idx = -1;
   arr.some((d, i)=> {
     if (cb(d, i)) {
@@ -16,13 +16,13 @@ function findIndexOf(arr, cb){
 }
 
 //查找容器
-function findContainer(data, modal) {
+function findContainer (data, modal) {
   return findIndexOf(data,
     d => d.modals.indexOf(modal) !== -1);
 }
 
 //设置容器style
-function setContainerStyle(state, container) {
+function setContainerStyle (state, container) {
   let style = { overflow: 'hidden' };
 
   state.style = {
@@ -39,7 +39,7 @@ function setContainerStyle(state, container) {
   css(container, style);
 }
 //移除容器style
-function removeContainerStyle({ style }, container) {
+function removeContainerStyle ({ style }, container) {
 
   Object.keys(style).forEach(
     key => container.style[key] = style[key]);
