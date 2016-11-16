@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Portal from './Portal';
 import Position from './Position';
 import RootCloseWrapper from './RootCloseWrapper';
-import elementType from 'react-prop-types/lib/elementType';
+
 
 const propTypes = {
     ...Portal.propTypes,
@@ -11,19 +11,19 @@ const propTypes = {
     /**
      * 是否显示
      */
-    show: React.PropTypes.bool,
+    show: PropTypes.bool,
 
     /**
      * 点击其他地方，是否隐藏overlay
      */
-    rootClose: React.PropTypes.bool,
+    rootClose: PropTypes.bool,
 
     /**
      * 当rootClose为true的时候，触发的隐藏方法
      * @type func
      */
     onHide(props, ...args) {
-      let propType = React.PropTypes.func;
+      let propType = PropTypes.func;
       if (props.rootClose) {
         propType = propType.isRequired;
       }
@@ -34,37 +34,41 @@ const propTypes = {
     /**
      * 过渡动画组件
      */
-    transition: elementType,
+    transition: PropTypes.oneOfType([
+        PropTypes.element,
+        PropTypes.string,
+        PropTypes.func
+    ]),
 
     /**
      * overlay添加动画前的钩子函数
      */
-    onEnter: React.PropTypes.func,
+    onEnter: PropTypes.func,
 
     /**
      * 开始动画的钩子函数
      */
-    onEntering: React.PropTypes.func,
+    onEntering: PropTypes.func,
 
     /**
      * 渲染之后的钩子函数
      */
-    onEntered: React.PropTypes.func,
+    onEntered: PropTypes.func,
 
     /**
      * 关闭开始时的钩子函数
      */
-    onExit: React.PropTypes.func,
+    onExit: PropTypes.func,
 
     /**
      * 关闭时的钩子函数
      */
-    onExiting: React.PropTypes.func,
+    onExiting: PropTypes.func,
 
     /**
      * 关闭后的钩子函数
      */
-    onExited: React.PropTypes.func
+    onExited: PropTypes.func
 }
 
 function noop() {}

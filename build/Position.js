@@ -50,24 +50,24 @@ var propTypes = {
   /**
    * 要设置定位的元素
    */
-  target: _react2["default"].PropTypes.oneOfType([_componentOrElement2["default"], _react2["default"].PropTypes.func]),
+  target: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
 
   /**
    * 存放的容器元素
    */
-  container: _react2["default"].PropTypes.oneOfType([_componentOrElement2["default"], _react2["default"].PropTypes.func]),
+  container: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
   /**
    * 容器padding值
    */
-  containerPadding: _react2["default"].PropTypes.number,
+  containerPadding: _react.PropTypes.number,
   /**
    * 位置设置
    */
-  placement: _react2["default"].PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  placement: _react.PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   /**
    * 是否需要更新位置
    */
-  shouldUpdatePosition: _react2["default"].PropTypes.bool
+  shouldUpdatePosition: _react.PropTypes.bool
 };
 
 var defaultProps = {
@@ -80,13 +80,13 @@ var defaultProps = {
  * 计算子组件的位置的组件
  */
 
-var Position = function (_React$Component) {
-  _inherits(Position, _React$Component);
+var Position = function (_Component) {
+  _inherits(Position, _Component);
 
   function Position(props, context) {
     _classCallCheck(this, Position);
 
-    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
+    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 
     _this.state = {
       positionLeft: 0,
@@ -95,8 +95,8 @@ var Position = function (_React$Component) {
       arrowOffsetTop: null
     };
 
-    _this._needsFlush = false;
-    _this._lastTarget = null;
+    _this.needsFlush = false;
+    _this.lastTarget = null;
     return _this;
   }
 
@@ -199,7 +199,7 @@ var Position = function (_React$Component) {
   };
 
   return Position;
-}(_react2["default"].Component);
+}(_react.Component);
 
 Position.propTypes = propTypes;
 Position.defaultProps = defaultProps;

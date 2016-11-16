@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { cloneElement } from 'react';
+import React, { cloneElement, PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
 import componentOrElement from 'react-prop-types/lib/componentOrElement';
 
@@ -11,30 +11,32 @@ const propTypes = {
   /**
    * 要设置定位的元素
    */
-  target: React.PropTypes.oneOfType([
-    componentOrElement,
-    React.PropTypes.func
+  target: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.string,
+      PropTypes.func
   ]),
 
   /**
    * 存放的容器元素
    */
-  container: React.PropTypes.oneOfType([
-    componentOrElement,
-    React.PropTypes.func
+  container: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.string,
+      PropTypes.func
   ]),
   /**
    * 容器padding值
    */
-  containerPadding: React.PropTypes.number,
+  containerPadding: PropTypes.number,
   /**
    * 位置设置
    */
-  placement: React.PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   /**
    * 是否需要更新位置
    */
-  shouldUpdatePosition: React.PropTypes.bool
+  shouldUpdatePosition: PropTypes.bool
 };
 
 const defaultProps = {
@@ -48,7 +50,7 @@ const defaultProps = {
 /**
  * 计算子组件的位置的组件
  */
-class Position extends React.Component {
+class Position extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -59,8 +61,8 @@ class Position extends React.Component {
       arrowOffsetTop: null
     };
 
-    this._needsFlush = false;
-    this._lastTarget = null;
+    this.needsFlush = false;
+    this.lastTarget = null;
   }
 
   componentDidMount() {

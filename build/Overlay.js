@@ -22,10 +22,6 @@ var _RootCloseWrapper = require('./RootCloseWrapper');
 
 var _RootCloseWrapper2 = _interopRequireDefault(_RootCloseWrapper);
 
-var _elementType = require('react-prop-types/lib/elementType');
-
-var _elementType2 = _interopRequireDefault(_elementType);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -43,19 +39,19 @@ var propTypes = _extends({}, _Portal2["default"].propTypes, _Position2["default"
   /**
    * 是否显示
    */
-  show: _react2["default"].PropTypes.bool,
+  show: _react.PropTypes.bool,
 
   /**
    * 点击其他地方，是否隐藏overlay
    */
-  rootClose: _react2["default"].PropTypes.bool,
+  rootClose: _react.PropTypes.bool,
 
   /**
    * 当rootClose为true的时候，触发的隐藏方法
    * @type func
    */
   onHide: function onHide(props) {
-    var propType = _react2["default"].PropTypes.func;
+    var propType = _react.PropTypes.func;
     if (props.rootClose) {
       propType = propType.isRequired;
     }
@@ -71,37 +67,37 @@ var propTypes = _extends({}, _Portal2["default"].propTypes, _Position2["default"
   /**
    * 过渡动画组件
    */
-  transition: _elementType2["default"],
+  transition: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
 
   /**
    * overlay添加动画前的钩子函数
    */
-  onEnter: _react2["default"].PropTypes.func,
+  onEnter: _react.PropTypes.func,
 
   /**
    * 开始动画的钩子函数
    */
-  onEntering: _react2["default"].PropTypes.func,
+  onEntering: _react.PropTypes.func,
 
   /**
    * 渲染之后的钩子函数
    */
-  onEntered: _react2["default"].PropTypes.func,
+  onEntered: _react.PropTypes.func,
 
   /**
    * 关闭开始时的钩子函数
    */
-  onExit: _react2["default"].PropTypes.func,
+  onExit: _react.PropTypes.func,
 
   /**
    * 关闭时的钩子函数
    */
-  onExiting: _react2["default"].PropTypes.func,
+  onExiting: _react.PropTypes.func,
 
   /**
    * 关闭后的钩子函数
    */
-  onExited: _react2["default"].PropTypes.func
+  onExited: _react.PropTypes.func
 });
 
 function noop() {}

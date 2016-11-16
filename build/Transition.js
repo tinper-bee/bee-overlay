@@ -52,64 +52,64 @@ var propTypes = {
   /**
    * 是否触发动画
    */
-  "in": _react2["default"].PropTypes.bool,
+  "in": _react.PropTypes.bool,
 
   /**
    * 不显示的时候是否移除组件
    */
-  unmountOnExit: _react2["default"].PropTypes.bool,
+  unmountOnExit: _react.PropTypes.bool,
 
   /**
    * 如果设置为默认显示，挂载时显示动画
    */
-  transitionAppear: _react2["default"].PropTypes.bool,
+  transitionAppear: _react.PropTypes.bool,
 
   /**
    * 设置超时时间，防止出现问题，可设置为>=动画时间
    */
-  timeout: _react2["default"].PropTypes.number,
+  timeout: _react.PropTypes.number,
 
   /**
    * 退出组件时添加的class
    */
-  exitedClassName: _react2["default"].PropTypes.string,
+  exitedClassName: _react.PropTypes.string,
   /**
    * 退出组件中添加的class
    */
-  exitingClassName: _react2["default"].PropTypes.string,
+  exitingClassName: _react.PropTypes.string,
   /**
    * 进入动画后添加的class
    */
-  enteredClassName: _react2["default"].PropTypes.string,
+  enteredClassName: _react.PropTypes.string,
   /**
    * 进入动画时添加的class
    */
-  enteringClassName: _react2["default"].PropTypes.string,
+  enteringClassName: _react.PropTypes.string,
 
   /**
    * 进入动画开始时的钩子函数
    */
-  onEnter: _react2["default"].PropTypes.func,
+  onEnter: _react.PropTypes.func,
   /**
    * 进入动画中的钩子函数
    */
-  onEntering: _react2["default"].PropTypes.func,
+  onEntering: _react.PropTypes.func,
   /**
    * 进入动画后的钩子函数
    */
-  onEntered: _react2["default"].PropTypes.func,
+  onEntered: _react.PropTypes.func,
   /**
    * 退出动画开始时的钩子函数
    */
-  onExit: _react2["default"].PropTypes.func,
+  onExit: _react.PropTypes.func,
   /**
    * 退出动画中的钩子函数
    */
-  onExiting: _react2["default"].PropTypes.func,
+  onExiting: _react.PropTypes.func,
   /**
    * 退出动画后的钩子函数
    */
-  onExited: _react2["default"].PropTypes.func
+  onExited: _react.PropTypes.func
 };
 
 function noop() {}
@@ -131,13 +131,13 @@ var defaultProps = {
  * 动画组件
  */
 
-var Transition = function (_React$Component) {
-  _inherits(Transition, _React$Component);
+var Transition = function (_Component) {
+  _inherits(Transition, _Component);
 
   function Transition(props, context) {
     _classCallCheck(this, Transition);
 
-    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
+    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 
     var initialStatus = void 0;
     if (props["in"]) {
@@ -324,7 +324,7 @@ var Transition = function (_React$Component) {
   };
 
   return Transition;
-}(_react2["default"].Component);
+}(_react.Component);
 
 Transition.propTypes = propTypes;
 

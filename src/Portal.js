@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import componentOrElement from 'react-prop-types/lib/componentOrElement';
 import ownerDocument from './utils/ownerDocument';
 import getContainer from './utils/getContainer';
 
@@ -8,9 +7,10 @@ const propTypes = {
     /**
      * 存放子组件的容器
      */
-    container: React.PropTypes.oneOfType([
-        componentOrElement,
-        React.PropTypes.func
+    container: PropTypes.oneOfType([
+        PropTypes.element,
+        PropTypes.string,
+        PropTypes.func
     ])
 };
 
@@ -27,28 +27,28 @@ class Portal extends Component{
     }
 
   componentDidMount() {
-    this._renderOverlay();
+    this.renderOverlay();
   }
 
   componentDidUpdate() {
-    this._renderOverlay();
+    this.renderOverlay();
   }
 //this._overlayTarget为当前的要添加的子组件， this._portalContainerNode要添加组件的容器元素
   componentWillReceiveProps(nextProps) {
-    if (this._overlayTarget && nextProps.container !== this.props.container) {
-      this._portalContainerNode.removeChild(this._overlayTarget);
-      this._portalContainerNode = getContainer(nextProps.container, ownerDocument(this).body);
-      this._portalContainerNode.appendChild(this._overlayTarget);
+    if (this.overlayTarget && nextProps.container !== this.props.container) {
+      this.portalContainerNode.removeChild(this.overlayTarget);
+      this.portalContainerNode = getContainer(nextProps.container, ownerDocument(this).body);
+      this.portalContainerNode.appendChild(this.overlayTarget);
     }
   }
 
   componentWillUnmount() {
-    this._unrenderOverlay();
-    this._unmountOverlayTarget();
+    this.unrenderOverlay();
+    this.unmountOverlayTarget();
   }
 
   getMountNode(){
-    return this._overlayTarget;
+    return this.overlayTarget;
   }
 
   getOverlayDOMNode() {
@@ -56,8 +56,8 @@ class Portal extends Component{
       throw new Error('getOverlayDOMNode(): A component must be mounted to have a DOM node.');
     }
 
-    if (this._overlayInstance) {
-      return ReactDOM.findDOMNode(this._overlayInstance);
+    if (this.overlayInstance) {
+      return ReactDOM.findDOMNode(this.overlayInstance);
     }
 
     return null;
@@ -68,27 +68,27 @@ class Portal extends Component{
  * 如果要添加的子组件不存在，就将div添加到要添加容器的DOM中；
  */
 
-  _mountOverlayTarget() {
-    if (!this._overlayTarget) {
-      this._overlayTarget = document.createElement('div');
-      this._portalContainerNode = getContainer(this.props.container, ownerDocument(this).body);
-      this._portalContainerNode.appendChild(this._overlayTarget);
+  mountOverlayTarget() {
+    if (!this.overlayTarget) {
+      this.overlayTarget = document.createElement('div');
+      this.portalContainerNode = getContainer(this.props.container, ownerDocument(this).body);
+      this.portalContainerNode.appendChild(this.overlayTarget);
     }
   }
 /**
  * 将要添加的子元素从容器中移除，并把变量置为null
  */
-  _unmountOverlayTarget() {
-    if (this._overlayTarget) {
-      this._portalContainerNode.removeChild(this._overlayTarget);
-      this._overlayTarget = null;
+  unmountOverlayTarget() {
+    if (this.overlayTarget) {
+      this.portalContainerNode.removeChild(this.overlayTarget);
+      this.overlayTarget = null;
     }
-    this._portalContainerNode = null;
+    this.portalContainerNode = null;
   }
 /**
  * 手动渲染_overlayTarget
  */
-  _renderOverlay() {
+  renderOverlay() {
 
     let overlay = !this.props.children
       ? null
@@ -96,23 +96,23 @@ class Portal extends Component{
 
     // Save reference for future access.
     if (overlay !== null) {
-      this._mountOverlayTarget();
+      this.mountOverlayTarget();
       this._overlayInstance = ReactDOM.unstable_renderSubtreeIntoContainer(
         this, overlay, this._overlayTarget
       );
     } else {
       // Unrender if the component is null for transitions to null
-      this._unrenderOverlay();
-      this._unmountOverlayTarget();
+      this.unrenderOverlay();
+      this.unmountOverlayTarget();
     }
   }
 /**
  * 销毁_overlayTarget组件。并把_overlayInstance置为null
  */
-  _unrenderOverlay() {
-    if (this._overlayTarget) {
-      ReactDOM.unmountComponentAtNode(this._overlayTarget);
-      this._overlayInstance = null;
+  unrenderOverlay() {
+    if (this.overlayTarget) {
+      ReactDOM.unmountComponentAtNode(this.overlayTarget);
+      this.overlayInstance = null;
     }
   }
 

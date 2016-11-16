@@ -18,10 +18,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _componentOrElement = require('react-prop-types/lib/componentOrElement');
-
-var _componentOrElement2 = _interopRequireDefault(_componentOrElement);
-
 var _Affix = require('./Affix');
 
 var _Affix2 = _interopRequireDefault(_Affix);
@@ -62,11 +58,11 @@ var propTypes = _extends({}, _Affix2["default"].propTypes, {
   /**
    * 容器组件
    */
-  container: _react2["default"].PropTypes.oneOfType([_componentOrElement2["default"], _react2["default"].PropTypes.func]),
+  container: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
   /**
    * 是否自适应宽度
    */
-  autoWidth: _react2["default"].PropTypes.bool
+  autoWidth: _react.PropTypes.bool
 });
 
 var defaultProps = {

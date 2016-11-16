@@ -12,10 +12,6 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _componentOrElement = require('react-prop-types/lib/componentOrElement');
-
-var _componentOrElement2 = _interopRequireDefault(_componentOrElement);
-
 var _ownerDocument = require('./utils/ownerDocument');
 
 var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
@@ -38,7 +34,7 @@ var propTypes = {
   /**
    * 存放子组件的容器
    */
-  container: _react2["default"].PropTypes.oneOfType([_componentOrElement2["default"], _react2["default"].PropTypes.func])
+  container: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func])
 };
 
 var defaultProps = {
@@ -59,30 +55,30 @@ var Portal = function (_Component) {
   }
 
   Portal.prototype.componentDidMount = function componentDidMount() {
-    this._renderOverlay();
+    this.renderOverlay();
   };
 
   Portal.prototype.componentDidUpdate = function componentDidUpdate() {
-    this._renderOverlay();
+    this.renderOverlay();
   };
   //this._overlayTarget为当前的要添加的子组件， this._portalContainerNode要添加组件的容器元素
 
 
   Portal.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    if (this._overlayTarget && nextProps.container !== this.props.container) {
-      this._portalContainerNode.removeChild(this._overlayTarget);
-      this._portalContainerNode = (0, _getContainer2["default"])(nextProps.container, (0, _ownerDocument2["default"])(this).body);
-      this._portalContainerNode.appendChild(this._overlayTarget);
+    if (this.overlayTarget && nextProps.container !== this.props.container) {
+      this.portalContainerNode.removeChild(this.overlayTarget);
+      this.portalContainerNode = (0, _getContainer2["default"])(nextProps.container, (0, _ownerDocument2["default"])(this).body);
+      this.portalContainerNode.appendChild(this.overlayTarget);
     }
   };
 
   Portal.prototype.componentWillUnmount = function componentWillUnmount() {
-    this._unrenderOverlay();
-    this._unmountOverlayTarget();
+    this.unrenderOverlay();
+    this.unmountOverlayTarget();
   };
 
   Portal.prototype.getMountNode = function getMountNode() {
-    return this._overlayTarget;
+    return this.overlayTarget;
   };
 
   Portal.prototype.getOverlayDOMNode = function getOverlayDOMNode() {
@@ -90,8 +86,8 @@ var Portal = function (_Component) {
       throw new Error('getOverlayDOMNode(): A component must be mounted to have a DOM node.');
     }
 
-    if (this._overlayInstance) {
-      return _reactDom2["default"].findDOMNode(this._overlayInstance);
+    if (this.overlayInstance) {
+      return _reactDom2["default"].findDOMNode(this.overlayInstance);
     }
 
     return null;
@@ -101,11 +97,11 @@ var Portal = function (_Component) {
    * 如果要添加的子组件不存在，就将div添加到要添加容器的DOM中；
    */
 
-  Portal.prototype._mountOverlayTarget = function _mountOverlayTarget() {
-    if (!this._overlayTarget) {
-      this._overlayTarget = document.createElement('div');
-      this._portalContainerNode = (0, _getContainer2["default"])(this.props.container, (0, _ownerDocument2["default"])(this).body);
-      this._portalContainerNode.appendChild(this._overlayTarget);
+  Portal.prototype.mountOverlayTarget = function mountOverlayTarget() {
+    if (!this.overlayTarget) {
+      this.overlayTarget = document.createElement('div');
+      this.portalContainerNode = (0, _getContainer2["default"])(this.props.container, (0, _ownerDocument2["default"])(this).body);
+      this.portalContainerNode.appendChild(this.overlayTarget);
     }
   };
   /**
@@ -113,30 +109,30 @@ var Portal = function (_Component) {
    */
 
 
-  Portal.prototype._unmountOverlayTarget = function _unmountOverlayTarget() {
-    if (this._overlayTarget) {
-      this._portalContainerNode.removeChild(this._overlayTarget);
-      this._overlayTarget = null;
+  Portal.prototype.unmountOverlayTarget = function unmountOverlayTarget() {
+    if (this.overlayTarget) {
+      this.portalContainerNode.removeChild(this.overlayTarget);
+      this.overlayTarget = null;
     }
-    this._portalContainerNode = null;
+    this.portalContainerNode = null;
   };
   /**
    * 手动渲染_overlayTarget
    */
 
 
-  Portal.prototype._renderOverlay = function _renderOverlay() {
+  Portal.prototype.renderOverlay = function renderOverlay() {
 
     var overlay = !this.props.children ? null : _react2["default"].Children.only(this.props.children);
 
     // Save reference for future access.
     if (overlay !== null) {
-      this._mountOverlayTarget();
+      this.mountOverlayTarget();
       this._overlayInstance = _reactDom2["default"].unstable_renderSubtreeIntoContainer(this, overlay, this._overlayTarget);
     } else {
       // Unrender if the component is null for transitions to null
-      this._unrenderOverlay();
-      this._unmountOverlayTarget();
+      this.unrenderOverlay();
+      this.unmountOverlayTarget();
     }
   };
   /**
@@ -144,10 +140,10 @@ var Portal = function (_Component) {
    */
 
 
-  Portal.prototype._unrenderOverlay = function _unrenderOverlay() {
-    if (this._overlayTarget) {
-      _reactDom2["default"].unmountComponentAtNode(this._overlayTarget);
-      this._overlayInstance = null;
+  Portal.prototype.unrenderOverlay = function unrenderOverlay() {
+    if (this.overlayTarget) {
+      _reactDom2["default"].unmountComponentAtNode(this.overlayTarget);
+      this.overlayInstance = null;
     }
   };
 
