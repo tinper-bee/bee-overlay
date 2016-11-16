@@ -15,14 +15,6 @@ var _warning = require('warning');
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _componentOrElement = require('react-prop-types/lib/componentOrElement');
-
-var _componentOrElement2 = _interopRequireDefault(_componentOrElement);
-
-var _elementType = require('react-prop-types/lib/elementType');
-
-var _elementType2 = _interopRequireDefault(_elementType);
-
 var _Portal = require('./Portal');
 
 var _Portal2 = _interopRequireDefault(_Portal);
@@ -61,216 +53,395 @@ var _getContainer2 = _interopRequireDefault(_getContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+
 var modalManager = new _ModalManager2["default"]();
 
 /**
- * Love them or hate them, `<Modal/>` provides a solid foundation for creating dialogs, lightboxes, or whatever else.
- * The Modal component renders its `children` node in front of a backdrop component.
- *
- * The Modal offers a few helpful features over using just a `<Portal/>` component and some styles:
- *
- * - Manages dialog stacking when one-at-a-time just isn't enough.
- * - Creates a backdrop, for disabling interaction below the modal.
- * - It properly manages focus; moving to the modal content, and keeping it there until the modal is closed.
- * - It disables scrolling of the page content while open.
- * - Adds the appropriate ARIA roles are automatically.
- * - Easily pluggable animations via a `<Transition/>` component.
- *
- * Note that, in the same way the backdrop element prevents users from clicking or interacting
- * with the page content underneath the Modal, Screen readers also need to be signaled to not to
- * interact with page content while the Modal is open. To do this, we use a common technique of applying
- * the `aria-hidden='true'` attribute to the non-Modal elements in the Modal `container`. This means that for
- * a Modal to be truly modal, it should have a `container` that is _outside_ your app's
- * React hierarchy (such as the default: document.body).
+ * 模态框
  */
-var Modal = _react2["default"].createClass({
-  displayName: 'Modal',
 
+var propTypes = _extends({}, _Portal2["default"].propTypes, {
 
-  propTypes: _extends({}, _Portal2["default"].propTypes, {
+  /**
+   * 是否显示
+   */
+  show: _react.PropTypes.bool,
 
-    /**
-     * Set the visibility of the Modal
-     */
-    show: _react2["default"].PropTypes.bool,
+  /**
+   * 容器
+   */
+  container: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
 
-    /**
-     * A Node, Component instance, or function that returns either. The Modal is appended to it's container element.
-     *
-     * For the sake of assistive technologies, the container should usually be the document body, so that the rest of the
-     * page content can be placed behind a virtual backdrop as well as a visual one.
-     */
-    container: _react2["default"].PropTypes.oneOfType([_componentOrElement2["default"], _react2["default"].PropTypes.func]),
+  /**
+   * 当模态框打开时的钩子函数
+   */
+  onShow: _react.PropTypes.func,
 
-    /**
-     * A callback fired when the Modal is opening.
-     */
-    onShow: _react2["default"].PropTypes.func,
+  /**
+   * 当show参数为false时触发的模态框关闭时的钩子函数
+   */
+  onHide: _react.PropTypes.func,
 
-    /**
-     * A callback fired when either the backdrop is clicked, or the escape key is pressed.
-     *
-     * The `onHide` callback only signals intent from the Modal,
-     * you must actually set the `show` prop to `false` for the Modal to close.
-     */
-    onHide: _react2["default"].PropTypes.func,
+  /**
+   * 是否包含背景
+   */
+  backdrop: _react.PropTypes.oneOfType([_react.PropTypes.bool, _react.PropTypes.oneOf(['static'])]),
 
-    /**
-     * Include a backdrop component.
-     */
-    backdrop: _react2["default"].PropTypes.oneOfType([_react2["default"].PropTypes.bool, _react2["default"].PropTypes.oneOf(['static'])]),
+  /**
+   *返回背景组件的函数
+   */
+  renderBackdrop: _react.PropTypes.func,
 
-    /**
-     * A function that returns a backdrop component. Useful for custom
-     * backdrop rendering.
-     *
-     * ```js
-     *  renderBackdrop={props => <MyBackdrop {...props} />}
-     * ```
-     */
-    renderBackdrop: _react2["default"].PropTypes.func,
+  /**
+   * 设置esc键特殊钩子函数
+   */
+  onEscapeKeyUp: _react.PropTypes.func,
 
-    /**
-     * A callback fired when the escape key, if specified in `keyboard`, is pressed.
-     */
-    onEscapeKeyUp: _react2["default"].PropTypes.func,
+  /**
+   * 当点击背景时触发的函数
+   */
+  onBackdropClick: _react.PropTypes.func,
 
-    /**
-     * A callback fired when the backdrop, if specified, is clicked.
-     */
-    onBackdropClick: _react2["default"].PropTypes.func,
+  /**
+   * 背景的style
+   */
+  backdropStyle: _react.PropTypes.object,
 
-    /**
-     * A style object for the backdrop component.
-     */
-    backdropStyle: _react2["default"].PropTypes.object,
+  /**
+   * 背景的class
+   */
+  backdropClassName: _react.PropTypes.string,
 
-    /**
-     * A css class or classes for the backdrop component.
-     */
-    backdropClassName: _react2["default"].PropTypes.string,
+  /**
+   *容器的class
+   */
+  containerClassName: _react.PropTypes.string,
 
-    /**
-     * A css class or set of classes applied to the modal container when the modal is open,
-     * and removed when it is closed.
-     */
-    containerClassName: _react2["default"].PropTypes.string,
+  /**
+   * 按esc键是否关闭模态框
+   */
+  keyboard: _react.PropTypes.bool,
 
-    /**
-     * Close the modal when escape key is pressed
-     */
-    keyboard: _react2["default"].PropTypes.bool,
+  /**
+   * 动画组件
+   */
+  transition: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
 
-    /**
-     * A `<Transition/>` component to use for the dialog and backdrop components.
-     */
-    transition: _elementType2["default"],
+  /**
+   * 设置动画超时时间
+   */
+  dialogTransitionTimeout: _react.PropTypes.number,
 
-    /**
-     * The `timeout` of the dialog transition if specified. This number is used to ensure that
-     * transition callbacks are always fired, even if browser transition events are canceled.
-     *
-     * See the Transition `timeout` prop for more infomation.
-     */
-    dialogTransitionTimeout: _react2["default"].PropTypes.number,
+  /**
+   * 设置背景动画超时时间
+   */
+  backdropTransitionTimeout: _react.PropTypes.number,
 
-    /**
-     * The `timeout` of the backdrop transition if specified. This number is used to
-     * ensure that transition callbacks are always fired, even if browser transition events are canceled.
-     *
-     * See the Transition `timeout` prop for more infomation.
-     */
-    backdropTransitionTimeout: _react2["default"].PropTypes.number,
+  /**
+   * 是否自动设置焦点
+   */
+  autoFocus: _react.PropTypes.bool,
 
-    /**
-     * When `true` The modal will automatically shift focus to itself when it opens, and
-     * replace it to the last focused element when it closes. This also
-     * works correctly with any Modal children that have the `autoFocus` prop.
-     *
-     * Generally this should never be set to `false` as it makes the Modal less
-     * accessible to assistive technologies, like screen readers.
-     */
-    autoFocus: _react2["default"].PropTypes.bool,
+  /**
+   * 防止焦点离开模态框
+   */
+  enforceFocus: _react.PropTypes.bool,
 
-    /**
-     * When `true` The modal will prevent focus from leaving the Modal while open.
-     *
-     * Generally this should never be set to `false` as it makes the Modal less
-     * accessible to assistive technologies, like screen readers.
-     */
-    enforceFocus: _react2["default"].PropTypes.bool,
+  /**
+   * 模态框进入时的钩子函数
+   */
+  onEnter: _react.PropTypes.func,
 
-    /**
-     * Callback fired before the Modal transitions in
-     */
-    onEnter: _react2["default"].PropTypes.func,
+  /**
+   * 模态框开始进入时的钩子函数
+   */
+  onEntering: _react.PropTypes.func,
 
-    /**
-     * Callback fired as the Modal begins to transition in
-     */
-    onEntering: _react2["default"].PropTypes.func,
+  /**
+   * 模态框进入后的钩子函数
+   */
+  onEntered: _react.PropTypes.func,
 
-    /**
-     * Callback fired after the Modal finishes transitioning in
-     */
-    onEntered: _react2["default"].PropTypes.func,
+  /**
+   * 模态框退出时的钩子函数
+   */
+  onExit: _react.PropTypes.func,
 
-    /**
-     * Callback fired right before the Modal transitions out
-     */
-    onExit: _react2["default"].PropTypes.func,
+  /**
+   * 模态框开始退出时的钩子函数
+   */
+  onExiting: _react.PropTypes.func,
 
-    /**
-     * Callback fired as the Modal begins to transition out
-     */
-    onExiting: _react2["default"].PropTypes.func,
+  /**
+   * 模态框推出后的钩子函数
+   */
+  onExited: _react.PropTypes.func,
 
-    /**
-     * Callback fired after the Modal finishes transitioning out
-     */
-    onExited: _react2["default"].PropTypes.func,
+  /**
+   *管理model状态的实例
+   */
+  manager: _react.PropTypes.object.isRequired
+});
 
-    /**
-     * A ModalManager instance used to track and manage the state of open
-     * Modals. Useful when customizing how modals interact within a container
-     */
-    manager: _react2["default"].PropTypes.object.isRequired
-  }),
+var defaultProps = {
+  show: false,
+  backdrop: true,
+  keyboard: true,
+  autoFocus: true,
+  enforceFocus: true,
+  onHide: function onHide() {},
+  manager: modalManager,
+  renderBackdrop: function renderBackdrop(props) {
+    return _react2["default"].createElement('div', props);
+  }
+};
 
-  getDefaultProps: function getDefaultProps() {
-    var noop = function noop() {};
+var Modal = function (_Component) {
+  _inherits(Modal, _Component);
 
-    return {
-      show: false,
-      backdrop: true,
-      keyboard: true,
-      autoFocus: true,
-      enforceFocus: true,
-      onHide: noop,
-      manager: modalManager,
-      renderBackdrop: function renderBackdrop(props) {
-        return _react2["default"].createElement('div', props);
-      }
+  function Modal(props, content) {
+    _classCallCheck(this, Modal);
+
+    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+
+    _this.state = {
+      exited: !_this.props.show
     };
-  },
-  getInitialState: function getInitialState() {
-    return { exited: !this.props.show };
-  },
-  render: function render() {
-    var _props = this.props;
-    var show = _props.show;
-    var container = _props.container;
-    var children = _props.children;
-    var Transition = _props.transition;
-    var backdrop = _props.backdrop;
-    var dialogTransitionTimeout = _props.dialogTransitionTimeout;
-    var className = _props.className;
-    var style = _props.style;
-    var onExit = _props.onExit;
-    var onExiting = _props.onExiting;
-    var onEnter = _props.onEnter;
-    var onEntering = _props.onEntering;
-    var onEntered = _props.onEntered;
+    return _this;
+  }
+
+  Modal.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+    if (nextProps.show) {
+      this.setState({ exited: false });
+    } else if (!nextProps.transition) {
+      // Otherwise let handleHidden take care of marking exited.
+      this.setState({ exited: true });
+    }
+  };
+
+  Modal.prototype.componentWillUpdate = function componentWillUpdate(nextProps) {
+    if (!this.props.show && nextProps.show) {
+      this.checkForFocus();
+    }
+  };
+
+  Modal.prototype.componentDidMount = function componentDidMount() {
+    if (this.props.show) {
+      this.onShow();
+    }
+  };
+
+  Modal.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var transition = this.props.transition;
+
+
+    if (prevProps.show && !this.props.show && !transition) {
+      // Otherwise handleHidden will call this.
+      this.onHide();
+    } else if (!prevProps.show && this.props.show) {
+      this.onShow();
+    }
+  };
+
+  Modal.prototype.componentWillUnmount = function componentWillUnmount() {
+    var _props = this.props,
+        show = _props.show,
+        transition = _props.transition;
+
+
+    if (show || transition && !this.state.exited) {
+      this.onHide();
+    }
+  };
+
+  Modal.prototype.onShow = function onShow() {
+    var doc = (0, _ownerDocument2["default"])(this);
+    var container = (0, _getContainer2["default"])(this.props.container, doc.body);
+
+    this.props.manager.add(this, container, this.props.containerClassName);
+
+    this._onDocumentKeyupListener = (0, _addEventListener2["default"])(doc, 'keyup', this.handleDocumentKeyUp);
+
+    this._onFocusinListener = (0, _addFocusListener2["default"])(this.enforceFocus);
+
+    this.focus();
+
+    if (this.props.onShow) {
+      this.props.onShow();
+    }
+  };
+
+  Modal.prototype.onHide = function onHide() {
+    this.props.manager.remove(this);
+
+    this._onDocumentKeyupListener.remove();
+
+    this._onFocusinListener.remove();
+
+    this.restoreLastFocus();
+  };
+
+  Modal.prototype.setMountNode = function setMountNode(ref) {
+    this.mountNode = ref ? ref.getMountNode() : ref;
+  };
+
+  Modal.prototype.handleHidden = function handleHidden() {
+    this.setState({ exited: true });
+    this.onHide();
+
+    if (this.props.onExited) {
+      var _props2;
+
+      (_props2 = this.props).onExited.apply(_props2, arguments);
+    }
+  };
+
+  Modal.prototype.handleBackdropClick = function handleBackdropClick(e) {
+    if (e.target !== e.currentTarget) {
+      return;
+    }
+
+    if (this.props.onBackdropClick) {
+      this.props.onBackdropClick(e);
+    }
+
+    if (this.props.backdrop === true) {
+      this.props.onHide();
+    }
+  };
+
+  Modal.prototype.handleDocumentKeyUp = function handleDocumentKeyUp(e) {
+    if (this.props.keyboard && e.keyCode === 27 && this.isTopModal()) {
+      if (this.props.onEscapeKeyUp) {
+        this.props.onEscapeKeyUp(e);
+      }
+      this.props.onHide();
+    }
+  };
+
+  Modal.prototype.checkForFocus = function checkForFocus() {
+    if (_inDOM2["default"]) {
+      this.lastFocus = (0, _activeElement2["default"])();
+    }
+  };
+
+  Modal.prototype.focus = function focus() {
+    var autoFocus = this.props.autoFocus;
+    var modalContent = this.getDialogElement();
+    var current = (0, _activeElement2["default"])((0, _ownerDocument2["default"])(this));
+    var focusInModal = current && (0, _contains2["default"])(modalContent, current);
+
+    if (modalContent && autoFocus && !focusInModal) {
+      this.lastFocus = current;
+
+      if (!modalContent.hasAttribute('tabIndex')) {
+        modalContent.setAttribute('tabIndex', -1);
+        (0, _warning2["default"])(false, 'The modal content node does not accept focus. ' + 'For the benefit of assistive technologies, the tabIndex of the node is being set to "-1".');
+      }
+
+      modalContent.focus();
+    }
+  };
+
+  Modal.prototype.restoreLastFocus = function restoreLastFocus() {
+    // Support: <=IE11 doesn't support `focus()` on svg elements (RB: #917)
+    if (this.lastFocus && this.lastFocus.focus) {
+      this.lastFocus.focus();
+      this.lastFocus = null;
+    }
+  };
+
+  Modal.prototype.enforceFocus = function enforceFocus() {
+    var enforceFocus = this.props.enforceFocus;
+
+
+    if (!enforceFocus || !this.isMounted() || !this.isTopModal()) {
+      return;
+    }
+
+    var active = (0, _activeElement2["default"])((0, _ownerDocument2["default"])(this));
+    var modal = this.getDialogElement();
+
+    if (modal && modal !== active && !(0, _contains2["default"])(modal, active)) {
+      modal.focus();
+    }
+  };
+
+  //instead of a ref, which might conflict with one the parent applied.
+
+
+  Modal.prototype.getDialogElement = function getDialogElement() {
+    var node = this.refs.modal;
+    return node && node.lastChild;
+  };
+
+  Modal.prototype.isTopModal = function isTopModal() {
+    return this.props.manager.isTopModal(this);
+  };
+
+  Modal.prototype.renderBackdrop = function renderBackdrop() {
+    var _this2 = this;
+
+    var _props3 = this.props,
+        backdropStyle = _props3.backdropStyle,
+        backdropClassName = _props3.backdropClassName,
+        renderBackdrop = _props3.renderBackdrop,
+        Transition = _props3.transition,
+        backdropTransitionTimeout = _props3.backdropTransitionTimeout;
+
+
+    var backdropRef = function backdropRef(ref) {
+      return _this2.backdrop = ref;
+    };
+
+    var backdrop = _react2["default"].createElement('div', {
+      ref: backdropRef,
+      style: this.props.backdropStyle,
+      className: this.props.backdropClassName,
+      onClick: this.handleBackdropClick
+    });
+
+    if (Transition) {
+      backdrop = _react2["default"].createElement(
+        Transition,
+        { transitionAppear: true,
+          'in': this.props.show,
+          timeout: backdropTransitionTimeout
+        },
+        renderBackdrop({
+          ref: backdropRef,
+          style: backdropStyle,
+          className: backdropClassName,
+          onClick: this.handleBackdropClick
+        })
+      );
+    }
+
+    return backdrop;
+  };
+
+  Modal.prototype.render = function render() {
+    var _props4 = this.props,
+        show = _props4.show,
+        container = _props4.container,
+        children = _props4.children,
+        Transition = _props4.transition,
+        backdrop = _props4.backdrop,
+        dialogTransitionTimeout = _props4.dialogTransitionTimeout,
+        className = _props4.className,
+        style = _props4.style,
+        onExit = _props4.onExit,
+        onExiting = _props4.onExiting,
+        onEnter = _props4.onEnter,
+        onEntering = _props4.onEntering,
+        onEntered = _props4.onEntered;
 
 
     var dialog = _react2["default"].Children.only(children);
@@ -280,9 +451,9 @@ var Modal = _react2["default"].createClass({
       return null;
     }
 
-    var _dialog$props = dialog.props;
-    var role = _dialog$props.role;
-    var tabIndex = _dialog$props.tabIndex;
+    var _dialog$props = dialog.props,
+        role = _dialog$props.role,
+        tabIndex = _dialog$props.tabIndex;
 
 
     if (role === undefined || tabIndex === undefined) {
@@ -329,202 +500,17 @@ var Modal = _react2["default"].createClass({
         dialog
       )
     );
-  },
-  renderBackdrop: function renderBackdrop() {
-    var _this = this;
+  };
 
-    var _props2 = this.props;
-    var backdropStyle = _props2.backdropStyle;
-    var backdropClassName = _props2.backdropClassName;
-    var renderBackdrop = _props2.renderBackdrop;
-    var Transition = _props2.transition;
-    var backdropTransitionTimeout = _props2.backdropTransitionTimeout;
+  return Modal;
+}(_react.Component);
 
-
-    var backdropRef = function backdropRef(ref) {
-      return _this.backdrop = ref;
-    };
-
-    var backdrop = _react2["default"].createElement('div', {
-      ref: backdropRef,
-      style: this.props.backdropStyle,
-      className: this.props.backdropClassName,
-      onClick: this.handleBackdropClick
-    });
-
-    if (Transition) {
-      backdrop = _react2["default"].createElement(
-        Transition,
-        { transitionAppear: true,
-          'in': this.props.show,
-          timeout: backdropTransitionTimeout
-        },
-        renderBackdrop({
-          ref: backdropRef,
-          style: backdropStyle,
-          className: backdropClassName,
-          onClick: this.handleBackdropClick
-        })
-      );
-    }
-
-    return backdrop;
-  },
-  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-    if (nextProps.show) {
-      this.setState({ exited: false });
-    } else if (!nextProps.transition) {
-      // Otherwise let handleHidden take care of marking exited.
-      this.setState({ exited: true });
-    }
-  },
-  componentWillUpdate: function componentWillUpdate(nextProps) {
-    if (!this.props.show && nextProps.show) {
-      this.checkForFocus();
-    }
-  },
-  componentDidMount: function componentDidMount() {
-    if (this.props.show) {
-      this.onShow();
-    }
-  },
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    var transition = this.props.transition;
-
-
-    if (prevProps.show && !this.props.show && !transition) {
-      // Otherwise handleHidden will call this.
-      this.onHide();
-    } else if (!prevProps.show && this.props.show) {
-      this.onShow();
-    }
-  },
-  componentWillUnmount: function componentWillUnmount() {
-    var _props3 = this.props;
-    var show = _props3.show;
-    var transition = _props3.transition;
-
-
-    if (show || transition && !this.state.exited) {
-      this.onHide();
-    }
-  },
-  onShow: function onShow() {
-    var doc = (0, _ownerDocument2["default"])(this);
-    var container = (0, _getContainer2["default"])(this.props.container, doc.body);
-
-    this.props.manager.add(this, container, this.props.containerClassName);
-
-    this._onDocumentKeyupListener = (0, _addEventListener2["default"])(doc, 'keyup', this.handleDocumentKeyUp);
-
-    this._onFocusinListener = (0, _addFocusListener2["default"])(this.enforceFocus);
-
-    this.focus();
-
-    if (this.props.onShow) {
-      this.props.onShow();
-    }
-  },
-  onHide: function onHide() {
-    this.props.manager.remove(this);
-
-    this._onDocumentKeyupListener.remove();
-
-    this._onFocusinListener.remove();
-
-    this.restoreLastFocus();
-  },
-  setMountNode: function setMountNode(ref) {
-    this.mountNode = ref ? ref.getMountNode() : ref;
-  },
-  handleHidden: function handleHidden() {
-    this.setState({ exited: true });
-    this.onHide();
-
-    if (this.props.onExited) {
-      var _props4;
-
-      (_props4 = this.props).onExited.apply(_props4, arguments);
-    }
-  },
-  handleBackdropClick: function handleBackdropClick(e) {
-    if (e.target !== e.currentTarget) {
-      return;
-    }
-
-    if (this.props.onBackdropClick) {
-      this.props.onBackdropClick(e);
-    }
-
-    if (this.props.backdrop === true) {
-      this.props.onHide();
-    }
-  },
-  handleDocumentKeyUp: function handleDocumentKeyUp(e) {
-    if (this.props.keyboard && e.keyCode === 27 && this.isTopModal()) {
-      if (this.props.onEscapeKeyUp) {
-        this.props.onEscapeKeyUp(e);
-      }
-      this.props.onHide();
-    }
-  },
-  checkForFocus: function checkForFocus() {
-    if (_inDOM2["default"]) {
-      this.lastFocus = (0, _activeElement2["default"])();
-    }
-  },
-  focus: function focus() {
-    var autoFocus = this.props.autoFocus;
-    var modalContent = this.getDialogElement();
-    var current = (0, _activeElement2["default"])((0, _ownerDocument2["default"])(this));
-    var focusInModal = current && (0, _contains2["default"])(modalContent, current);
-
-    if (modalContent && autoFocus && !focusInModal) {
-      this.lastFocus = current;
-
-      if (!modalContent.hasAttribute('tabIndex')) {
-        modalContent.setAttribute('tabIndex', -1);
-        (0, _warning2["default"])(false, 'The modal content node does not accept focus. ' + 'For the benefit of assistive technologies, the tabIndex of the node is being set to "-1".');
-      }
-
-      modalContent.focus();
-    }
-  },
-  restoreLastFocus: function restoreLastFocus() {
-    // Support: <=IE11 doesn't support `focus()` on svg elements (RB: #917)
-    if (this.lastFocus && this.lastFocus.focus) {
-      this.lastFocus.focus();
-      this.lastFocus = null;
-    }
-  },
-  enforceFocus: function enforceFocus() {
-    var enforceFocus = this.props.enforceFocus;
-
-
-    if (!enforceFocus || !this.isMounted() || !this.isTopModal()) {
-      return;
-    }
-
-    var active = (0, _activeElement2["default"])((0, _ownerDocument2["default"])(this));
-    var modal = this.getDialogElement();
-
-    if (modal && modal !== active && !(0, _contains2["default"])(modal, active)) {
-      modal.focus();
-    }
-  },
-
-
-  //instead of a ref, which might conflict with one the parent applied.
-  getDialogElement: function getDialogElement() {
-    var node = this.refs.modal;
-    return node && node.lastChild;
-  },
-  isTopModal: function isTopModal() {
-    return this.props.manager.isTopModal(this);
-  }
-});
+;
 
 Modal.Manager = _ModalManager2["default"];
+
+Modal.propTypes = propTypes;
+Modal.defaultProps = defaultProps;
 
 exports["default"] = Modal;
 module.exports = exports['default'];

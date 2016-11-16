@@ -18,10 +18,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _componentOrElement = require('react-prop-types/lib/componentOrElement');
-
-var _componentOrElement2 = _interopRequireDefault(_componentOrElement);
-
 var _Affix = require('./Affix');
 
 var _Affix2 = _interopRequireDefault(_Affix);
@@ -58,17 +54,33 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
+var propTypes = _extends({}, _Affix2["default"].propTypes, {
+  /**
+   * 容器组件
+   */
+  container: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
+  /**
+   * 是否自适应宽度
+   */
+  autoWidth: _react.PropTypes.bool
+});
+
+var defaultProps = {
+  viewportOffsetTop: 0,
+  autoWidth: true
+};
+
 /**
- * The `<AutoAffix/>` component wraps `<Affix/>` to automatically calculate
- * offsets in many common cases.
+ * 对Affix进行包装，提供自动计算偏移量
  */
-var AutoAffix = function (_React$Component) {
-  _inherits(AutoAffix, _React$Component);
+
+var AutoAffix = function (_Component) {
+  _inherits(AutoAffix, _Component);
 
   function AutoAffix(props, context) {
     _classCallCheck(this, AutoAffix);
 
-    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
+    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 
     _this.state = {
       offsetTop: null,
@@ -150,21 +162,18 @@ var AutoAffix = function (_React$Component) {
       return;
     }
 
-    var _getOffset = (0, _offset2["default"])(this.refs.positioner);
-
-    var offsetTop = _getOffset.top;
-    var width = _getOffset.width;
-
+    var _getOffset = (0, _offset2["default"])(this.refs.positioner),
+        offsetTop = _getOffset.top,
+        width = _getOffset.width;
 
     var container = (0, _getContainer2["default"])(this.props.container);
     var offsetBottom = void 0;
     if (container) {
       var documentHeight = (0, _getDocumentHeight2["default"])((0, _ownerDocument2["default"])(this));
 
-      var _getOffset2 = (0, _offset2["default"])(container);
-
-      var top = _getOffset2.top;
-      var height = _getOffset2.height;
+      var _getOffset2 = (0, _offset2["default"])(container),
+          top = _getOffset2.top,
+          height = _getOffset2.height;
 
       offsetBottom = documentHeight - top - height;
     } else {
@@ -183,26 +192,25 @@ var AutoAffix = function (_React$Component) {
   };
 
   AutoAffix.prototype.render = function render() {
-    var _props = this.props;
-    var autoWidth = _props.autoWidth;
-    var viewportOffsetTop = _props.viewportOffsetTop;
-    var children = _props.children;
+    var _props = this.props,
+        autoWidth = _props.autoWidth,
+        viewportOffsetTop = _props.viewportOffsetTop,
+        children = _props.children,
+        props = _objectWithoutProperties(_props, ['autoWidth', 'viewportOffsetTop', 'children']);
 
-    var props = _objectWithoutProperties(_props, ['autoWidth', 'viewportOffsetTop', 'children']);
-
-    var _state = this.state;
-    var offsetTop = _state.offsetTop;
-    var offsetBottom = _state.offsetBottom;
-    var width = _state.width;
+    var _state = this.state,
+        offsetTop = _state.offsetTop,
+        offsetBottom = _state.offsetBottom,
+        width = _state.width;
 
 
     delete props.container;
 
     var effectiveOffsetTop = Math.max(offsetTop, viewportOffsetTop || 0);
 
-    var _props2 = this.props;
-    var affixStyle = _props2.affixStyle;
-    var bottomStyle = _props2.bottomStyle;
+    var _props2 = this.props,
+        affixStyle = _props2.affixStyle,
+        bottomStyle = _props2.bottomStyle;
 
     if (autoWidth) {
       affixStyle = _extends({ width: width }, affixStyle);
@@ -228,26 +236,11 @@ var AutoAffix = function (_React$Component) {
   };
 
   return AutoAffix;
-}(_react2["default"].Component);
+}(_react.Component);
 
-AutoAffix.propTypes = _extends({}, _Affix2["default"].propTypes, {
-  /**
-   * The logical container node or component for determining offset from bottom
-   * of viewport, or a function that returns it
-   */
-  container: _react2["default"].PropTypes.oneOfType([_componentOrElement2["default"], _react2["default"].PropTypes.func]),
-  /**
-   * Automatically set width when affixed
-   */
-  autoWidth: _react2["default"].PropTypes.bool
-});
+AutoAffix.propTypes = propTypes;
 
-// This intentionally doesn't inherit default props from `<Affix>`, so that the
-// auto-calculated offsets can apply.
-AutoAffix.defaultProps = {
-  viewportOffsetTop: 0,
-  autoWidth: true
-};
+AutoAffix.defaultProps = defaultProps;
 
 exports["default"] = AutoAffix;
 module.exports = exports['default'];

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Transition = exports.Position = exports.Portal = exports.Overlay = exports.Modal = exports.AutoAffix = exports.Affix = undefined;
+exports.OverlayTrigger = exports.Overlay = exports.Transition = exports.Position = exports.Portal = exports.BaseOverlay = exports.Modal = exports.AutoAffix = exports.Affix = undefined;
 
 var _Affix2 = require('./Affix');
 
@@ -17,9 +17,9 @@ var _Modal2 = require('./Modal');
 
 var _Modal3 = _interopRequireDefault(_Modal2);
 
-var _Overlay2 = require('./Overlay');
+var _BaseOverlay2 = require('./BaseOverlay');
 
-var _Overlay3 = _interopRequireDefault(_Overlay2);
+var _BaseOverlay3 = _interopRequireDefault(_BaseOverlay2);
 
 var _Portal2 = require('./Portal');
 
@@ -33,12 +33,22 @@ var _Transition2 = require('./Transition');
 
 var _Transition3 = _interopRequireDefault(_Transition2);
 
+var _Overlay2 = require('./Overlay');
+
+var _Overlay3 = _interopRequireDefault(_Overlay2);
+
+var _OverlayTrigger2 = require('./OverlayTrigger');
+
+var _OverlayTrigger3 = _interopRequireDefault(_OverlayTrigger2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 exports.Affix = _Affix3["default"];
 exports.AutoAffix = _AutoAffix3["default"];
 exports.Modal = _Modal3["default"];
-exports.Overlay = _Overlay3["default"];
+exports.BaseOverlay = _BaseOverlay3["default"];
 exports.Portal = _Portal3["default"];
 exports.Position = _Position3["default"];
 exports.Transition = _Transition3["default"];
+exports.Overlay = _Overlay3["default"];
+exports.OverlayTrigger = _OverlayTrigger3["default"];

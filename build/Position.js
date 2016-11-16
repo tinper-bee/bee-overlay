@@ -18,10 +18,6 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _componentOrElement = require('react-prop-types/lib/componentOrElement');
-
-var _componentOrElement2 = _interopRequireDefault(_componentOrElement);
-
 var _calculatePosition = require('./utils/calculatePosition');
 
 var _calculatePosition2 = _interopRequireDefault(_calculatePosition);
@@ -46,22 +42,47 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
+var propTypes = {
+  /**
+   * 要设置定位的元素
+   */
+  target: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
+
+  /**
+   * 存放的容器元素
+   */
+  container: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
+  /**
+   * 容器padding值
+   */
+  containerPadding: _react.PropTypes.number,
+  /**
+   * 位置设置
+   */
+  placement: _react.PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  /**
+   * 是否需要更新位置
+   */
+  shouldUpdatePosition: _react.PropTypes.bool
+};
+
+var defaultProps = {
+  containerPadding: 0,
+  placement: 'right',
+  shouldUpdatePosition: false
+};
+
 /**
- * The Position component calculates the coordinates for its child, to position
- * it relative to a `target` component or node. Useful for creating callouts
- * and tooltips, the Position component injects a `style` props with `left` and
- * `top` values for positioning your component.
- *
- * It also injects "arrow" `left`, and `top` values for styling callout arrows
- * for giving your components a sense of directionality.
+ * 计算子组件的位置的组件
  */
-var Position = function (_React$Component) {
-  _inherits(Position, _React$Component);
+
+var Position = function (_Component) {
+  _inherits(Position, _Component);
 
   function Position(props, context) {
     _classCallCheck(this, Position);
 
-    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
+    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 
     _this.state = {
       positionLeft: 0,
@@ -70,8 +91,8 @@ var Position = function (_React$Component) {
       arrowOffsetTop: null
     };
 
-    _this._needsFlush = false;
-    _this._lastTarget = null;
+    _this.needsFlush = false;
+    _this.lastTarget = null;
     return _this;
   }
 
@@ -80,50 +101,19 @@ var Position = function (_React$Component) {
   };
 
   Position.prototype.componentWillReceiveProps = function componentWillReceiveProps() {
-    this._needsFlush = true;
+    this.needsFlush = true;
   };
 
   Position.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-    if (this._needsFlush) {
-      this._needsFlush = false;
+    if (this.needsFlush) {
+      this.needsFlush = false;
       this.maybeUpdatePosition(this.props.placement !== prevProps.placement);
     }
   };
+  /**
+   * 获取要设置位置的子元素
+   */
 
-  Position.prototype.render = function render() {
-    var _props = this.props;
-    var children = _props.children;
-    var className = _props.className;
-
-    var props = _objectWithoutProperties(_props, ['children', 'className']);
-
-    var _state = this.state;
-    var positionLeft = _state.positionLeft;
-    var positionTop = _state.positionTop;
-
-    var arrowPosition = _objectWithoutProperties(_state, ['positionLeft', 'positionTop']);
-
-    // These should not be forwarded to the child.
-
-
-    delete props.target;
-    delete props.container;
-    delete props.containerPadding;
-    delete props.shouldUpdatePosition;
-
-    var child = _react2["default"].Children.only(children);
-    return (0, _react.cloneElement)(child, _extends({}, props, arrowPosition, {
-      // FIXME: Don't forward `positionLeft` and `positionTop` via both props
-      // and `props.style`.
-      positionLeft: positionLeft,
-      positionTop: positionTop,
-      className: (0, _classnames2["default"])(className, child.props.className),
-      style: _extends({}, child.props.style, {
-        left: positionLeft,
-        top: positionTop
-      })
-    }));
-  };
 
   Position.prototype.getTarget = function getTarget() {
     var target = this.props.target;
@@ -132,18 +122,26 @@ var Position = function (_React$Component) {
     return targetElement && _reactDom2["default"].findDOMNode(targetElement) || null;
   };
 
+  /**
+   * 验证是否需要更新位置
+   */
+
+
   Position.prototype.maybeUpdatePosition = function maybeUpdatePosition(placementChanged) {
     var target = this.getTarget();
 
-    if (!this.props.shouldUpdatePosition && target === this._lastTarget && !placementChanged) {
+    if (!this.props.shouldUpdatePosition && target === this.lastTarget && !placementChanged) {
       return;
     }
 
     this.updatePosition(target);
   };
+  /**
+   * 更新位置
+   */
 
   Position.prototype.updatePosition = function updatePosition(target) {
-    this._lastTarget = target;
+    this.lastTarget = target;
 
     if (!target) {
       this.setState({
@@ -162,41 +160,43 @@ var Position = function (_React$Component) {
     this.setState((0, _calculatePosition2["default"])(this.props.placement, overlay, target, container, this.props.containerPadding));
   };
 
+  Position.prototype.render = function render() {
+    var _props = this.props,
+        children = _props.children,
+        className = _props.className,
+        props = _objectWithoutProperties(_props, ['children', 'className']);
+
+    var _state = this.state,
+        positionLeft = _state.positionLeft,
+        positionTop = _state.positionTop,
+        arrowPosition = _objectWithoutProperties(_state, ['positionLeft', 'positionTop']);
+
+    // These should not be forwarded to the child.
+
+
+    delete props.target;
+    delete props.container;
+    delete props.containerPadding;
+    delete props.shouldUpdatePosition;
+
+    var child = _react2["default"].Children.only(children);
+    return (0, _react.cloneElement)(child, _extends({}, props, arrowPosition, {
+      // FIXME:不要使用props来转发下面两个参数
+      positionLeft: positionLeft,
+      positionTop: positionTop,
+      className: (0, _classnames2["default"])(className, child.props.className),
+      style: _extends({}, child.props.style, {
+        left: positionLeft,
+        top: positionTop
+      })
+    }));
+  };
+
   return Position;
-}(_react2["default"].Component);
+}(_react.Component);
 
-Position.propTypes = {
-  /**
-   * A node, element, or function that returns either. The child will be
-   * be positioned next to the `target` specified.
-   */
-  target: _react2["default"].PropTypes.oneOfType([_componentOrElement2["default"], _react2["default"].PropTypes.func]),
-
-  /**
-   * "offsetParent" of the component
-   */
-  container: _react2["default"].PropTypes.oneOfType([_componentOrElement2["default"], _react2["default"].PropTypes.func]),
-  /**
-   * Minimum spacing in pixels between container border and component border
-   */
-  containerPadding: _react2["default"].PropTypes.number,
-  /**
-   * How to position the component relative to the target
-   */
-  placement: _react2["default"].PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
-  /**
-   * Whether the position should be changed on each update
-   */
-  shouldUpdatePosition: _react2["default"].PropTypes.bool
-};
-
-Position.displayName = 'Position';
-
-Position.defaultProps = {
-  containerPadding: 0,
-  placement: 'right',
-  shouldUpdatePosition: false
-};
+Position.propTypes = propTypes;
+Position.defaultProps = defaultProps;
 
 exports["default"] = Position;
 module.exports = exports['default'];
