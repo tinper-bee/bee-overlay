@@ -38,16 +38,90 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
+var propTypes = _extends({}, _Portal2["default"].propTypes, _Position2["default"].propTypes, {
+
+  /**
+   * 是否显示
+   */
+  show: _react2["default"].PropTypes.bool,
+
+  /**
+   * 点击其他地方，是否隐藏overlay
+   */
+  rootClose: _react2["default"].PropTypes.bool,
+
+  /**
+   * 当rootClose为true的时候，触发的隐藏方法
+   * @type func
+   */
+  onHide: function onHide(props) {
+    var propType = _react2["default"].PropTypes.func;
+    if (props.rootClose) {
+      propType = propType.isRequired;
+    }
+
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return propType.apply(undefined, [props].concat(args));
+  },
+
+
+  /**
+   * 过渡动画组件
+   */
+  transition: _elementType2["default"],
+
+  /**
+   * overlay添加动画前的钩子函数
+   */
+  onEnter: _react2["default"].PropTypes.func,
+
+  /**
+   * 开始动画的钩子函数
+   */
+  onEntering: _react2["default"].PropTypes.func,
+
+  /**
+   * 渲染之后的钩子函数
+   */
+  onEntered: _react2["default"].PropTypes.func,
+
+  /**
+   * 关闭开始时的钩子函数
+   */
+  onExit: _react2["default"].PropTypes.func,
+
+  /**
+   * 关闭时的钩子函数
+   */
+  onExiting: _react2["default"].PropTypes.func,
+
+  /**
+   * 关闭后的钩子函数
+   */
+  onExited: _react2["default"].PropTypes.func
+});
+
+function noop() {}
+
+var defaultProps = {
+  show: false,
+  rootClose: true
+};
+
 /**
- * Built on top of `<Position/>` and `<Portal/>`, the overlay component is great for custom tooltip overlays.
+ * 悬浮组件
  */
-var Overlay = function (_React$Component) {
-  _inherits(Overlay, _React$Component);
+
+var Overlay = function (_Component) {
+  _inherits(Overlay, _Component);
 
   function Overlay(props, context) {
     _classCallCheck(this, Overlay);
 
-    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
+    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 
     _this.state = { exited: !props.show };
     _this.onHiddenListener = _this.handleHidden.bind(_this);
@@ -63,18 +137,28 @@ var Overlay = function (_React$Component) {
     }
   };
 
-  Overlay.prototype.render = function render() {
-    var _props = this.props;
-    var container = _props.container;
-    var containerPadding = _props.containerPadding;
-    var target = _props.target;
-    var placement = _props.placement;
-    var shouldUpdatePosition = _props.shouldUpdatePosition;
-    var rootClose = _props.rootClose;
-    var children = _props.children;
-    var Transition = _props.transition;
+  Overlay.prototype.handleHidden = function handleHidden() {
+    this.setState({ exited: true });
 
-    var props = _objectWithoutProperties(_props, ['container', 'containerPadding', 'target', 'placement', 'shouldUpdatePosition', 'rootClose', 'children', 'transition']);
+    if (this.props.onExited) {
+      var _props;
+
+      (_props = this.props).onExited.apply(_props, arguments);
+    }
+  };
+
+  Overlay.prototype.render = function render() {
+    var _props2 = this.props;
+    var container = _props2.container;
+    var containerPadding = _props2.containerPadding;
+    var target = _props2.target;
+    var placement = _props2.placement;
+    var shouldUpdatePosition = _props2.shouldUpdatePosition;
+    var rootClose = _props2.rootClose;
+    var children = _props2.children;
+    var Transition = _props2.transition;
+
+    var props = _objectWithoutProperties(_props2, ['container', 'containerPadding', 'target', 'placement', 'shouldUpdatePosition', 'rootClose', 'children', 'transition']);
 
     // Don't un-render the overlay while it's transitioning out.
 
@@ -91,7 +175,12 @@ var Overlay = function (_React$Component) {
     // which the other wrappers don't forward correctly.
     child = _react2["default"].createElement(
       _Position2["default"],
-      { container: container, containerPadding: containerPadding, target: target, placement: placement, shouldUpdatePosition: shouldUpdatePosition },
+      {
+        container: container,
+        containerPadding: containerPadding,
+        target: target,
+        placement: placement,
+        shouldUpdatePosition: shouldUpdatePosition },
       child
     );
 
@@ -137,87 +226,11 @@ var Overlay = function (_React$Component) {
     );
   };
 
-  Overlay.prototype.handleHidden = function handleHidden() {
-    this.setState({ exited: true });
-
-    if (this.props.onExited) {
-      var _props2;
-
-      (_props2 = this.props).onExited.apply(_props2, arguments);
-    }
-  };
-
   return Overlay;
-}(_react2["default"].Component);
+}(_react.Component);
 
-Overlay.propTypes = _extends({}, _Portal2["default"].propTypes, _Position2["default"].propTypes, {
-
-  /**
-   * Set the visibility of the Overlay
-   */
-  show: _react2["default"].PropTypes.bool,
-
-  /**
-   * Specify whether the overlay should trigger `onHide` when the user clicks outside the overlay
-   */
-  rootClose: _react2["default"].PropTypes.bool,
-
-  /**
-   * A Callback fired by the Overlay when it wishes to be hidden.
-   *
-   * __required__ when `rootClose` is `true`.
-   *
-   * @type func
-   */
-  onHide: function onHide(props) {
-    var propType = _react2["default"].PropTypes.func;
-    if (props.rootClose) {
-      propType = propType.isRequired;
-    }
-
-    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    return propType.apply(undefined, [props].concat(args));
-  },
-
-
-  /**
-   * A `<Transition/>` component used to animate the overlay changes visibility.
-   */
-  transition: _elementType2["default"],
-
-  /**
-   * Callback fired before the Overlay transitions in
-   */
-  onEnter: _react2["default"].PropTypes.func,
-
-  /**
-   * Callback fired as the Overlay begins to transition in
-   */
-  onEntering: _react2["default"].PropTypes.func,
-
-  /**
-   * Callback fired after the Overlay finishes transitioning in
-   */
-  onEntered: _react2["default"].PropTypes.func,
-
-  /**
-   * Callback fired right before the Overlay transitions out
-   */
-  onExit: _react2["default"].PropTypes.func,
-
-  /**
-   * Callback fired as the Overlay begins to transition out
-   */
-  onExiting: _react2["default"].PropTypes.func,
-
-  /**
-   * Callback fired after the Overlay finishes transitioning out
-   */
-  onExited: _react2["default"].PropTypes.func
-});
+Overlay.propTypes = propTypes;
+Overlay.defaultProps = defaultProps;
 
 exports["default"] = Overlay;
 module.exports = exports['default'];

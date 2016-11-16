@@ -64,17 +64,98 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
+var propTypes = {
+  /**
+   * 到屏幕顶部偏移的像素
+   */
+  offsetTop: _react2["default"].PropTypes.number,
+
+  /**
+   * 添加时,到窗口的偏移像素
+   */
+  viewportOffsetTop: _react2["default"].PropTypes.number,
+
+  /**
+   * 到屏幕的底部的偏移像素
+   */
+  offsetBottom: _react2["default"].PropTypes.number,
+
+  /**
+   * 在顶部时添加的class
+   */
+  topClassName: _react2["default"].PropTypes.string,
+
+  /**
+   * 在顶部添加的style
+   */
+  topStyle: _react2["default"].PropTypes.object,
+
+  /**
+   * 当固定定位时，添加的class
+   */
+  affixClassName: _react2["default"].PropTypes.string,
+  /**
+   * 当固定定位时，添加的style
+   */
+  affixStyle: _react2["default"].PropTypes.object,
+
+  /**
+   * 在底部时添加的class
+   */
+  bottomClassName: _react2["default"].PropTypes.string,
+
+  /**
+   * 在底部时添加的style
+   */
+  bottomStyle: _react2["default"].PropTypes.object,
+
+  /**
+   * 在affixstyle和affixClassName添加之前的钩子函数
+   */
+  onAffix: _react2["default"].PropTypes.func,
+  /**
+   * 在affixstyle和affixClassName添加之后的钩子函数
+   */
+  onAffixed: _react2["default"].PropTypes.func,
+
+  /**
+   * 在topStyle和topClassName添加之前的钩子函数
+   */
+  onAffixTop: _react2["default"].PropTypes.func,
+
+  /**
+   * 在topStyle和topClassName添加之后的钩子函数
+   */
+  onAffixedTop: _react2["default"].PropTypes.func,
+
+  /**
+   * 在bottomStyle和bottomClassName添加之前的钩子函数
+   */
+  onAffixBottom: _react2["default"].PropTypes.func,
+
+  /**
+   * 在bottomStyle和bottomClassName添加之后的钩子函数
+   */
+  onAffixedBottom: _react2["default"].PropTypes.func
+};
+
+var defaultProps = {
+  offsetTop: 0,
+  viewportOffsetTop: null,
+  offsetBottom: 0
+};
+
 /**
- * The `<Affix/>` component toggles `position: fixed;` on and off, emulating
- * the effect found with `position: sticky;`.
+ * Affix组件是用来提供fixed定位,并在顶部和顶部将定位转化为absoluted
  */
-var Affix = function (_React$Component) {
-  _inherits(Affix, _React$Component);
+
+var Affix = function (_Component) {
+  _inherits(Affix, _Component);
 
   function Affix(props, context) {
     _classCallCheck(this, Affix);
 
-    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
+    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 
     _this.state = {
       affixed: 'top',
@@ -122,10 +203,18 @@ var Affix = function (_React$Component) {
       this._documentClickListener.remove();
     }
   };
+  /**
+   * 屏幕滑动时更新
+  **/
+
 
   Affix.prototype.onWindowScroll = function onWindowScroll() {
     this.onUpdate();
   };
+  /**
+   * 屏幕点击时更新
+  **/
+
 
   Affix.prototype.onDocumentClick = function onDocumentClick() {
     var _this3 = this;
@@ -134,6 +223,8 @@ var Affix = function (_React$Component) {
       return _this3.onUpdate();
     });
   };
+  //更新位置时状态的更新
+
 
   Affix.prototype.onUpdate = function onUpdate() {
     var _this4 = this;
@@ -158,9 +249,7 @@ var Affix = function (_React$Component) {
       if (this.state.affixed === 'bottom') {
         this.updateStateAtBottom();
       } else {
-        // Setting position away from `fixed` can change the offset parent of
-        // the affix, so we can't calculate the correct position until after
-        // we've updated its position.
+        // 设置位置远离“fixed”可以更改affix的偏移父对象，所以我们不能在更新其位置之后计算正确的位置。
         this.setState({
           affixed: 'bottom',
           position: 'absolute',
@@ -205,6 +294,8 @@ var Affix = function (_React$Component) {
       }
     });
   };
+  //在底部时的更新函数
+
 
   Affix.prototype.updateStateAtBottom = function updateStateAtBottom() {
     var positionTopMax = this.getPositionTopMax();
@@ -246,88 +337,11 @@ var Affix = function (_React$Component) {
   };
 
   return Affix;
-}(_react2["default"].Component);
+}(_react.Component);
 
-Affix.propTypes = {
-  /**
-   * Pixels to offset from top of screen when calculating position
-   */
-  offsetTop: _react2["default"].PropTypes.number,
+Affix.propTypes = propTypes;
 
-  /**
-   * When affixed, pixels to offset from top of viewport
-   */
-  viewportOffsetTop: _react2["default"].PropTypes.number,
-
-  /**
-   * Pixels to offset from bottom of screen when calculating position
-   */
-  offsetBottom: _react2["default"].PropTypes.number,
-
-  /**
-   * CSS class or classes to apply when at top
-   */
-  topClassName: _react2["default"].PropTypes.string,
-
-  /**
-   * Style to apply when at top
-   */
-  topStyle: _react2["default"].PropTypes.object,
-
-  /**
-   * CSS class or classes to apply when affixed
-   */
-  affixClassName: _react2["default"].PropTypes.string,
-  /**
-   * Style to apply when affixed
-   */
-  affixStyle: _react2["default"].PropTypes.object,
-
-  /**
-   * CSS class or classes to apply when at bottom
-   */
-  bottomClassName: _react2["default"].PropTypes.string,
-
-  /**
-   * Style to apply when at bottom
-   */
-  bottomStyle: _react2["default"].PropTypes.object,
-
-  /**
-   * Callback fired when the right before the `affixStyle` and `affixStyle` props are rendered
-   */
-  onAffix: _react2["default"].PropTypes.func,
-  /**
-   * Callback fired after the component `affixStyle` and `affixClassName` props have been rendered.
-   */
-  onAffixed: _react2["default"].PropTypes.func,
-
-  /**
-   * Callback fired when the right before the `topStyle` and `topClassName` props are rendered
-   */
-  onAffixTop: _react2["default"].PropTypes.func,
-
-  /**
-   * Callback fired after the component `topStyle` and `topClassName` props have been rendered.
-   */
-  onAffixedTop: _react2["default"].PropTypes.func,
-
-  /**
-   * Callback fired when the right before the `bottomStyle` and `bottomClassName` props are rendered
-   */
-  onAffixBottom: _react2["default"].PropTypes.func,
-
-  /**
-   * Callback fired after the component `bottomStyle` and `bottomClassName` props have been rendered.
-   */
-  onAffixedBottom: _react2["default"].PropTypes.func
-};
-
-Affix.defaultProps = {
-  offsetTop: 0,
-  viewportOffsetTop: null,
-  offsetBottom: 0
-};
+Affix.defaultProps = defaultProps;
 
 exports["default"] = Affix;
 module.exports = exports['default'];

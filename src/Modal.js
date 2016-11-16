@@ -178,19 +178,19 @@ class Modal extends Component {
         // Otherwise let handleHidden take care of marking exited.
         this.setState({exited: true});
       }
-    },
+    }
 
     componentWillUpdate(nextProps){
       if (!this.props.show && nextProps.show) {
         this.checkForFocus();
       }
-    },
+    }
 
     componentDidMount() {
       if (this.props.show) {
         this.onShow();
       }
-    },
+    }
 
     componentDidUpdate(prevProps) {
       let { transition } = this.props;
@@ -202,7 +202,7 @@ class Modal extends Component {
       else if (!prevProps.show && this.props.show) {
         this.onShow();
       }
-    },
+    }
 
     componentWillUnmount() {
       let { show, transition } = this.props;
@@ -210,7 +210,7 @@ class Modal extends Component {
       if (show || (transition && !this.state.exited)) {
         this.onHide();
       }
-    },
+    }
 
     onShow() {
       let doc = ownerDocument(this);
@@ -229,7 +229,7 @@ class Modal extends Component {
      if (this.props.onShow) {
        this.props.onShow();
      }
-    },
+    }
 
     onHide() {
       this.props.manager.remove(this);
@@ -239,11 +239,11 @@ class Modal extends Component {
       this._onFocusinListener.remove();
 
       this.restoreLastFocus();
-    },
+    }
 
     setMountNode(ref) {
       this.mountNode = ref ? ref.getMountNode() : ref;
-    },
+    }
 
     handleHidden(...args) {
       this.setState({ exited: true });
@@ -252,7 +252,7 @@ class Modal extends Component {
       if (this.props.onExited) {
         this.props.onExited(...args);
       }
-    },
+    }
 
     handleBackdropClick(e) {
       if (e.target !== e.currentTarget) {
@@ -266,7 +266,7 @@ class Modal extends Component {
       if (this.props.backdrop === true){
         this.props.onHide();
       }
-    },
+    }
 
     handleDocumentKeyUp(e) {
       if (this.props.keyboard && e.keyCode === 27 && this.isTopModal()) {
@@ -275,13 +275,13 @@ class Modal extends Component {
         }
         this.props.onHide();
       }
-    },
+    }
 
     checkForFocus() {
       if (canUseDom) {
         this.lastFocus = activeElement();
       }
-    },
+    }
 
     focus() {
       let autoFocus = this.props.autoFocus;
@@ -301,7 +301,7 @@ class Modal extends Component {
 
         modalContent.focus();
       }
-    },
+    }
 
     restoreLastFocus() {
       // Support: <=IE11 doesn't support `focus()` on svg elements (RB: #917)
@@ -309,7 +309,7 @@ class Modal extends Component {
         this.lastFocus.focus();
         this.lastFocus = null;
       }
-    },
+    }
 
     enforceFocus() {
       let { enforceFocus } = this.props;
@@ -324,17 +324,17 @@ class Modal extends Component {
       if (modal && modal !== active && !contains(modal, active)) {
         modal.focus();
       }
-    },
+    }
 
     //instead of a ref, which might conflict with one the parent applied.
     getDialogElement() {
       let node = this.refs.modal;
       return node && node.lastChild;
-    },
+    }
 
     isTopModal() {
       return this.props.manager.isTopModal(this);
-  },
+  }
 
   renderBackdrop() {
     let {
@@ -372,7 +372,7 @@ class Modal extends Component {
     }
 
     return backdrop;
-},
+}
 
 
   render() {

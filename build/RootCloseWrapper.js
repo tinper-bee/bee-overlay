@@ -37,14 +37,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var propTypes = {
   onRootClose: _react.PropTypes.func,
   children: _react.PropTypes.element,
-
   /**
-   * Disable the the RootCloseWrapper, preventing it from triggering
-   * `onRootClose`.
+   * 是否禁用
    */
   disabled: _react.PropTypes.bool,
   /**
-   * Choose which document mouse event to bind to
+   * 触发事件选择
    */
   event: _react.PropTypes.oneOf(['click', 'mousedown'])
 };
@@ -114,9 +112,7 @@ var RootCloseWrapper = function (_Component) {
 
     var doc = (0, _ownerDocument2["default"])(this);
 
-    // Use capture for this listener so it fires before React's listener, to
-    // avoid false positives in the contains() check below if the target DOM
-    // element is removed in the React mouse callback.
+    // 避免react的监听事件触发引起判断的不准确
     this.documentMouseCaptureListener = (0, _addEventListener2["default"])(doc, event, this.handleMouseCapture, true);
 
     this.documentMouseListener = (0, _addEventListener2["default"])(doc, event, this.handleMouse);

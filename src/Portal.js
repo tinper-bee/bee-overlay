@@ -21,18 +21,18 @@ const defaultProps = {
 /**
  * Portal组件是将子组件渲染
  */
-class Portal extends Component({
+class Portal extends Component{
     constructor(props){
         super(props);
     }
 
   componentDidMount() {
     this._renderOverlay();
-  },
+  }
 
   componentDidUpdate() {
     this._renderOverlay();
-  },
+  }
 //this._overlayTarget为当前的要添加的子组件， this._portalContainerNode要添加组件的容器元素
   componentWillReceiveProps(nextProps) {
     if (this._overlayTarget && nextProps.container !== this.props.container) {
@@ -40,16 +40,16 @@ class Portal extends Component({
       this._portalContainerNode = getContainer(nextProps.container, ownerDocument(this).body);
       this._portalContainerNode.appendChild(this._overlayTarget);
     }
-  },
+  }
 
   componentWillUnmount() {
     this._unrenderOverlay();
     this._unmountOverlayTarget();
-  },
+  }
 
   getMountNode(){
     return this._overlayTarget;
-  },
+  }
 
   getOverlayDOMNode() {
     if (!this.isMounted()) {
@@ -61,7 +61,7 @@ class Portal extends Component({
     }
 
     return null;
-},
+}
 
 
 /**
@@ -74,7 +74,7 @@ class Portal extends Component({
       this._portalContainerNode = getContainer(this.props.container, ownerDocument(this).body);
       this._portalContainerNode.appendChild(this._overlayTarget);
     }
-  },
+  }
 /**
  * 将要添加的子元素从容器中移除，并把变量置为null
  */
@@ -84,7 +84,7 @@ class Portal extends Component({
       this._overlayTarget = null;
     }
     this._portalContainerNode = null;
-  },
+  }
 /**
  * 手动渲染_overlayTarget
  */
@@ -105,7 +105,7 @@ class Portal extends Component({
       this._unrenderOverlay();
       this._unmountOverlayTarget();
     }
-  },
+  }
 /**
  * 销毁_overlayTarget组件。并把_overlayInstance置为null
  */
@@ -114,13 +114,13 @@ class Portal extends Component({
       ReactDOM.unmountComponentAtNode(this._overlayTarget);
       this._overlayInstance = null;
     }
-  },
+  }
 
   render() {
     return null;
   }
 
-});
+};
 
 Portal.propTypes = propTypes;
 Portal.defaultProps = defaultProps;
