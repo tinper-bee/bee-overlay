@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { cloneElement, PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
-
+import { componentOrElement } from 'tinper-bee-core';
 
 import calculatePosition from './utils/calculatePosition';
 import getContainer from './utils/getContainer';
@@ -12,8 +12,7 @@ const propTypes = {
    * 要设置定位的元素
    */
   target: PropTypes.oneOfType([
-      PropTypes.element,
-      PropTypes.string,
+      componentOrElement,
       PropTypes.func
   ]),
 
@@ -21,8 +20,7 @@ const propTypes = {
    * 存放的容器元素
    */
   container: PropTypes.oneOfType([
-      PropTypes.element,
-      PropTypes.string,
+      componentOrElement,
       PropTypes.func
   ]),
   /**

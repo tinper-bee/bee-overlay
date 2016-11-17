@@ -22,6 +22,8 @@ var _RootCloseWrapper = require('./RootCloseWrapper');
 
 var _RootCloseWrapper2 = _interopRequireDefault(_RootCloseWrapper);
 
+var _tinperBeeCore = require('tinper-bee-core');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -67,7 +69,7 @@ var propTypes = _extends({}, _Portal2["default"].propTypes, _Position2["default"
   /**
    * 过渡动画组件
    */
-  transition: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
+  transition: _react.PropTypes.oneOfType([_tinperBeeCore.elementType, _react.PropTypes.func]),
 
   /**
    * overlay添加动画前的钩子函数

@@ -142,6 +142,7 @@ var OverlayTrigger = function (_Component) {
     _this.handleDelayedShow = _this.handleDelayedShow.bind(_this);
     _this.handleDelayedHide = _this.handleDelayedHide.bind(_this);
     _this.handleHide = _this.handleHide.bind(_this);
+    _this.makeOverlay = _this.makeOverlay.bind(_this);
 
     _this.handleMouseOver = function (e) {
       return _this.handleMouseOverOut(_this.handleDelayedShow, e);

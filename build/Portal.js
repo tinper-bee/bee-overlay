@@ -20,6 +20,8 @@ var _getContainer = require('./utils/getContainer');
 
 var _getContainer2 = _interopRequireDefault(_getContainer);
 
+var _tinperBeeCore = require('tinper-bee-core');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -34,7 +36,7 @@ var propTypes = {
   /**
    * 存放子组件的容器
    */
-  container: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func])
+  container: _react.PropTypes.oneOfType([_tinperBeeCore.componentOrElement, _react.PropTypes.func])
 };
 
 var defaultProps = {

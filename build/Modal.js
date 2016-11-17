@@ -15,6 +15,8 @@ var _warning = require('warning');
 
 var _warning2 = _interopRequireDefault(_warning);
 
+var _tinperBeeCore = require('tinper-bee-core');
+
 var _Portal = require('./Portal');
 
 var _Portal2 = _interopRequireDefault(_Portal);
@@ -77,7 +79,7 @@ var propTypes = _extends({}, _Portal2["default"].propTypes, {
   /**
    * 容器
    */
-  container: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
+  container: _react.PropTypes.oneOfType([_tinperBeeCore.componentOrElement, _react.PropTypes.func]),
 
   /**
    * 当模态框打开时的钩子函数
@@ -132,7 +134,7 @@ var propTypes = _extends({}, _Portal2["default"].propTypes, {
   /**
    * 动画组件
    */
-  transition: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
+  transition: _tinperBeeCore.elementType,
 
   /**
    * 设置动画超时时间
