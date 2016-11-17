@@ -18,10 +18,6 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _componentOrElement = require('react-prop-types/lib/componentOrElement');
-
-var _componentOrElement2 = _interopRequireDefault(_componentOrElement);
-
 var _calculatePosition = require('./utils/calculatePosition');
 
 var _calculatePosition2 = _interopRequireDefault(_calculatePosition);
@@ -105,12 +101,12 @@ var Position = function (_Component) {
   };
 
   Position.prototype.componentWillReceiveProps = function componentWillReceiveProps() {
-    this._needsFlush = true;
+    this.needsFlush = true;
   };
 
   Position.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-    if (this._needsFlush) {
-      this._needsFlush = false;
+    if (this.needsFlush) {
+      this.needsFlush = false;
       this.maybeUpdatePosition(this.props.placement !== prevProps.placement);
     }
   };
@@ -134,7 +130,7 @@ var Position = function (_Component) {
   Position.prototype.maybeUpdatePosition = function maybeUpdatePosition(placementChanged) {
     var target = this.getTarget();
 
-    if (!this.props.shouldUpdatePosition && target === this._lastTarget && !placementChanged) {
+    if (!this.props.shouldUpdatePosition && target === this.lastTarget && !placementChanged) {
       return;
     }
 
@@ -145,7 +141,7 @@ var Position = function (_Component) {
    */
 
   Position.prototype.updatePosition = function updatePosition(target) {
-    this._lastTarget = target;
+    this.lastTarget = target;
 
     if (!target) {
       this.setState({

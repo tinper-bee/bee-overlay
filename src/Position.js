@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { cloneElement, PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
-import componentOrElement from 'react-prop-types/lib/componentOrElement';
+
 
 import calculatePosition from './utils/calculatePosition';
 import getContainer from './utils/getContainer';
@@ -70,12 +70,12 @@ class Position extends Component {
   }
 
   componentWillReceiveProps() {
-    this._needsFlush = true;
+    this.needsFlush = true;
   }
 
   componentDidUpdate(prevProps) {
-    if (this._needsFlush) {
-      this._needsFlush = false;
+    if (this.needsFlush) {
+      this.needsFlush = false;
       this.maybeUpdatePosition(this.props.placement !== prevProps.placement);
     }
   }
@@ -96,7 +96,7 @@ class Position extends Component {
 
     if (
       !this.props.shouldUpdatePosition &&
-      target === this._lastTarget &&
+      target === this.lastTarget &&
       !placementChanged
     ) {
       return;
@@ -109,7 +109,7 @@ class Position extends Component {
  */
 
   updatePosition(target) {
-    this._lastTarget = target;
+    this.lastTarget = target;
 
     if (!target) {
       this.setState({
