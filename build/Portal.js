@@ -39,9 +39,7 @@ var propTypes = {
   container: _react.PropTypes.oneOfType([_tinperBeeCore.componentOrElement, _react.PropTypes.func])
 };
 
-var defaultProps = {
-  container: ''
-};
+var defaultProps = {};
 
 /**
  * Portal组件是将子组件渲染
@@ -130,7 +128,7 @@ var Portal = function (_Component) {
     // Save reference for future access.
     if (overlay !== null) {
       this.mountOverlayTarget();
-      this._overlayInstance = _reactDom2["default"].unstable_renderSubtreeIntoContainer(this, overlay, this._overlayTarget);
+      this.overlayInstance = _reactDom2["default"].unstable_renderSubtreeIntoContainer(this, overlay, this.overlayTarget);
     } else {
       // Unrender if the component is null for transitions to null
       this.unrenderOverlay();
