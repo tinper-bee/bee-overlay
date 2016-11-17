@@ -6,21 +6,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Portal = require('./Portal');
+var _BaseOverlay = require('./BaseOverlay');
 
-var _Portal2 = _interopRequireDefault(_Portal);
+var _BaseOverlay2 = _interopRequireDefault(_BaseOverlay);
 
-var _Position = require('./Position');
+var _Fade = require('./Fade');
 
-var _Position2 = _interopRequireDefault(_Position);
-
-var _RootCloseWrapper = require('./RootCloseWrapper');
-
-var _RootCloseWrapper2 = _interopRequireDefault(_RootCloseWrapper);
+var _Fade2 = _interopRequireDefault(_Fade);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -34,190 +34,102 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
-var propTypes = _extends({}, _Portal2["default"].propTypes, _Position2["default"].propTypes, {
+var propTypes = _extends({}, _BaseOverlay2["default"].propTypes, {
 
   /**
    * 是否显示
    */
   show: _react.PropTypes.bool,
-
   /**
-   * 点击其他地方，是否隐藏overlay
+   * 是
    */
   rootClose: _react.PropTypes.bool,
+  /**
+   * 当点击rootClose触发close时的回调函数
+   */
+  onHide: _react.PropTypes.func,
 
   /**
-   * 当rootClose为true的时候，触发的隐藏方法
-   * @type func
+   * 使用动画
    */
-  onHide: function onHide(props) {
-    var propType = _react.PropTypes.func;
-    if (props.rootClose) {
-      propType = propType.isRequired;
-    }
-
-    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    return propType.apply(undefined, [props].concat(args));
-  },
-
+  animation: _react2["default"].PropTypes.oneOfType([_react.PropTypes.bool, _react.PropTypes.string, _react.PropTypes.element, _react.PropTypes.func]),
 
   /**
-   * 过渡动画组件
+   * Callback fired before the Overlay transitions in
    */
-  transition: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
+  onEnter: _react2["default"].PropTypes.func,
 
   /**
-   * overlay添加动画前的钩子函数
+   * Callback fired as the Overlay begins to transition in
    */
-  onEnter: _react.PropTypes.func,
+  onEntering: _react2["default"].PropTypes.func,
 
   /**
-   * 开始动画的钩子函数
+   * Callback fired after the Overlay finishes transitioning in
    */
-  onEntering: _react.PropTypes.func,
+  onEntered: _react2["default"].PropTypes.func,
 
   /**
-   * 渲染之后的钩子函数
+   * Callback fired right before the Overlay transitions out
    */
-  onEntered: _react.PropTypes.func,
+  onExit: _react2["default"].PropTypes.func,
 
   /**
-   * 关闭开始时的钩子函数
+   * Callback fired as the Overlay begins to transition out
    */
-  onExit: _react.PropTypes.func,
+  onExiting: _react2["default"].PropTypes.func,
 
   /**
-   * 关闭时的钩子函数
+   * Callback fired after the Overlay finishes transitioning out
    */
-  onExiting: _react.PropTypes.func,
+  onExited: _react2["default"].PropTypes.func,
 
   /**
-   * 关闭后的钩子函数
+   * Sets the direction of the Overlay.
    */
-  onExited: _react.PropTypes.func
+  placement: _react2["default"].PropTypes.oneOf(['top', 'right', 'bottom', 'left'])
 });
 
-function noop() {}
-
 var defaultProps = {
+  animation: _Fade2["default"],
+  rootClose: false,
   show: false,
-  rootClose: true
+  placement: 'right'
 };
-
-/**
- * 悬浮组件
- */
 
 var Overlay = function (_Component) {
   _inherits(Overlay, _Component);
 
-  function Overlay(props, context) {
+  function Overlay() {
     _classCallCheck(this, Overlay);
 
-    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
-
-    _this.state = { exited: !props.show };
-    _this.onHiddenListener = _this.handleHidden.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
   }
 
-  Overlay.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-    if (nextProps.show) {
-      this.setState({ exited: false });
-    } else if (!nextProps.transition) {
-      // Otherwise let handleHidden take care of marking exited.
-      this.setState({ exited: true });
-    }
-  };
-
-  Overlay.prototype.handleHidden = function handleHidden() {
-    this.setState({ exited: true });
-
-    if (this.props.onExited) {
-      var _props;
-
-      (_props = this.props).onExited.apply(_props, arguments);
-    }
-  };
-
   Overlay.prototype.render = function render() {
-    var _props2 = this.props;
-    var container = _props2.container;
-    var containerPadding = _props2.containerPadding;
-    var target = _props2.target;
-    var placement = _props2.placement;
-    var shouldUpdatePosition = _props2.shouldUpdatePosition;
-    var rootClose = _props2.rootClose;
-    var children = _props2.children;
-    var Transition = _props2.transition;
+    var _props = this.props;
+    var animation = _props.animation;
+    var children = _props.children;
 
-    var props = _objectWithoutProperties(_props2, ['container', 'containerPadding', 'target', 'placement', 'shouldUpdatePosition', 'rootClose', 'children', 'transition']);
+    var props = _objectWithoutProperties(_props, ['animation', 'children']);
 
-    // Don't un-render the overlay while it's transitioning out.
+    var transition = animation === true ? _Fade2["default"] : animation || null;
 
+    var child = void 0;
 
-    var mountOverlay = props.show || Transition && !this.state.exited;
-    if (!mountOverlay) {
-      // Don't bother showing anything if we don't have to.
-      return null;
-    }
-
-    var child = children;
-
-    // Position is be inner-most because it adds inline styles into the child,
-    // which the other wrappers don't forward correctly.
-    child = _react2["default"].createElement(
-      _Position2["default"],
-      {
-        container: container,
-        containerPadding: containerPadding,
-        target: target,
-        placement: placement,
-        shouldUpdatePosition: shouldUpdatePosition },
-      child
-    );
-
-    if (Transition) {
-      var onExit = props.onExit;
-      var onExiting = props.onExiting;
-      var onEnter = props.onEnter;
-      var onEntering = props.onEntering;
-      var onEntered = props.onEntered;
-
-      // This animates the child node by injecting props, so it must precede
-      // anything that adds a wrapping div.
-
-      child = _react2["default"].createElement(
-        Transition,
-        {
-          'in': props.show,
-          transitionAppear: true,
-          onExit: onExit,
-          onExiting: onExiting,
-          onExited: this.onHiddenListener,
-          onEnter: onEnter,
-          onEntering: onEntering,
-          onEntered: onEntered
-        },
-        child
-      );
-    }
-
-    // This goes after everything else because it adds a wrapping div.
-    if (rootClose) {
-      child = _react2["default"].createElement(
-        _RootCloseWrapper2["default"],
-        { onRootClose: props.onHide },
-        child
-      );
+    if (!transition) {
+      child = (0, _react.cloneElement)(children, {
+        className: (0, _classnames2["default"])(children.props.className, 'in')
+      });
+    } else {
+      child = children;
     }
 
     return _react2["default"].createElement(
-      _Portal2["default"],
-      { container: container },
+      _BaseOverlay2["default"],
+      _extends({}, props, {
+        transition: transition
+      }),
       child
     );
   };
