@@ -18,6 +18,8 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _tinperBeeCore = require('tinper-bee-core');
+
 var _calculatePosition = require('./utils/calculatePosition');
 
 var _calculatePosition2 = _interopRequireDefault(_calculatePosition);
@@ -46,12 +48,12 @@ var propTypes = {
   /**
    * 要设置定位的元素
    */
-  target: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
+  target: _react.PropTypes.oneOfType([_tinperBeeCore.componentOrElement, _react.PropTypes.func]),
 
   /**
    * 存放的容器元素
    */
-  container: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
+  container: _react.PropTypes.oneOfType([_tinperBeeCore.componentOrElement, _react.PropTypes.func]),
   /**
    * 容器padding值
    */
@@ -161,15 +163,17 @@ var Position = function (_Component) {
   };
 
   Position.prototype.render = function render() {
-    var _props = this.props,
-        children = _props.children,
-        className = _props.className,
-        props = _objectWithoutProperties(_props, ['children', 'className']);
+    var _props = this.props;
+    var children = _props.children;
+    var className = _props.className;
 
-    var _state = this.state,
-        positionLeft = _state.positionLeft,
-        positionTop = _state.positionTop,
-        arrowPosition = _objectWithoutProperties(_state, ['positionLeft', 'positionTop']);
+    var props = _objectWithoutProperties(_props, ['children', 'className']);
+
+    var _state = this.state;
+    var positionLeft = _state.positionLeft;
+    var positionTop = _state.positionTop;
+
+    var arrowPosition = _objectWithoutProperties(_state, ['positionLeft', 'positionTop']);
 
     // These should not be forwarded to the child.
 

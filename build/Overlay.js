@@ -18,6 +18,8 @@ var _BaseOverlay = require('./BaseOverlay');
 
 var _BaseOverlay2 = _interopRequireDefault(_BaseOverlay);
 
+var _tinperBeeCore = require('tinper-bee-core');
+
 var _Fade = require('./Fade');
 
 var _Fade2 = _interopRequireDefault(_Fade);
@@ -52,7 +54,7 @@ var propTypes = _extends({}, _BaseOverlay2["default"].propTypes, {
   /**
    * 使用动画
    */
-  animation: _react2["default"].PropTypes.oneOfType([_react.PropTypes.bool, _react.PropTypes.string, _react.PropTypes.element, _react.PropTypes.func]),
+  animation: _react2["default"].PropTypes.oneOfType([_tinperBeeCore.elementType, _react.PropTypes.func]),
 
   /**
    * Callback fired before the Overlay transitions in
@@ -107,10 +109,11 @@ var Overlay = function (_Component) {
   }
 
   Overlay.prototype.render = function render() {
-    var _props = this.props,
-        animation = _props.animation,
-        children = _props.children,
-        props = _objectWithoutProperties(_props, ['animation', 'children']);
+    var _props = this.props;
+    var animation = _props.animation;
+    var children = _props.children;
+
+    var props = _objectWithoutProperties(_props, ['animation', 'children']);
 
     var transition = animation === true ? _Fade2["default"] : animation || null;
 

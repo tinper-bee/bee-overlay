@@ -2,21 +2,21 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import ownerDocument from './utils/ownerDocument';
 import getContainer from './utils/getContainer';
+import { componentOrElement } from 'tinper-bee-core';
 
 const propTypes = {
     /**
      * 存放子组件的容器
      */
     container: PropTypes.oneOfType([
-        PropTypes.element,
-        PropTypes.string,
+        componentOrElement,
         PropTypes.func
     ])
 };
 
 const defaultProps = {
-    container:''
-}
+
+};
 
 /**
  * Portal组件是将子组件渲染
@@ -97,8 +97,8 @@ class Portal extends Component{
     // Save reference for future access.
     if (overlay !== null) {
       this.mountOverlayTarget();
-      this._overlayInstance = ReactDOM.unstable_renderSubtreeIntoContainer(
-        this, overlay, this._overlayTarget
+      this.overlayInstance = ReactDOM.unstable_renderSubtreeIntoContainer(
+        this, overlay, this.overlayTarget
       );
     } else {
       // Unrender if the component is null for transitions to null

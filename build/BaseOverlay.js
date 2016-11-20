@@ -22,6 +22,8 @@ var _RootCloseWrapper = require('./RootCloseWrapper');
 
 var _RootCloseWrapper2 = _interopRequireDefault(_RootCloseWrapper);
 
+var _tinperBeeCore = require('tinper-bee-core');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -67,7 +69,7 @@ var propTypes = _extends({}, _Portal2["default"].propTypes, _Position2["default"
   /**
    * 过渡动画组件
    */
-  transition: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
+  transition: _react.PropTypes.oneOfType([_tinperBeeCore.elementType, _react.PropTypes.func]),
 
   /**
    * overlay添加动画前的钩子函数
@@ -144,16 +146,17 @@ var BaseOverlay = function (_Component) {
   };
 
   BaseOverlay.prototype.render = function render() {
-    var _props2 = this.props,
-        container = _props2.container,
-        containerPadding = _props2.containerPadding,
-        target = _props2.target,
-        placement = _props2.placement,
-        shouldUpdatePosition = _props2.shouldUpdatePosition,
-        rootClose = _props2.rootClose,
-        children = _props2.children,
-        Transition = _props2.transition,
-        props = _objectWithoutProperties(_props2, ['container', 'containerPadding', 'target', 'placement', 'shouldUpdatePosition', 'rootClose', 'children', 'transition']);
+    var _props2 = this.props;
+    var container = _props2.container;
+    var containerPadding = _props2.containerPadding;
+    var target = _props2.target;
+    var placement = _props2.placement;
+    var shouldUpdatePosition = _props2.shouldUpdatePosition;
+    var rootClose = _props2.rootClose;
+    var children = _props2.children;
+    var Transition = _props2.transition;
+
+    var props = _objectWithoutProperties(_props2, ['container', 'containerPadding', 'target', 'placement', 'shouldUpdatePosition', 'rootClose', 'children', 'transition']);
 
     // Don't un-render the overlay while it's transitioning out.
 
@@ -180,11 +183,11 @@ var BaseOverlay = function (_Component) {
     );
 
     if (Transition) {
-      var onExit = props.onExit,
-          onExiting = props.onExiting,
-          onEnter = props.onEnter,
-          onEntering = props.onEntering,
-          onEntered = props.onEntered;
+      var onExit = props.onExit;
+      var onExiting = props.onExiting;
+      var onEnter = props.onEnter;
+      var onEntering = props.onEntering;
+      var onEntered = props.onEntered;
 
       // This animates the child node by injecting props, so it must precede
       // anything that adds a wrapping div.

@@ -1,8 +1,10 @@
+
 import classNames from 'classnames';
 import React, { cloneElement, PropTypes, Component } from 'react';
 import BaseOverlay from './BaseOverlay';
-
+import { elementType } from 'tinper-bee-core';
 import Fade from './Fade';
+
 
 const propTypes = {
   ...BaseOverlay.propTypes,
@@ -24,9 +26,7 @@ const propTypes = {
    * 使用动画
    */
   animation: React.PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-    PropTypes.element,
+    elementType,
     PropTypes.func
   ]),
 

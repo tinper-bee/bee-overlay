@@ -1,7 +1,7 @@
 /*eslint-disable react/prop-types */
 import React, { Component, cloneElement, PropTypes } from 'react';
 import warning from 'warning';
-
+import { elementType, componentOrElement } from 'tinper-bee-core';
 import Portal from './Portal';
 import ModalManager from './ModalManager';
 
@@ -31,8 +31,7 @@ const propTypes = {
      * 容器
      */
     container: PropTypes.oneOfType([
-        PropTypes.element,
-        PropTypes.string,
+        componentOrElement,
         PropTypes.func
     ]),
 
@@ -92,11 +91,7 @@ const propTypes = {
     /**
      * 动画组件
      */
-    transition: PropTypes.oneOfType([
-        PropTypes.element,
-        PropTypes.string,
-        PropTypes.func
-    ]),
+    transition: elementType,
 
     /**
      * 设置动画超时时间

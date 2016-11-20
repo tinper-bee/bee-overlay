@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Portal from './Portal';
 import Position from './Position';
 import RootCloseWrapper from './RootCloseWrapper';
+import { elementType } from 'tinper-bee-core';
 
 
 const propTypes = {
@@ -35,8 +36,7 @@ const propTypes = {
      * 过渡动画组件
      */
     transition: PropTypes.oneOfType([
-        PropTypes.element,
-        PropTypes.string,
+        elementType,
         PropTypes.func
     ]),
 

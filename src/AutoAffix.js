@@ -1,6 +1,7 @@
 import getOffset from 'dom-helpers/query/offset';
 import requestAnimationFrame from 'dom-helpers/util/requestAnimationFrame';
 import React, { Component, PropTypes } from 'react';
+import { componentOrElement } from 'tinper-bee-core';
 
 import Affix from './Affix';
 import addEventListener from './utils/addEventListener';
@@ -15,8 +16,7 @@ const propTypes = {
      * 容器组件
      */
     container: PropTypes.oneOfType([
-        PropTypes.element,
-        PropTypes.string,
+        componentOrElement,
         PropTypes.func
     ]),
     /**

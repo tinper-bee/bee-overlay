@@ -106,6 +106,8 @@ class OverlayTrigger extends Component {
     this.handleDelayedShow = this.handleDelayedShow.bind(this);
     this.handleDelayedHide = this.handleDelayedHide.bind(this);
     this.handleHide = this.handleHide.bind(this);
+    this.makeOverlay = this.makeOverlay.bind(this);
+
 
     this.handleMouseOver = e => (
       this.handleMouseOverOut(this.handleDelayedShow, e)

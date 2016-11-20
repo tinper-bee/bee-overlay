@@ -18,6 +18,8 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _tinperBeeCore = require('tinper-bee-core');
+
 var _Affix = require('./Affix');
 
 var _Affix2 = _interopRequireDefault(_Affix);
@@ -58,7 +60,7 @@ var propTypes = _extends({}, _Affix2["default"].propTypes, {
   /**
    * 容器组件
    */
-  container: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func]),
+  container: _react.PropTypes.oneOfType([_tinperBeeCore.componentOrElement, _react.PropTypes.func]),
   /**
    * 是否自适应宽度
    */
@@ -162,18 +164,21 @@ var AutoAffix = function (_Component) {
       return;
     }
 
-    var _getOffset = (0, _offset2["default"])(this.refs.positioner),
-        offsetTop = _getOffset.top,
-        width = _getOffset.width;
+    var _getOffset = (0, _offset2["default"])(this.refs.positioner);
+
+    var offsetTop = _getOffset.top;
+    var width = _getOffset.width;
+
 
     var container = (0, _getContainer2["default"])(this.props.container);
     var offsetBottom = void 0;
     if (container) {
       var documentHeight = (0, _getDocumentHeight2["default"])((0, _ownerDocument2["default"])(this));
 
-      var _getOffset2 = (0, _offset2["default"])(container),
-          top = _getOffset2.top,
-          height = _getOffset2.height;
+      var _getOffset2 = (0, _offset2["default"])(container);
+
+      var top = _getOffset2.top;
+      var height = _getOffset2.height;
 
       offsetBottom = documentHeight - top - height;
     } else {
@@ -192,25 +197,26 @@ var AutoAffix = function (_Component) {
   };
 
   AutoAffix.prototype.render = function render() {
-    var _props = this.props,
-        autoWidth = _props.autoWidth,
-        viewportOffsetTop = _props.viewportOffsetTop,
-        children = _props.children,
-        props = _objectWithoutProperties(_props, ['autoWidth', 'viewportOffsetTop', 'children']);
+    var _props = this.props;
+    var autoWidth = _props.autoWidth;
+    var viewportOffsetTop = _props.viewportOffsetTop;
+    var children = _props.children;
 
-    var _state = this.state,
-        offsetTop = _state.offsetTop,
-        offsetBottom = _state.offsetBottom,
-        width = _state.width;
+    var props = _objectWithoutProperties(_props, ['autoWidth', 'viewportOffsetTop', 'children']);
+
+    var _state = this.state;
+    var offsetTop = _state.offsetTop;
+    var offsetBottom = _state.offsetBottom;
+    var width = _state.width;
 
 
     delete props.container;
 
     var effectiveOffsetTop = Math.max(offsetTop, viewportOffsetTop || 0);
 
-    var _props2 = this.props,
-        affixStyle = _props2.affixStyle,
-        bottomStyle = _props2.bottomStyle;
+    var _props2 = this.props;
+    var affixStyle = _props2.affixStyle;
+    var bottomStyle = _props2.bottomStyle;
 
     if (autoWidth) {
       affixStyle = _extends({ width: width }, affixStyle);

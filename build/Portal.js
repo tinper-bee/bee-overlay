@@ -20,6 +20,8 @@ var _getContainer = require('./utils/getContainer');
 
 var _getContainer2 = _interopRequireDefault(_getContainer);
 
+var _tinperBeeCore = require('tinper-bee-core');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
@@ -34,12 +36,10 @@ var propTypes = {
   /**
    * 存放子组件的容器
    */
-  container: _react.PropTypes.oneOfType([_react.PropTypes.element, _react.PropTypes.string, _react.PropTypes.func])
+  container: _react.PropTypes.oneOfType([_tinperBeeCore.componentOrElement, _react.PropTypes.func])
 };
 
-var defaultProps = {
-  container: ''
-};
+var defaultProps = {};
 
 /**
  * Portal组件是将子组件渲染
@@ -128,7 +128,7 @@ var Portal = function (_Component) {
     // Save reference for future access.
     if (overlay !== null) {
       this.mountOverlayTarget();
-      this._overlayInstance = _reactDom2["default"].unstable_renderSubtreeIntoContainer(this, overlay, this._overlayTarget);
+      this.overlayInstance = _reactDom2["default"].unstable_renderSubtreeIntoContainer(this, overlay, this.overlayTarget);
     } else {
       // Unrender if the component is null for transitions to null
       this.unrenderOverlay();
