@@ -7,3 +7,5 @@ export Position from './Position';
 export Transition from './Transition';
 export Overlay from './Overlay';
 export OverlayTrigger from './OverlayTrigger';
+export RootCloseWrapper from './RootCloseWrapper';
+export Fade from './Fade';
