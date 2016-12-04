@@ -160,7 +160,7 @@ const defaultProps = {
     renderBackdrop: (props) => <div {...props} />
 };
 
-class Modal extends Component {
+class BaseModal extends Component {
     constructor(props, content) {
         super(props);
         this.state = {
@@ -445,10 +445,10 @@ class Modal extends Component {
 
 };
 
-Modal.Manager = ModalManager;
+BaseModal.Manager = ModalManager;
 
-Modal.propTypes = propTypes;
-Modal.defaultProps = defaultProps;
+BaseModal.propTypes = propTypes;
+BaseModal.defaultProps = defaultProps;
 
 
-export default Modal;
+export default BaseModal;

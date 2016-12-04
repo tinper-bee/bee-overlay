@@ -75,12 +75,11 @@ function removeContainerStyle(_ref, container) {
 
 var ModalManager = function () {
   function ModalManager() {
-    var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    var _ref2$hideSiblingNode = _ref2.hideSiblingNodes;
-    var hideSiblingNodes = _ref2$hideSiblingNode === undefined ? true : _ref2$hideSiblingNode;
-    var _ref2$handleContainer = _ref2.handleContainerOverflow;
-    var handleContainerOverflow = _ref2$handleContainer === undefined ? true : _ref2$handleContainer;
+    var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref2$hideSiblingNode = _ref2.hideSiblingNodes,
+        hideSiblingNodes = _ref2$hideSiblingNode === undefined ? true : _ref2$hideSiblingNode,
+        _ref2$handleContainer = _ref2.handleContainerOverflow,
+        handleContainerOverflow = _ref2$handleContainer === undefined ? true : _ref2$handleContainer;
 
     _classCallCheck(this, ModalManager);
 

@@ -233,9 +233,9 @@ var Affix = function (_Component) {
       return;
     }
 
-    var _props = this.props;
-    var offsetTop = _props.offsetTop;
-    var viewportOffsetTop = _props.viewportOffsetTop;
+    var _props = this.props,
+        offsetTop = _props.offsetTop,
+        viewportOffsetTop = _props.viewportOffsetTop;
 
     var scrollTop = (0, _scrollTop2["default"])((0, _ownerWindow2["default"])(this));
     var positionTopMin = scrollTop + (viewportOffsetTop || 0);
@@ -307,13 +307,13 @@ var Affix = function (_Component) {
 
   Affix.prototype.render = function render() {
     var child = _react2["default"].Children.only(this.props.children);
-    var _child$props = child.props;
-    var className = _child$props.className;
-    var style = _child$props.style;
-    var _state = this.state;
-    var affixed = _state.affixed;
-    var position = _state.position;
-    var top = _state.top;
+    var _child$props = child.props,
+        className = _child$props.className,
+        style = _child$props.style;
+    var _state = this.state,
+        affixed = _state.affixed,
+        position = _state.position,
+        top = _state.top;
 
     var positionStyle = { position: position, top: top };
 

@@ -205,11 +205,11 @@ var defaultProps = {
   }
 };
 
-var Modal = function (_Component) {
-  _inherits(Modal, _Component);
+var BaseModal = function (_Component) {
+  _inherits(BaseModal, _Component);
 
-  function Modal(props, content) {
-    _classCallCheck(this, Modal);
+  function BaseModal(props, content) {
+    _classCallCheck(this, BaseModal);
 
     var _this = _possibleConstructorReturn(this, _Component.call(this, props));
 
@@ -219,7 +219,7 @@ var Modal = function (_Component) {
     return _this;
   }
 
-  Modal.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+  BaseModal.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
     if (nextProps.show) {
       this.setState({ exited: false });
     } else if (!nextProps.transition) {
@@ -228,19 +228,19 @@ var Modal = function (_Component) {
     }
   };
 
-  Modal.prototype.componentWillUpdate = function componentWillUpdate(nextProps) {
+  BaseModal.prototype.componentWillUpdate = function componentWillUpdate(nextProps) {
     if (!this.props.show && nextProps.show) {
       this.checkForFocus();
     }
   };
 
-  Modal.prototype.componentDidMount = function componentDidMount() {
+  BaseModal.prototype.componentDidMount = function componentDidMount() {
     if (this.props.show) {
       this.onShow();
     }
   };
 
-  Modal.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+  BaseModal.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
     var transition = this.props.transition;
 
 
@@ -252,10 +252,10 @@ var Modal = function (_Component) {
     }
   };
 
-  Modal.prototype.componentWillUnmount = function componentWillUnmount() {
-    var _props = this.props;
-    var show = _props.show;
-    var transition = _props.transition;
+  BaseModal.prototype.componentWillUnmount = function componentWillUnmount() {
+    var _props = this.props,
+        show = _props.show,
+        transition = _props.transition;
 
 
     if (show || transition && !this.state.exited) {
@@ -263,7 +263,7 @@ var Modal = function (_Component) {
     }
   };
 
-  Modal.prototype.onShow = function onShow() {
+  BaseModal.prototype.onShow = function onShow() {
     var doc = (0, _ownerDocument2["default"])(this);
     var container = (0, _getContainer2["default"])(this.props.container, doc.body);
 
@@ -280,7 +280,7 @@ var Modal = function (_Component) {
     }
   };
 
-  Modal.prototype.onHide = function onHide() {
+  BaseModal.prototype.onHide = function onHide() {
     this.props.manager.remove(this);
 
     this._onDocumentKeyupListener.remove();
@@ -290,11 +290,11 @@ var Modal = function (_Component) {
     this.restoreLastFocus();
   };
 
-  Modal.prototype.setMountNode = function setMountNode(ref) {
+  BaseModal.prototype.setMountNode = function setMountNode(ref) {
     this.mountNode = ref ? ref.getMountNode() : ref;
   };
 
-  Modal.prototype.handleHidden = function handleHidden() {
+  BaseModal.prototype.handleHidden = function handleHidden() {
     this.setState({ exited: true });
     this.onHide();
 
@@ -305,7 +305,7 @@ var Modal = function (_Component) {
     }
   };
 
-  Modal.prototype.handleBackdropClick = function handleBackdropClick(e) {
+  BaseModal.prototype.handleBackdropClick = function handleBackdropClick(e) {
     if (e.target !== e.currentTarget) {
       return;
     }
@@ -319,7 +319,7 @@ var Modal = function (_Component) {
     }
   };
 
-  Modal.prototype.handleDocumentKeyUp = function handleDocumentKeyUp(e) {
+  BaseModal.prototype.handleDocumentKeyUp = function handleDocumentKeyUp(e) {
     if (this.props.keyboard && e.keyCode === 27 && this.isTopModal()) {
       if (this.props.onEscapeKeyUp) {
         this.props.onEscapeKeyUp(e);
@@ -328,13 +328,13 @@ var Modal = function (_Component) {
     }
   };
 
-  Modal.prototype.checkForFocus = function checkForFocus() {
+  BaseModal.prototype.checkForFocus = function checkForFocus() {
     if (_inDOM2["default"]) {
       this.lastFocus = (0, _activeElement2["default"])();
     }
   };
 
-  Modal.prototype.focus = function focus() {
+  BaseModal.prototype.focus = function focus() {
     var autoFocus = this.props.autoFocus;
     var modalContent = this.getDialogElement();
     var current = (0, _activeElement2["default"])((0, _ownerDocument2["default"])(this));
@@ -352,7 +352,7 @@ var Modal = function (_Component) {
     }
   };
 
-  Modal.prototype.restoreLastFocus = function restoreLastFocus() {
+  BaseModal.prototype.restoreLastFocus = function restoreLastFocus() {
     // Support: <=IE11 doesn't support `focus()` on svg elements (RB: #917)
     if (this.lastFocus && this.lastFocus.focus) {
       this.lastFocus.focus();
@@ -360,7 +360,7 @@ var Modal = function (_Component) {
     }
   };
 
-  Modal.prototype.enforceFocus = function enforceFocus() {
+  BaseModal.prototype.enforceFocus = function enforceFocus() {
     var enforceFocus = this.props.enforceFocus;
 
 
@@ -379,24 +379,24 @@ var Modal = function (_Component) {
   //instead of a ref, which might conflict with one the parent applied.
 
 
-  Modal.prototype.getDialogElement = function getDialogElement() {
+  BaseModal.prototype.getDialogElement = function getDialogElement() {
     var node = this.refs.modal;
     return node && node.lastChild;
   };
 
-  Modal.prototype.isTopModal = function isTopModal() {
+  BaseModal.prototype.isTopModal = function isTopModal() {
     return this.props.manager.isTopModal(this);
   };
 
-  Modal.prototype.renderBackdrop = function renderBackdrop() {
+  BaseModal.prototype.renderBackdrop = function renderBackdrop() {
     var _this2 = this;
 
-    var _props3 = this.props;
-    var backdropStyle = _props3.backdropStyle;
-    var backdropClassName = _props3.backdropClassName;
-    var renderBackdrop = _props3.renderBackdrop;
-    var Transition = _props3.transition;
-    var backdropTransitionTimeout = _props3.backdropTransitionTimeout;
+    var _props3 = this.props,
+        backdropStyle = _props3.backdropStyle,
+        backdropClassName = _props3.backdropClassName,
+        renderBackdrop = _props3.renderBackdrop,
+        Transition = _props3.transition,
+        backdropTransitionTimeout = _props3.backdropTransitionTimeout;
 
 
     var backdropRef = function backdropRef(ref) {
@@ -429,21 +429,21 @@ var Modal = function (_Component) {
     return backdrop;
   };
 
-  Modal.prototype.render = function render() {
-    var _props4 = this.props;
-    var show = _props4.show;
-    var container = _props4.container;
-    var children = _props4.children;
-    var Transition = _props4.transition;
-    var backdrop = _props4.backdrop;
-    var dialogTransitionTimeout = _props4.dialogTransitionTimeout;
-    var className = _props4.className;
-    var style = _props4.style;
-    var onExit = _props4.onExit;
-    var onExiting = _props4.onExiting;
-    var onEnter = _props4.onEnter;
-    var onEntering = _props4.onEntering;
-    var onEntered = _props4.onEntered;
+  BaseModal.prototype.render = function render() {
+    var _props4 = this.props,
+        show = _props4.show,
+        container = _props4.container,
+        children = _props4.children,
+        Transition = _props4.transition,
+        backdrop = _props4.backdrop,
+        dialogTransitionTimeout = _props4.dialogTransitionTimeout,
+        className = _props4.className,
+        style = _props4.style,
+        onExit = _props4.onExit,
+        onExiting = _props4.onExiting,
+        onEnter = _props4.onEnter,
+        onEntering = _props4.onEntering,
+        onEntered = _props4.onEntered;
 
 
     var dialog = _react2["default"].Children.only(children);
@@ -453,9 +453,9 @@ var Modal = function (_Component) {
       return null;
     }
 
-    var _dialog$props = dialog.props;
-    var role = _dialog$props.role;
-    var tabIndex = _dialog$props.tabIndex;
+    var _dialog$props = dialog.props,
+        role = _dialog$props.role,
+        tabIndex = _dialog$props.tabIndex;
 
 
     if (role === undefined || tabIndex === undefined) {
@@ -504,15 +504,15 @@ var Modal = function (_Component) {
     );
   };
 
-  return Modal;
+  return BaseModal;
 }(_react.Component);
 
 ;
 
-Modal.Manager = _ModalManager2["default"];
+BaseModal.Manager = _ModalManager2["default"];
 
-Modal.propTypes = propTypes;
-Modal.defaultProps = defaultProps;
+BaseModal.propTypes = propTypes;
+BaseModal.defaultProps = defaultProps;
 
-exports["default"] = Modal;
+exports["default"] = BaseModal;
 module.exports = exports['default'];
