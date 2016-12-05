@@ -163,17 +163,15 @@ var Position = function (_Component) {
   };
 
   Position.prototype.render = function render() {
-    var _props = this.props;
-    var children = _props.children;
-    var className = _props.className;
+    var _props = this.props,
+        children = _props.children,
+        className = _props.className,
+        props = _objectWithoutProperties(_props, ['children', 'className']);
 
-    var props = _objectWithoutProperties(_props, ['children', 'className']);
-
-    var _state = this.state;
-    var positionLeft = _state.positionLeft;
-    var positionTop = _state.positionTop;
-
-    var arrowPosition = _objectWithoutProperties(_state, ['positionLeft', 'positionTop']);
+    var _state = this.state,
+        positionLeft = _state.positionLeft,
+        positionTop = _state.positionTop,
+        arrowPosition = _objectWithoutProperties(_state, ['positionLeft', 'positionTop']);
 
     // These should not be forwarded to the child.
 

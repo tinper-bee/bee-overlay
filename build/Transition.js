@@ -296,11 +296,10 @@ var Transition = function (_Component) {
       return null;
     }
 
-    var _props = this.props;
-    var children = _props.children;
-    var className = _props.className;
-
-    var childProps = _objectWithoutProperties(_props, ['children', 'className']);
+    var _props = this.props,
+        children = _props.children,
+        className = _props.className,
+        childProps = _objectWithoutProperties(_props, ['children', 'className']);
 
     Object.keys(Transition.propTypes).forEach(function (key) {
       return delete childProps[key];
