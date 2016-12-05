@@ -1,7 +1,7 @@
 # bee-overlay
 [![npm version](https://img.shields.io/npm/v/bee-overlay.svg)](https://www.npmjs.com/package/bee-overlay)
-[![Build Status](https://img.shields.io/travis/tinper-bee/generator-tinper-bee/master.svg)](https://travis-ci.org/tinper-bee/bee-overlay)
-[![devDependency Status](https://img.shields.io/david/dev/tinper-bee/bee-overlay.svg)](https://david-dm.org/tinper-bee/bee-overlay#info=devDependencies)
+[![Build Status](https://img.shields.io/travis/tinper-bee/bee-overlay/master.svg)](https://travis-ci.org/tinper-bee/bee-overlay)
+[![Coverage Status](https://coveralls.io/repos/github/tinper-bee/bee-overlay/badge.svg?branch=master)](https://coveralls.io/github/tinper-bee/bee-overlay?branch=master)
 
 弹出层控制组件
 
