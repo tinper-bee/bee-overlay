@@ -84,6 +84,10 @@ var RootCloseWrapper = function (_Component) {
     };
 
     _this.preventMouseRootClose = false;
+
+    _this.addEventListeners = _this.addEventListeners.bind(_this);
+    _this.removeEventListeners = _this.removeEventListeners.bind(_this);
+
     return _this;
   }
 

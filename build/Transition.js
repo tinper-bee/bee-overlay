@@ -149,6 +149,14 @@ var Transition = function (_Component) {
     _this.state = { status: initialStatus };
 
     _this.nextCallback = null;
+
+    _this.performEnter = _this.performEnter.bind(_this);
+    _this.performExit = _this.performExit.bind(_this);
+    _this.cancelNextCallback = _this.cancelNextCallback.bind(_this);
+    _this.onTransitionEnd = _this.onTransitionEnd.bind(_this);
+    _this.safeSetState = _this.safeSetState.bind(_this);
+    _this.setNextCallback = _this.setNextCallback.bind(_this);
+
     return _this;
   }
 

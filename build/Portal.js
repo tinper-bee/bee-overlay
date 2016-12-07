@@ -51,7 +51,15 @@ var Portal = function (_Component) {
   function Portal(props) {
     _classCallCheck(this, Portal);
 
-    return _possibleConstructorReturn(this, _Component.call(this, props));
+    var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+
+    _this.getMountNode = _this.getMountNode.bind(_this);
+    _this.getOverlayDOMNode = _this.getOverlayDOMNode.bind(_this);
+    _this.mountOverlayTarget = _this.mountOverlayTarget.bind(_this);
+    _this.unmountOverlayTarget = _this.unmountOverlayTarget.bind(_this);
+    _this.renderOverlay = _this.renderOverlay.bind(_this);
+    _this.unrenderOverlay = _this.unrenderOverlay.bind(_this);
+    return _this;
   }
 
   Portal.prototype.componentDidMount = function componentDidMount() {

@@ -95,6 +95,10 @@ var Position = function (_Component) {
 
     _this.needsFlush = false;
     _this.lastTarget = null;
+
+    _this.getTarget = _this.getTarget.bind(_this);
+    _this.maybeUpdatePosition = _this.maybeUpdatePosition.bind(_this);
+    _this.updatePosition = _this.updatePosition.bind(_this);
     return _this;
   }
 

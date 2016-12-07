@@ -216,6 +216,20 @@ var BaseModal = function (_Component) {
     _this.state = {
       exited: !_this.props.show
     };
+
+    _this.onShow = _this.onShow.bind(_this);
+    _this.onHide = _this.onHide.bind(_this);
+    _this.setMountNode = _this.setMountNode.bind(_this);
+    _this.handleHidden = _this.handleHidden.bind(_this);
+    _this.handleBackdropClick = _this.handleBackdropClick.bind(_this);
+    _this.handleDocumentKeyUp = _this.handleDocumentKeyUp.bind(_this);
+    _this.checkForFocus = _this.checkForFocus.bind(_this);
+    _this.focus = _this.focus.bind(_this);
+    _this.restoreLastFocus = _this.restoreLastFocus.bind(_this);
+    _this.enforceFocus = _this.enforceFocus.bind(_this);
+    _this.getDialogElement = _this.getDialogElement.bind(_this);
+    _this.isTopModal = _this.isTopModal.bind(_this);
+    _this.renderBackdrop = _this.renderBackdrop.bind(_this);
     return _this;
   }
 

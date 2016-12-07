@@ -164,6 +164,13 @@ var Affix = function (_Component) {
     };
 
     _this._needPositionUpdate = false;
+
+    _this.onWindowScroll = _this.onWindowScroll.bind(_this);
+    _this.onDocumentClick = _this.onDocumentClick.bind(_this);
+    _this.onUpdate = _this.onUpdate.bind(_this);
+    _this.getPositionTopMax = _this.getPositionTopMax.bind(_this);
+    _this.updateState = _this.updateState.bind(_this);
+    _this.updateStateAtBottom = _this.updateStateAtBottom.bind(_this);
     return _this;
   }
 

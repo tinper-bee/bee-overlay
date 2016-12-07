@@ -89,6 +89,13 @@ var AutoAffix = function (_Component) {
       offsetBottom: null,
       width: null
     };
+
+    _this.onWindowScroll = _this.onWindowScroll.bind(_this);
+    _this.onWindowResize = _this.onWindowResize.bind(_this);
+    _this.onDocumentClick = _this.onDocumentClick.bind(_this);
+    _this.onUpdate = _this.onUpdate.bind(_this);
+    _this.updateState = _this.updateState.bind(_this);
+
     return _this;
   }
 
