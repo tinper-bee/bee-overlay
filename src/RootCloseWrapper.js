@@ -35,6 +35,10 @@ class RootCloseWrapper extends Component {
     super(props, context);
 
     this.preventMouseRootClose = false;
+
+    this.addEventListeners = this.addEventListeners.bind(this);
+    this.removeEventListeners = this.removeEventListeners.bind(this);
+
   }
 
   componentDidMount() {

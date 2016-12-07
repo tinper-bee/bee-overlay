@@ -42,6 +42,13 @@ class AutoAffix extends Component {
       offsetBottom: null,
       width: null
     };
+
+    this.onWindowScroll = this.onWindowScroll.bind(this);
+    this.onWindowResize = this.onWindowResize.bind(this);
+    this.onDocumentClick = this.onDocumentClick.bind(this);
+    this.onUpdate = this.onUpdate.bind(this);
+    this.updateState = this.updateState.bind(this);
+
   }
 
 

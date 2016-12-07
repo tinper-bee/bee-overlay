@@ -24,6 +24,12 @@ const defaultProps = {
 class Portal extends Component{
     constructor(props){
         super(props);
+        this.getMountNode = this.getMountNode.bind(this);
+        this.getOverlayDOMNode = this.getOverlayDOMNode.bind(this);
+        this.mountOverlayTarget = this.mountOverlayTarget.bind(this);
+        this.unmountOverlayTarget = this.unmountOverlayTarget.bind(this);
+        this.renderOverlay = this.renderOverlay.bind(this);
+        this.unrenderOverlay = this.unrenderOverlay.bind(this);
     }
 
   componentDidMount() {

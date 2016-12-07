@@ -109,6 +109,14 @@ class Transition extends Component {
     this.state = {status: initialStatus};
 
     this.nextCallback = null;
+
+    this.performEnter = this.performEnter.bind(this);
+    this.performExit = this.performExit.bind(this);
+    this.cancelNextCallback = this.cancelNextCallback.bind(this);
+    this.onTransitionEnd = this.onTransitionEnd.bind(this);
+    this.safeSetState = this.safeSetState.bind(this);
+    this.setNextCallback = this.setNextCallback.bind(this);
+
   }
 
   componentDidMount() {

@@ -166,6 +166,20 @@ class BaseModal extends Component {
         this.state = {
             exited: !this.props.show
         };
+
+        this.onShow = this.onShow.bind(this);
+        this.onHide = this.onHide.bind(this);
+        this.setMountNode = this.setMountNode.bind(this);
+        this.handleHidden = this.handleHidden.bind(this);
+        this.handleBackdropClick = this.handleBackdropClick.bind(this);
+        this.handleDocumentKeyUp = this.handleDocumentKeyUp.bind(this);
+        this.checkForFocus = this.checkForFocus.bind(this);
+        this.focus = this.focus.bind(this);
+        this.restoreLastFocus = this.restoreLastFocus.bind(this);
+        this.enforceFocus = this.enforceFocus.bind(this);
+        this.getDialogElement = this.getDialogElement.bind(this);
+        this.isTopModal = this.isTopModal.bind(this);
+        this.renderBackdrop = this.renderBackdrop.bind(this);
     }
 
 

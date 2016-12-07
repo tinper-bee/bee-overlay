@@ -108,6 +108,13 @@ class Affix extends Component {
     };
 
     this._needPositionUpdate = false;
+
+    this.onWindowScroll = this.onWindowScroll.bind(this);
+    this.onDocumentClick = this.onDocumentClick.bind(this);
+    this.onUpdate = this.onUpdate.bind(this);
+    this.getPositionTopMax = this.getPositionTopMax.bind(this);
+    this.updateState = this.updateState.bind(this);
+    this.updateStateAtBottom = this.updateStateAtBottom.bind(this);
   }
 
   componentDidMount() {

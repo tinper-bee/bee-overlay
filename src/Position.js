@@ -61,6 +61,10 @@ class Position extends Component {
 
     this.needsFlush = false;
     this.lastTarget = null;
+
+    this.getTarget = this.getTarget.bind(this);
+    this.maybeUpdatePosition = this.maybeUpdatePosition.bind(this);
+    this.updatePosition = this.updatePosition.bind(this);
   }
 
   componentDidMount() {
