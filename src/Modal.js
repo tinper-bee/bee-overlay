@@ -326,7 +326,7 @@ class BaseModal extends Component {
     enforceFocus() {
       let { enforceFocus } = this.props;
 
-      if (!enforceFocus || !this.isMounted() || !this.isTopModal()) {
+      if (!enforceFocus || !this.isTopModal()) {
         return;
       }
 

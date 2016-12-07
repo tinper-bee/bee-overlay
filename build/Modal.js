@@ -378,7 +378,7 @@ var BaseModal = function (_Component) {
     var enforceFocus = this.props.enforceFocus;
 
 
-    if (!enforceFocus || !this.isMounted() || !this.isTopModal()) {
+    if (!enforceFocus || !this.isTopModal()) {
       return;
     }
 
