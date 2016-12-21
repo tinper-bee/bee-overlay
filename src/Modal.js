@@ -202,6 +202,7 @@ class BaseModal extends Component {
       if (this.props.show) {
         this.onShow();
       }
+      this.mounted = true;
     }
 
     componentDidUpdate(prevProps) {
@@ -222,6 +223,8 @@ class BaseModal extends Component {
       if (show || (transition && !this.state.exited)) {
         this.onHide();
       }
+
+      this.mounted = false;
     }
 
     onShow() {
@@ -326,7 +329,7 @@ class BaseModal extends Component {
     enforceFocus() {
       let { enforceFocus } = this.props;
 
-      if (!enforceFocus || !this.isTopModal()) {
+      if (!enforceFocus || !this.mounted || !this.isTopModal()) {
         return;
       }
 

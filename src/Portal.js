@@ -32,8 +32,11 @@ class Portal extends Component{
         this.unrenderOverlay = this.unrenderOverlay.bind(this);
     }
 
+
   componentDidMount() {
     this.renderOverlay();
+
+    this.mounted = true;
   }
 
   componentDidUpdate() {
@@ -51,6 +54,9 @@ class Portal extends Component{
   componentWillUnmount() {
     this.unrenderOverlay();
     this.unmountOverlayTarget();
+
+    this.mounted = false;
+
   }
 
   getMountNode(){
@@ -58,7 +64,7 @@ class Portal extends Component{
   }
 
   getOverlayDOMNode() {
-    if (!this.isMounted()) {
+    if (!this.mounted) {
       throw new Error('getOverlayDOMNode(): A component must be mounted to have a DOM node.');
     }
 

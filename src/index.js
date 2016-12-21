@@ -9,3 +9,4 @@ export Overlay from './Overlay';
 export OverlayTrigger from './OverlayTrigger';
 export RootCloseWrapper from './RootCloseWrapper';
 export Fade from './Fade';
+export Trigger from './src';

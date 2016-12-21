@@ -121,7 +121,7 @@
 |autoWidth|是否自适应宽度|boolean|---:|
 
 
-- Modal 模态框，建立在Protal之上，包含所有Protal组件接口
+- BaseModal 模态框，建立在Protal之上，包含所有Protal组件接口
 
 |参数|说明|类型|默认值|
 |:--|:---:|:--:|---:|
