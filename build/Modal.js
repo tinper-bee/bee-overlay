@@ -252,6 +252,7 @@ var BaseModal = function (_Component) {
     if (this.props.show) {
       this.onShow();
     }
+    this.mounted = true;
   };
 
   BaseModal.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -267,14 +268,16 @@ var BaseModal = function (_Component) {
   };
 
   BaseModal.prototype.componentWillUnmount = function componentWillUnmount() {
-    var _props = this.props;
-    var show = _props.show;
-    var transition = _props.transition;
+    var _props = this.props,
+        show = _props.show,
+        transition = _props.transition;
 
 
     if (show || transition && !this.state.exited) {
       this.onHide();
     }
+
+    this.mounted = false;
   };
 
   BaseModal.prototype.onShow = function onShow() {
@@ -378,7 +381,7 @@ var BaseModal = function (_Component) {
     var enforceFocus = this.props.enforceFocus;
 
 
-    if (!enforceFocus || !this.isTopModal()) {
+    if (!enforceFocus || !this.mounted || !this.isTopModal()) {
       return;
     }
 
@@ -405,12 +408,12 @@ var BaseModal = function (_Component) {
   BaseModal.prototype.renderBackdrop = function renderBackdrop() {
     var _this2 = this;
 
-    var _props3 = this.props;
-    var backdropStyle = _props3.backdropStyle;
-    var backdropClassName = _props3.backdropClassName;
-    var renderBackdrop = _props3.renderBackdrop;
-    var Transition = _props3.transition;
-    var backdropTransitionTimeout = _props3.backdropTransitionTimeout;
+    var _props3 = this.props,
+        backdropStyle = _props3.backdropStyle,
+        backdropClassName = _props3.backdropClassName,
+        renderBackdrop = _props3.renderBackdrop,
+        Transition = _props3.transition,
+        backdropTransitionTimeout = _props3.backdropTransitionTimeout;
 
 
     var backdropRef = function backdropRef(ref) {
@@ -444,20 +447,20 @@ var BaseModal = function (_Component) {
   };
 
   BaseModal.prototype.render = function render() {
-    var _props4 = this.props;
-    var show = _props4.show;
-    var container = _props4.container;
-    var children = _props4.children;
-    var Transition = _props4.transition;
-    var backdrop = _props4.backdrop;
-    var dialogTransitionTimeout = _props4.dialogTransitionTimeout;
-    var className = _props4.className;
-    var style = _props4.style;
-    var onExit = _props4.onExit;
-    var onExiting = _props4.onExiting;
-    var onEnter = _props4.onEnter;
-    var onEntering = _props4.onEntering;
-    var onEntered = _props4.onEntered;
+    var _props4 = this.props,
+        show = _props4.show,
+        container = _props4.container,
+        children = _props4.children,
+        Transition = _props4.transition,
+        backdrop = _props4.backdrop,
+        dialogTransitionTimeout = _props4.dialogTransitionTimeout,
+        className = _props4.className,
+        style = _props4.style,
+        onExit = _props4.onExit,
+        onExiting = _props4.onExiting,
+        onEnter = _props4.onEnter,
+        onEntering = _props4.onEntering,
+        onEntered = _props4.onEntered;
 
 
     var dialog = _react2["default"].Children.only(children);
@@ -467,9 +470,9 @@ var BaseModal = function (_Component) {
       return null;
     }
 
-    var _dialog$props = dialog.props;
-    var role = _dialog$props.role;
-    var tabIndex = _dialog$props.tabIndex;
+    var _dialog$props = dialog.props,
+        role = _dialog$props.role,
+        tabIndex = _dialog$props.tabIndex;
 
 
     if (role === undefined || tabIndex === undefined) {

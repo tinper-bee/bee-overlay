@@ -64,6 +64,8 @@ var Portal = function (_Component) {
 
   Portal.prototype.componentDidMount = function componentDidMount() {
     this.renderOverlay();
+
+    this.mounted = true;
   };
 
   Portal.prototype.componentDidUpdate = function componentDidUpdate() {
@@ -83,6 +85,8 @@ var Portal = function (_Component) {
   Portal.prototype.componentWillUnmount = function componentWillUnmount() {
     this.unrenderOverlay();
     this.unmountOverlayTarget();
+
+    this.mounted = false;
   };
 
   Portal.prototype.getMountNode = function getMountNode() {
@@ -90,7 +94,7 @@ var Portal = function (_Component) {
   };
 
   Portal.prototype.getOverlayDOMNode = function getOverlayDOMNode() {
-    if (!this.isMounted()) {
+    if (!this.mounted) {
       throw new Error('getOverlayDOMNode(): A component must be mounted to have a DOM node.');
     }
 
