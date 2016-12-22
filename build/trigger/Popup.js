@@ -50,7 +50,7 @@ var propTypes = {
   align: _react.PropTypes.any,
   destroyPopupOnHide: _react.PropTypes.bool,
   className: _react.PropTypes.string,
-  prefixCls: _react.PropTypes.string,
+  clsPrefix: _react.PropTypes.string,
   onMouseLeave: _react.PropTypes.func
 };
 
@@ -103,7 +103,7 @@ var Popup = function (_Component) {
     var transitionName = props.maskTransitionName;
     var animation = props.maskAnimation;
     if (!transitionName && animation) {
-      transitionName = props.prefixCls + '-' + animation;
+      transitionName = props.clsPrefix + '-' + animation;
     }
     return transitionName;
   };
@@ -112,13 +112,13 @@ var Popup = function (_Component) {
     var props = this.props;
     var transitionName = props.transitionName;
     if (!transitionName && props.animation) {
-      transitionName = props.prefixCls + '-' + props.animation;
+      transitionName = props.clsPrefix + '-' + props.animation;
     }
     return transitionName;
   };
 
   Popup.prototype.getClassName = function getClassName(currentAlignClassName) {
-    return this.props.prefixCls + ' ' + this.props.className + ' ' + currentAlignClassName;
+    return this.props.clsPrefix + ' ' + this.props.className + ' ' + currentAlignClassName;
   };
 
   Popup.prototype.getPopupElement = function getPopupElement() {
@@ -126,18 +126,18 @@ var Popup = function (_Component) {
     var align = props.align,
         style = props.style,
         visible = props.visible,
-        prefixCls = props.prefixCls,
+        clsPrefix = props.clsPrefix,
         destroyPopupOnHide = props.destroyPopupOnHide;
 
     var className = this.getClassName(this.currentAlignClassName || props.getClassNameFromAlign(align));
-    var hiddenClassName = prefixCls + '-hidden';
+    var hiddenClassName = clsPrefix + '-hidden';
     if (!visible) {
       this.currentAlignClassName = null;
     }
     var newStyle = _extends({}, style, this.getZIndexStyle());
     var popupInnerProps = {
       className: className,
-      prefixCls: prefixCls,
+      clsPrefix: clsPrefix,
       ref: 'popup',
       onMouseEnter: props.onMouseEnter,
       onMouseLeave: props.onMouseLeave,
@@ -222,8 +222,8 @@ var Popup = function (_Component) {
       maskElement = _react2["default"].createElement(_LazyRenderBox2["default"], {
         style: this.getZIndexStyle(),
         key: 'mask',
-        className: props.prefixCls + '-mask',
-        hiddenClassName: props.prefixCls + '-mask-hidden',
+        className: props.clsPrefix + '-mask',
+        hiddenClassName: props.clsPrefix + '-mask-hidden',
         visible: props.visible
       });
       if (maskTransition) {

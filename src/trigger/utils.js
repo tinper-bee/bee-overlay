@@ -10,12 +10,12 @@ export function getAlignFromPlacement(builtinPlacements, placementStr, align) {
   };
 }
 
-export function getPopupClassNameFromAlign(builtinPlacements, prefixCls, align) {
+export function getPopupClassNameFromAlign(builtinPlacements, clsPrefix, align) {
   const points = align.points;
   for (const placement in builtinPlacements) {
     if (builtinPlacements.hasOwnProperty(placement)) {
       if (isPointsEq(builtinPlacements[placement].points, points)) {
-        return `${prefixCls}-placement-${placement}`;
+        return `${clsPrefix}-placement-${placement}`;
       }
     }
   }
