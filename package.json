@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "bee-animate": "latest",
     "dom-helpers": "^3.0.0",
     "tinper-bee-core": "0.0.12",
     "warning": "^3.0.0"
