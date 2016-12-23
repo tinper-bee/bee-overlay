@@ -17,12 +17,12 @@ function getAlignFromPlacement(builtinPlacements, placementStr, align) {
   return _extends({}, baseAlign, align);
 }
 
-function getPopupClassNameFromAlign(builtinPlacements, prefixCls, align) {
+function getPopupClassNameFromAlign(builtinPlacements, clsPrefix, align) {
   var points = align.points;
   for (var placement in builtinPlacements) {
     if (builtinPlacements.hasOwnProperty(placement)) {
       if (isPointsEq(builtinPlacements[placement].points, points)) {
-        return prefixCls + '-placement-' + placement;
+        return clsPrefix + '-placement-' + placement;
       }
     }
   }

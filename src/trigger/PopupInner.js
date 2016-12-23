@@ -4,7 +4,7 @@ import LazyRenderBox from './LazyRenderBox';
 const propTypes = {
     hiddenClassName: PropTypes.string,
     className: PropTypes.string,
-    prefixCls: PropTypes.string,
+    clsPrefix: PropTypes.string,
     onMouseEnter: PropTypes.func,
     onMouseLeave: PropTypes.func,
     children: PropTypes.any,
@@ -24,7 +24,7 @@ class PopupInner extends Component{
       onMouseLeave={props.onMouseLeave}
       style={props.style}
     >
-      <LazyRenderBox className={`${props.prefixCls}-content`} visible={props.visible}>
+      <LazyRenderBox className={`${props.clsPrefix}-content`} visible={props.visible}>
         {props.children}
       </LazyRenderBox>
     </div>);

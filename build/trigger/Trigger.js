@@ -56,7 +56,7 @@ var propTypes = {
   afterPopupVisibleChange: _react.PropTypes.func,
   popup: _react.PropTypes.oneOfType([_react.PropTypes.node, _react.PropTypes.func]).isRequired,
   popupStyle: _react.PropTypes.object,
-  prefixCls: _react.PropTypes.string,
+  clsPrefix: _react.PropTypes.string,
   popupClassName: _react.PropTypes.string,
   popupPlacement: _react.PropTypes.string,
   builtinPlacements: _react.PropTypes.object,
@@ -79,7 +79,7 @@ var propTypes = {
 };
 
 var defaultProps = {
-  prefixCls: 'rc-trigger-popup',
+  clsPrefix: 'rc-trigger-popup',
   getPopupClassNameFromAlign: returnEmptyString,
   onPopupVisibleChange: noop,
   afterPopupVisibleChange: noop,
@@ -348,10 +348,10 @@ var Trigger = function (_Component) {
     var props = this.props;
     var popupPlacement = props.popupPlacement,
         builtinPlacements = props.builtinPlacements,
-        prefixCls = props.prefixCls;
+        clsPrefix = props.clsPrefix;
 
     if (popupPlacement && builtinPlacements) {
-      className.push((0, _utils.getPopupClassNameFromAlign)(builtinPlacements, prefixCls, align));
+      className.push((0, _utils.getPopupClassNameFromAlign)(builtinPlacements, clsPrefix, align));
     }
     if (props.getPopupClassNameFromAlign) {
       className.push(props.getPopupClassNameFromAlign(align));
@@ -385,7 +385,7 @@ var Trigger = function (_Component) {
     return _react2["default"].createElement(
       _Popup2["default"],
       _extends({
-        prefixCls: props.prefixCls,
+        clsPrefix: props.clsPrefix,
         destroyPopupOnHide: props.destroyPopupOnHide,
         visible: state.popupVisible,
         className: props.popupClassName,

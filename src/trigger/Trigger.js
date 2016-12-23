@@ -29,7 +29,7 @@ const propTypes = {
       PropTypes.func,
     ]).isRequired,
     popupStyle: PropTypes.object,
-    prefixCls: PropTypes.string,
+    clsPrefix: PropTypes.string,
     popupClassName: PropTypes.string,
     popupPlacement: PropTypes.string,
     builtinPlacements: PropTypes.object,
@@ -52,7 +52,7 @@ const propTypes = {
 }
 
 const defaultProps = {
-    prefixCls: 'rc-trigger-popup',
+    clsPrefix: 'rc-trigger-popup',
     getPopupClassNameFromAlign: returnEmptyString,
     onPopupVisibleChange: noop,
     afterPopupVisibleChange: noop,
@@ -316,9 +316,9 @@ class Trigger extends Component{
   getPopupClassNameFromAlign(align) {
     const className = [];
     const props = this.props;
-    const { popupPlacement, builtinPlacements, prefixCls } = props;
+    const { popupPlacement, builtinPlacements, clsPrefix } = props;
     if (popupPlacement && builtinPlacements) {
-      className.push(getPopupClassNameFromAlign(builtinPlacements, prefixCls, align));
+      className.push(getPopupClassNameFromAlign(builtinPlacements, clsPrefix, align));
     }
     if (props.getPopupClassNameFromAlign) {
       className.push(props.getPopupClassNameFromAlign(align));
@@ -346,7 +346,7 @@ class Trigger extends Component{
     }
     return (
       <Popup
-        prefixCls={props.prefixCls}
+        clsPrefix={props.clsPrefix}
         destroyPopupOnHide={props.destroyPopupOnHide}
         visible={state.popupVisible}
         className={props.popupClassName}

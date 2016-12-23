@@ -25,7 +25,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var propTypes = {
   hiddenClassName: _react.PropTypes.string,
   className: _react.PropTypes.string,
-  prefixCls: _react.PropTypes.string,
+  clsPrefix: _react.PropTypes.string,
   onMouseEnter: _react.PropTypes.func,
   onMouseLeave: _react.PropTypes.func,
   children: _react.PropTypes.any
@@ -56,7 +56,7 @@ var PopupInner = function (_Component) {
       },
       _react2["default"].createElement(
         _LazyRenderBox2["default"],
-        { className: props.prefixCls + '-content', visible: props.visible },
+        { className: props.clsPrefix + '-content', visible: props.visible },
         props.children
       )
     );

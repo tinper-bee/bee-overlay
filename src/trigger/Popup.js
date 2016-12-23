@@ -16,7 +16,7 @@ const propTypes = {
     align: PropTypes.any,
     destroyPopupOnHide: PropTypes.bool,
     className: PropTypes.string,
-    prefixCls: PropTypes.string,
+    clsPrefix: PropTypes.string,
     onMouseLeave: PropTypes.func,
 }
 
@@ -65,7 +65,7 @@ class Popup extends Component{
     let transitionName = props.maskTransitionName;
     const animation = props.maskAnimation;
     if (!transitionName && animation) {
-      transitionName = `${props.prefixCls}-${animation}`;
+      transitionName = `${props.clsPrefix}-${animation}`;
     }
     return transitionName;
   }
@@ -74,21 +74,21 @@ class Popup extends Component{
     const props = this.props;
     let transitionName = props.transitionName;
     if (!transitionName && props.animation) {
-      transitionName = `${props.prefixCls}-${props.animation}`;
+      transitionName = `${props.clsPrefix}-${props.animation}`;
     }
     return transitionName;
   }
 
   getClassName(currentAlignClassName) {
-    return `${this.props.prefixCls} ${this.props.className} ${currentAlignClassName}`;
+    return `${this.props.clsPrefix} ${this.props.className} ${currentAlignClassName}`;
   }
 
   getPopupElement() {
     const props = this.props;
-    const { align, style, visible, prefixCls, destroyPopupOnHide } = props;
+    const { align, style, visible, clsPrefix, destroyPopupOnHide } = props;
     const className = this.getClassName(this.currentAlignClassName ||
       props.getClassNameFromAlign(align));
-    const hiddenClassName = `${prefixCls}-hidden`;
+    const hiddenClassName = `${clsPrefix}-hidden`;
     if (!visible) {
       this.currentAlignClassName = null;
     }
@@ -98,7 +98,7 @@ class Popup extends Component{
     };
     const popupInnerProps = {
       className,
-      prefixCls,
+      clsPrefix,
       ref: 'popup',
       onMouseEnter: props.onMouseEnter,
       onMouseLeave: props.onMouseLeave,
@@ -174,8 +174,8 @@ class Popup extends Component{
         <LazyRenderBox
           style={this.getZIndexStyle()}
           key="mask"
-          className={`${props.prefixCls}-mask`}
-          hiddenClassName={`${props.prefixCls}-mask-hidden`}
+          className={`${props.clsPrefix}-mask`}
+          hiddenClassName={`${props.clsPrefix}-mask-hidden`}
           visible={props.visible}
         />
       );
