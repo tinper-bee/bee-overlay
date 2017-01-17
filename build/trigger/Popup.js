@@ -123,11 +123,11 @@ var Popup = function (_Component) {
 
   Popup.prototype.getPopupElement = function getPopupElement() {
     var props = this.props;
-    var align = props.align,
-        style = props.style,
-        visible = props.visible,
-        clsPrefix = props.clsPrefix,
-        destroyPopupOnHide = props.destroyPopupOnHide;
+    var align = props.align;
+    var style = props.style;
+    var visible = props.visible;
+    var clsPrefix = props.clsPrefix;
+    var destroyPopupOnHide = props.destroyPopupOnHide;
 
     var className = this.getClassName(this.currentAlignClassName || props.getClassNameFromAlign(align));
     var hiddenClassName = clsPrefix + '-hidden';

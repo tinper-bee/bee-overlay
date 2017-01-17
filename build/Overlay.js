@@ -20,7 +20,7 @@ var _BaseOverlay2 = _interopRequireDefault(_BaseOverlay);
 
 var _tinperBeeCore = require('tinper-bee-core');
 
-var _Fade = require('./Fade');
+var _Fade = require('bee-transition/build/Fade');
 
 var _Fade2 = _interopRequireDefault(_Fade);
 
@@ -109,10 +109,11 @@ var Overlay = function (_Component) {
   }
 
   Overlay.prototype.render = function render() {
-    var _props = this.props,
-        animation = _props.animation,
-        children = _props.children,
-        props = _objectWithoutProperties(_props, ['animation', 'children']);
+    var _props = this.props;
+    var animation = _props.animation;
+    var children = _props.children;
+
+    var props = _objectWithoutProperties(_props, ['animation', 'children']);
 
     var transition = animation === true ? _Fade2["default"] : animation || null;
 

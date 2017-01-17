@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import React, { cloneElement, PropTypes, Component } from 'react';
 import BaseOverlay from './BaseOverlay';
 import { elementType } from 'tinper-bee-core';
-import Fade from './Fade';
+import Fade from 'bee-transition/build/Fade';
 
 
 const propTypes = {
