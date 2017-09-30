@@ -14,6 +14,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -48,24 +52,24 @@ var propTypes = {
   /**
    * 要设置定位的元素
    */
-  target: _react.PropTypes.oneOfType([_tinperBeeCore.componentOrElement, _react.PropTypes.func]),
+  target: _propTypes2["default"].oneOfType([_tinperBeeCore.componentOrElement, _propTypes2["default"].func]),
 
   /**
    * 存放的容器元素
    */
-  container: _react.PropTypes.oneOfType([_tinperBeeCore.componentOrElement, _react.PropTypes.func]),
+  container: _propTypes2["default"].oneOfType([_tinperBeeCore.componentOrElement, _propTypes2["default"].func]),
   /**
    * 容器padding值
    */
-  containerPadding: _react.PropTypes.number,
+  containerPadding: _propTypes2["default"].number,
   /**
    * 位置设置
    */
-  placement: _react.PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
   /**
    * 是否需要更新位置
    */
-  shouldUpdatePosition: _react.PropTypes.bool
+  shouldUpdatePosition: _propTypes2["default"].bool
 };
 
 var defaultProps = {
@@ -113,7 +117,8 @@ var Position = function (_Component) {
   Position.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
     if (this.needsFlush) {
       this.needsFlush = false;
-      this.maybeUpdatePosition(this.props.placement !== prevProps.placement);
+
+      this.maybeUpdatePosition();
     }
   };
   /**
@@ -135,7 +140,6 @@ var Position = function (_Component) {
 
   Position.prototype.maybeUpdatePosition = function maybeUpdatePosition(placementChanged) {
     var target = this.getTarget();
-
     if (!this.props.shouldUpdatePosition && target === this.lastTarget && !placementChanged) {
       return;
     }

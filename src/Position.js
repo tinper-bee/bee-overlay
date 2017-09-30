@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import React, { cloneElement, PropTypes, Component } from 'react';
+import React, { cloneElement, Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { componentOrElement } from 'tinper-bee-core';
 
@@ -78,7 +79,8 @@ class Position extends Component {
   componentDidUpdate(prevProps) {
     if (this.needsFlush) {
       this.needsFlush = false;
-      this.maybeUpdatePosition(this.props.placement !== prevProps.placement);
+
+      this.maybeUpdatePosition();
     }
   }
 /**
@@ -95,7 +97,6 @@ class Position extends Component {
  */
   maybeUpdatePosition(placementChanged) {
     const target = this.getTarget();
-
     if (
       !this.props.shouldUpdatePosition &&
       target === this.lastTarget &&

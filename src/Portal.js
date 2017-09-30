@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import ownerDocument from './utils/ownerDocument';
 import getContainer from './utils/getContainer';
 import { componentOrElement } from 'tinper-bee-core';

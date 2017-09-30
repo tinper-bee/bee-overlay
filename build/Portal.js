@@ -12,6 +12,10 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _ownerDocument = require('./utils/ownerDocument');
 
 var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
@@ -36,7 +40,7 @@ var propTypes = {
   /**
    * 存放子组件的容器
    */
-  container: _react.PropTypes.oneOfType([_tinperBeeCore.componentOrElement, _react.PropTypes.func])
+  container: _propTypes2["default"].oneOfType([_tinperBeeCore.componentOrElement, _propTypes2["default"].func])
 };
 
 var defaultProps = {};

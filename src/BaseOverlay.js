@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Portal from './Portal';
 import Position from './Position';
 import RootCloseWrapper from './RootCloseWrapper';
@@ -114,6 +115,8 @@ class BaseOverlay extends Component {
       , placement
       , shouldUpdatePosition
       , rootClose
+      , positionLeft
+      , positionTop
       , children
       , transition: Transition
       , ...props } = this.props;
@@ -132,10 +135,12 @@ class BaseOverlay extends Component {
     // which the other wrappers don't forward correctly.
     child = (
       <Position
-      {...{
+      {... {
          container,
          containerPadding,
          target,
+         positionLeft,
+         positionTop,
          placement,
          shouldUpdatePosition}}>
         {child}

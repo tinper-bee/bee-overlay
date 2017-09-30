@@ -11,6 +11,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _warning = require('warning');
 
 var _warning2 = _interopRequireDefault(_warning);
@@ -74,62 +78,62 @@ var propTypes = _extends({}, _Portal2["default"].propTypes, {
   /**
    * 是否显示
    */
-  show: _react.PropTypes.bool,
+  show: _propTypes2["default"].bool,
 
   /**
    * 容器
    */
-  container: _react.PropTypes.oneOfType([_tinperBeeCore.componentOrElement, _react.PropTypes.func]),
+  container: _propTypes2["default"].oneOfType([_tinperBeeCore.componentOrElement, _propTypes2["default"].func]),
 
   /**
    * 当模态框打开时的钩子函数
    */
-  onShow: _react.PropTypes.func,
+  onShow: _propTypes2["default"].func,
 
   /**
    * 当show参数为false时触发的模态框关闭时的钩子函数
    */
-  onHide: _react.PropTypes.func,
+  onHide: _propTypes2["default"].func,
 
   /**
    * 是否包含背景
    */
-  backdrop: _react.PropTypes.oneOfType([_react.PropTypes.bool, _react.PropTypes.oneOf(['static'])]),
+  backdrop: _propTypes2["default"].oneOfType([_propTypes2["default"].bool, _propTypes2["default"].oneOf(['static'])]),
 
   /**
    *返回背景组件的函数
    */
-  renderBackdrop: _react.PropTypes.func,
+  renderBackdrop: _propTypes2["default"].func,
 
   /**
    * 设置esc键特殊钩子函数
    */
-  onEscapeKeyUp: _react.PropTypes.func,
+  onEscapeKeyUp: _propTypes2["default"].func,
 
   /**
    * 当点击背景时触发的函数
    */
-  onBackdropClick: _react.PropTypes.func,
+  onBackdropClick: _propTypes2["default"].func,
 
   /**
    * 背景的style
    */
-  backdropStyle: _react.PropTypes.object,
+  backdropStyle: _propTypes2["default"].object,
 
   /**
    * 背景的class
    */
-  backdropClassName: _react.PropTypes.string,
+  backdropClassName: _propTypes2["default"].string,
 
   /**
    *容器的class
    */
-  containerClassName: _react.PropTypes.string,
+  containerClassName: _propTypes2["default"].string,
 
   /**
    * 按esc键是否关闭模态框
    */
-  keyboard: _react.PropTypes.bool,
+  keyboard: _propTypes2["default"].bool,
 
   /**
    * 动画组件
@@ -139,57 +143,57 @@ var propTypes = _extends({}, _Portal2["default"].propTypes, {
   /**
    * 设置动画超时时间
    */
-  dialogTransitionTimeout: _react.PropTypes.number,
+  dialogTransitionTimeout: _propTypes2["default"].number,
 
   /**
    * 设置背景动画超时时间
    */
-  backdropTransitionTimeout: _react.PropTypes.number,
+  backdropTransitionTimeout: _propTypes2["default"].number,
 
   /**
    * 是否自动设置焦点
    */
-  autoFocus: _react.PropTypes.bool,
+  autoFocus: _propTypes2["default"].bool,
 
   /**
    * 防止焦点离开模态框
    */
-  enforceFocus: _react.PropTypes.bool,
+  enforceFocus: _propTypes2["default"].bool,
 
   /**
    * 模态框进入时的钩子函数
    */
-  onEnter: _react.PropTypes.func,
+  onEnter: _propTypes2["default"].func,
 
   /**
    * 模态框开始进入时的钩子函数
    */
-  onEntering: _react.PropTypes.func,
+  onEntering: _propTypes2["default"].func,
 
   /**
    * 模态框进入后的钩子函数
    */
-  onEntered: _react.PropTypes.func,
+  onEntered: _propTypes2["default"].func,
 
   /**
    * 模态框退出时的钩子函数
    */
-  onExit: _react.PropTypes.func,
+  onExit: _propTypes2["default"].func,
 
   /**
    * 模态框开始退出时的钩子函数
    */
-  onExiting: _react.PropTypes.func,
+  onExiting: _propTypes2["default"].func,
 
   /**
    * 模态框推出后的钩子函数
    */
-  onExited: _react.PropTypes.func,
+  onExited: _propTypes2["default"].func,
 
   /**
    *管理model状态的实例
    */
-  manager: _react.PropTypes.object.isRequired
+  manager: _propTypes2["default"].object.isRequired
 });
 
 var defaultProps = {

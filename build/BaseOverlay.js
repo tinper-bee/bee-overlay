@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _Portal = require('./Portal');
 
 var _Portal2 = _interopRequireDefault(_Portal);
@@ -41,19 +45,19 @@ var propTypes = _extends({}, _Portal2["default"].propTypes, _Position2["default"
   /**
    * 是否显示
    */
-  show: _react.PropTypes.bool,
+  show: _propTypes2["default"].bool,
 
   /**
    * 点击其他地方，是否隐藏overlay
    */
-  rootClose: _react.PropTypes.bool,
+  rootClose: _propTypes2["default"].bool,
 
   /**
    * 当rootClose为true的时候，触发的隐藏方法
    * @type func
    */
   onHide: function onHide(props) {
-    var propType = _react.PropTypes.func;
+    var propType = _propTypes2["default"].func;
     if (props.rootClose) {
       propType = propType.isRequired;
     }
@@ -69,37 +73,37 @@ var propTypes = _extends({}, _Portal2["default"].propTypes, _Position2["default"
   /**
    * 过渡动画组件
    */
-  transition: _react.PropTypes.oneOfType([_tinperBeeCore.elementType, _react.PropTypes.func]),
+  transition: _propTypes2["default"].oneOfType([_tinperBeeCore.elementType, _propTypes2["default"].func]),
 
   /**
    * overlay添加动画前的钩子函数
    */
-  onEnter: _react.PropTypes.func,
+  onEnter: _propTypes2["default"].func,
 
   /**
    * 开始动画的钩子函数
    */
-  onEntering: _react.PropTypes.func,
+  onEntering: _propTypes2["default"].func,
 
   /**
    * 渲染之后的钩子函数
    */
-  onEntered: _react.PropTypes.func,
+  onEntered: _propTypes2["default"].func,
 
   /**
    * 关闭开始时的钩子函数
    */
-  onExit: _react.PropTypes.func,
+  onExit: _propTypes2["default"].func,
 
   /**
    * 关闭时的钩子函数
    */
-  onExiting: _react.PropTypes.func,
+  onExiting: _propTypes2["default"].func,
 
   /**
    * 关闭后的钩子函数
    */
-  onExited: _react.PropTypes.func
+  onExited: _propTypes2["default"].func
 });
 
 function noop() {}
@@ -153,9 +157,11 @@ var BaseOverlay = function (_Component) {
         placement = _props2.placement,
         shouldUpdatePosition = _props2.shouldUpdatePosition,
         rootClose = _props2.rootClose,
+        positionLeft = _props2.positionLeft,
+        positionTop = _props2.positionTop,
         children = _props2.children,
         Transition = _props2.transition,
-        props = _objectWithoutProperties(_props2, ['container', 'containerPadding', 'target', 'placement', 'shouldUpdatePosition', 'rootClose', 'children', 'transition']);
+        props = _objectWithoutProperties(_props2, ['container', 'containerPadding', 'target', 'placement', 'shouldUpdatePosition', 'rootClose', 'positionLeft', 'positionTop', 'children', 'transition']);
 
     // Don't un-render the overlay while it's transitioning out.
 
@@ -176,6 +182,8 @@ var BaseOverlay = function (_Component) {
         container: container,
         containerPadding: containerPadding,
         target: target,
+        positionLeft: positionLeft,
+        positionTop: positionTop,
         placement: placement,
         shouldUpdatePosition: shouldUpdatePosition },
       child

@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -47,35 +51,35 @@ function returnEmptyString() {
 var ALL_HANDLERS = ['onClick', 'onMouseDown', 'onTouchStart', 'onMouseEnter', 'onMouseLeave', 'onFocus', 'onBlur'];
 
 var propTypes = {
-  children: _react.PropTypes.any,
-  action: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.arrayOf(_react.PropTypes.string)]),
-  showAction: _react.PropTypes.any,
-  hideAction: _react.PropTypes.any,
-  getPopupClassNameFromAlign: _react.PropTypes.any,
-  onPopupVisibleChange: _react.PropTypes.func,
-  afterPopupVisibleChange: _react.PropTypes.func,
-  popup: _react.PropTypes.oneOfType([_react.PropTypes.node, _react.PropTypes.func]).isRequired,
-  popupStyle: _react.PropTypes.object,
-  clsPrefix: _react.PropTypes.string,
-  popupClassName: _react.PropTypes.string,
-  popupPlacement: _react.PropTypes.string,
-  builtinPlacements: _react.PropTypes.object,
-  popupTransitionName: _react.PropTypes.string,
-  popupAnimation: _react.PropTypes.any,
-  mouseEnterDelay: _react.PropTypes.number,
-  mouseLeaveDelay: _react.PropTypes.number,
-  zIndex: _react.PropTypes.number,
-  focusDelay: _react.PropTypes.number,
-  blurDelay: _react.PropTypes.number,
-  getPopupContainer: _react.PropTypes.func,
-  destroyPopupOnHide: _react.PropTypes.bool,
-  mask: _react.PropTypes.bool,
-  maskClosable: _react.PropTypes.bool,
-  onPopupAlign: _react.PropTypes.func,
-  popupAlign: _react.PropTypes.object,
-  popupVisible: _react.PropTypes.bool,
-  maskTransitionName: _react.PropTypes.string,
-  maskAnimation: _react.PropTypes.string
+  children: _propTypes2["default"].any,
+  action: _propTypes2["default"].oneOfType([_propTypes2["default"].string, _propTypes2["default"].arrayOf(_propTypes2["default"].string)]),
+  showAction: _propTypes2["default"].any,
+  hideAction: _propTypes2["default"].any,
+  getPopupClassNameFromAlign: _propTypes2["default"].any,
+  onPopupVisibleChange: _propTypes2["default"].func,
+  afterPopupVisibleChange: _propTypes2["default"].func,
+  popup: _propTypes2["default"].oneOfType([_propTypes2["default"].node, _propTypes2["default"].func]).isRequired,
+  popupStyle: _propTypes2["default"].object,
+  clsPrefix: _propTypes2["default"].string,
+  popupClassName: _propTypes2["default"].string,
+  popupPlacement: _propTypes2["default"].string,
+  builtinPlacements: _propTypes2["default"].object,
+  popupTransitionName: _propTypes2["default"].string,
+  popupAnimation: _propTypes2["default"].any,
+  mouseEnterDelay: _propTypes2["default"].number,
+  mouseLeaveDelay: _propTypes2["default"].number,
+  zIndex: _propTypes2["default"].number,
+  focusDelay: _propTypes2["default"].number,
+  blurDelay: _propTypes2["default"].number,
+  getPopupContainer: _propTypes2["default"].func,
+  destroyPopupOnHide: _propTypes2["default"].bool,
+  mask: _propTypes2["default"].bool,
+  maskClosable: _propTypes2["default"].bool,
+  onPopupAlign: _propTypes2["default"].func,
+  popupAlign: _propTypes2["default"].object,
+  popupVisible: _propTypes2["default"].bool,
+  maskTransitionName: _propTypes2["default"].string,
+  maskAnimation: _propTypes2["default"].string
 };
 
 var defaultProps = {
@@ -110,9 +114,8 @@ var Trigger = function (_Component) {
 
     _this.state = {
       popupVisible: !!_this.props.popupVisible || _this.props.defaultPopupVisible
-    };
-    //this.removeContainer = this.removeContainer.bind(this);
-    _this.getContainer = _this.getContainer.bind(_this);
+      //this.removeContainer = this.removeContainer.bind(this);
+    };_this.getContainer = _this.getContainer.bind(_this);
     _this.renderComponent = _this.renderComponent.bind(_this);
     _this.isVisible = _this.isVisible.bind(_this);
 

@@ -10,6 +10,10 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -32,50 +36,50 @@ var propTypes = {
   /**
    * Show the component; triggers the fade in or fade out animation
    */
-  "in": _react2["default"].PropTypes.bool,
+  "in": _propTypes2["default"].bool,
 
   /**
    * Unmount the component (remove it from the DOM) when it is faded out
    */
-  unmountOnExit: _react2["default"].PropTypes.bool,
+  unmountOnExit: _propTypes2["default"].bool,
 
   /**
    * Run the fade in animation when the component mounts, if it is initially
    * shown
    */
-  transitionAppear: _react2["default"].PropTypes.bool,
+  transitionAppear: _propTypes2["default"].bool,
 
   /**
    * Duration of the fade animation in milliseconds, to ensure that finishing
    * callbacks are fired even if the original browser transition end events are
    * canceled
    */
-  timeout: _react2["default"].PropTypes.number,
+  timeout: _propTypes2["default"].number,
 
   /**
    * Callback fired before the component fades in
    */
-  onEnter: _react2["default"].PropTypes.func,
+  onEnter: _propTypes2["default"].func,
   /**
    * Callback fired after the component starts to fade in
    */
-  onEntering: _react2["default"].PropTypes.func,
+  onEntering: _propTypes2["default"].func,
   /**
    * Callback fired after the has component faded in
    */
-  onEntered: _react2["default"].PropTypes.func,
+  onEntered: _propTypes2["default"].func,
   /**
    * Callback fired before the component fades out
    */
-  onExit: _react2["default"].PropTypes.func,
+  onExit: _propTypes2["default"].func,
   /**
    * Callback fired after the component starts to fade out
    */
-  onExiting: _react2["default"].PropTypes.func,
+  onExiting: _propTypes2["default"].func,
   /**
    * Callback fired after the component has faded out
    */
-  onExited: _react2["default"].PropTypes.func
+  onExited: _propTypes2["default"].func
 };
 
 var defaultProps = {

@@ -14,6 +14,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _BaseOverlay = require('./BaseOverlay');
 
 var _BaseOverlay2 = _interopRequireDefault(_BaseOverlay);
@@ -41,20 +45,20 @@ var propTypes = _extends({}, _BaseOverlay2["default"].propTypes, {
   /**
    * 是否显示
    */
-  show: _react.PropTypes.bool,
+  show: _propTypes2["default"].bool,
   /**
    * 是
    */
-  rootClose: _react.PropTypes.bool,
+  rootClose: _propTypes2["default"].bool,
   /**
    * 当点击rootClose触发close时的回调函数
    */
-  onHide: _react.PropTypes.func,
+  onHide: _propTypes2["default"].func,
 
   /**
    * 使用动画
    */
-  animation: _react2["default"].PropTypes.oneOfType([_tinperBeeCore.elementType, _react.PropTypes.func]),
+  animation: _react2["default"].PropTypes.oneOfType([_tinperBeeCore.elementType, _propTypes2["default"].func]),
 
   /**
    * Callback fired before the Overlay transitions in

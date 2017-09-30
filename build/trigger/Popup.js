@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -41,17 +45,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
 var propTypes = {
-  visible: _react.PropTypes.bool,
-  style: _react.PropTypes.object,
-  getClassNameFromAlign: _react.PropTypes.func,
-  onAlign: _react.PropTypes.func,
-  getRootDomNode: _react.PropTypes.func,
-  onMouseEnter: _react.PropTypes.func,
-  align: _react.PropTypes.any,
-  destroyPopupOnHide: _react.PropTypes.bool,
-  className: _react.PropTypes.string,
-  clsPrefix: _react.PropTypes.string,
-  onMouseLeave: _react.PropTypes.func
+  visible: _propTypes2["default"].bool,
+  style: _propTypes2["default"].object,
+  getClassNameFromAlign: _propTypes2["default"].func,
+  onAlign: _propTypes2["default"].func,
+  getRootDomNode: _propTypes2["default"].func,
+  onMouseEnter: _propTypes2["default"].func,
+  align: _propTypes2["default"].any,
+  destroyPopupOnHide: _propTypes2["default"].bool,
+  className: _propTypes2["default"].string,
+  clsPrefix: _propTypes2["default"].string,
+  onMouseLeave: _propTypes2["default"].func
 };
 
 var Popup = function (_Component) {

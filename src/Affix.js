@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import getHeight from 'dom-helpers/query/height';
 import getOffset from 'dom-helpers/query/offset';
 import getOffsetParent from 'dom-helpers/query/offsetParent';
@@ -17,75 +18,75 @@ const propTypes = {
   /**
    * 到屏幕顶部偏移的像素
    */
-  offsetTop: React.PropTypes.number,
+  offsetTop: PropTypes.number,
 
   /**
    * 添加时,到窗口的偏移像素
    */
-  viewportOffsetTop: React.PropTypes.number,
+  viewportOffsetTop: PropTypes.number,
 
   /**
    * 到屏幕的底部的偏移像素
    */
-  offsetBottom: React.PropTypes.number,
+  offsetBottom: PropTypes.number,
 
   /**
    * 在顶部时添加的class
    */
-  topClassName: React.PropTypes.string,
+  topClassName: PropTypes.string,
 
   /**
    * 在顶部添加的style
    */
-  topStyle: React.PropTypes.object,
+  topStyle: PropTypes.object,
 
   /**
    * 当固定定位时，添加的class
    */
-  affixClassName: React.PropTypes.string,
+  affixClassName: PropTypes.string,
   /**
    * 当固定定位时，添加的style
    */
-  affixStyle: React.PropTypes.object,
+  affixStyle: PropTypes.object,
 
   /**
    * 在底部时添加的class
    */
-  bottomClassName: React.PropTypes.string,
+  bottomClassName: PropTypes.string,
 
   /**
    * 在底部时添加的style
    */
-  bottomStyle: React.PropTypes.object,
+  bottomStyle: PropTypes.object,
 
   /**
    * 在affixstyle和affixClassName添加之前的钩子函数
    */
-  onAffix: React.PropTypes.func,
+  onAffix: PropTypes.func,
   /**
    * 在affixstyle和affixClassName添加之后的钩子函数
    */
-  onAffixed: React.PropTypes.func,
+  onAffixed: PropTypes.func,
 
   /**
    * 在topStyle和topClassName添加之前的钩子函数
    */
-  onAffixTop: React.PropTypes.func,
+  onAffixTop: PropTypes.func,
 
   /**
    * 在topStyle和topClassName添加之后的钩子函数
    */
-  onAffixedTop: React.PropTypes.func,
+  onAffixedTop: PropTypes.func,
 
   /**
    * 在bottomStyle和bottomClassName添加之前的钩子函数
    */
-  onAffixBottom: React.PropTypes.func,
+  onAffixBottom: PropTypes.func,
 
   /**
    * 在bottomStyle和bottomClassName添加之后的钩子函数
    */
-  onAffixedBottom: React.PropTypes.func
+  onAffixedBottom: PropTypes.func
 };
 
 const defaultProps = {

@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _LazyRenderBox = require('./LazyRenderBox');
 
 var _LazyRenderBox2 = _interopRequireDefault(_LazyRenderBox);
@@ -23,12 +27,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
 var propTypes = {
-  hiddenClassName: _react.PropTypes.string,
-  className: _react.PropTypes.string,
-  clsPrefix: _react.PropTypes.string,
-  onMouseEnter: _react.PropTypes.func,
-  onMouseLeave: _react.PropTypes.func,
-  children: _react.PropTypes.any
+  hiddenClassName: _propTypes2["default"].string,
+  className: _propTypes2["default"].string,
+  clsPrefix: _propTypes2["default"].string,
+  onMouseEnter: _propTypes2["default"].func,
+  onMouseLeave: _propTypes2["default"].func,
+  children: _propTypes2["default"].any
 };
 
 var PopupInner = function (_Component) {

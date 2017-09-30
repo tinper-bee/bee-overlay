@@ -11,6 +11,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -52,64 +56,64 @@ var propTypes = {
   /**
    * 是否触发动画
    */
-  "in": _react.PropTypes.bool,
+  "in": _propTypes2["default"].bool,
 
   /**
    * 不显示的时候是否移除组件
    */
-  unmountOnExit: _react.PropTypes.bool,
+  unmountOnExit: _propTypes2["default"].bool,
 
   /**
    * 如果设置为默认显示，挂载时显示动画
    */
-  transitionAppear: _react.PropTypes.bool,
+  transitionAppear: _propTypes2["default"].bool,
 
   /**
    * 设置超时时间，防止出现问题，可设置为>=动画时间
    */
-  timeout: _react.PropTypes.number,
+  timeout: _propTypes2["default"].number,
 
   /**
    * 退出组件时添加的class
    */
-  exitedClassName: _react.PropTypes.string,
+  exitedClassName: _propTypes2["default"].string,
   /**
    * 退出组件中添加的class
    */
-  exitingClassName: _react.PropTypes.string,
+  exitingClassName: _propTypes2["default"].string,
   /**
    * 进入动画后添加的class
    */
-  enteredClassName: _react.PropTypes.string,
+  enteredClassName: _propTypes2["default"].string,
   /**
    * 进入动画时添加的class
    */
-  enteringClassName: _react.PropTypes.string,
+  enteringClassName: _propTypes2["default"].string,
 
   /**
    * 进入动画开始时的钩子函数
    */
-  onEnter: _react.PropTypes.func,
+  onEnter: _propTypes2["default"].func,
   /**
    * 进入动画中的钩子函数
    */
-  onEntering: _react.PropTypes.func,
+  onEntering: _propTypes2["default"].func,
   /**
    * 进入动画后的钩子函数
    */
-  onEntered: _react.PropTypes.func,
+  onEntered: _propTypes2["default"].func,
   /**
    * 退出动画开始时的钩子函数
    */
-  onExit: _react.PropTypes.func,
+  onExit: _propTypes2["default"].func,
   /**
    * 退出动画中的钩子函数
    */
-  onExiting: _react.PropTypes.func,
+  onExiting: _propTypes2["default"].func,
   /**
    * 退出动画后的钩子函数
    */
-  onExited: _react.PropTypes.func
+  onExited: _propTypes2["default"].func
 };
 
 function noop() {}

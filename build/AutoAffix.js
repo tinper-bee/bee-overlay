@@ -18,6 +18,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _tinperBeeCore = require('tinper-bee-core');
 
 var _Affix = require('./Affix');
@@ -60,11 +64,11 @@ var propTypes = _extends({}, _Affix2["default"].propTypes, {
   /**
    * 容器组件
    */
-  container: _react.PropTypes.oneOfType([_tinperBeeCore.componentOrElement, _react.PropTypes.func]),
+  container: _propTypes2["default"].oneOfType([_tinperBeeCore.componentOrElement, _propTypes2["default"].func]),
   /**
    * 是否自适应宽度
    */
-  autoWidth: _react.PropTypes.bool
+  autoWidth: _propTypes2["default"].bool
 });
 
 var defaultProps = {

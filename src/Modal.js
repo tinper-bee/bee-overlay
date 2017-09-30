@@ -1,5 +1,6 @@
 /*eslint-disable react/prop-types */
-import React, { Component, cloneElement, PropTypes } from 'react';
+import React, { Component, cloneElement } from 'react';
+import PropTypes from 'prop-types';
 import warning from 'warning';
 import { elementType, componentOrElement } from 'tinper-bee-core';
 import Portal from './Portal';

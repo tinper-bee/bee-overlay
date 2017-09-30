@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -35,16 +39,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
 var propTypes = {
-  onRootClose: _react.PropTypes.func,
-  children: _react.PropTypes.element,
+  onRootClose: _propTypes2["default"].func,
+  children: _propTypes2["default"].element,
   /**
    * 是否禁用
    */
-  disabled: _react.PropTypes.bool,
+  disabled: _propTypes2["default"].bool,
   /**
    * 触发事件选择
    */
-  event: _react.PropTypes.oneOf(['click', 'mousedown'])
+  event: _propTypes2["default"].oneOf(['click', 'mousedown'])
 };
 
 var defaultProps = {

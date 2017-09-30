@@ -1,4 +1,5 @@
-import React, { PropTypes,Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM, { findDOMNode } from 'react-dom';
 import contains from 'dom-helpers/query/contains';
 import { addEventListener } from 'tinper-bee-core';

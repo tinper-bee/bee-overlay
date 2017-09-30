@@ -10,6 +10,10 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _height = require('dom-helpers/query/height');
 
 var _height2 = _interopRequireDefault(_height);
@@ -68,75 +72,75 @@ var propTypes = {
   /**
    * 到屏幕顶部偏移的像素
    */
-  offsetTop: _react2["default"].PropTypes.number,
+  offsetTop: _propTypes2["default"].number,
 
   /**
    * 添加时,到窗口的偏移像素
    */
-  viewportOffsetTop: _react2["default"].PropTypes.number,
+  viewportOffsetTop: _propTypes2["default"].number,
 
   /**
    * 到屏幕的底部的偏移像素
    */
-  offsetBottom: _react2["default"].PropTypes.number,
+  offsetBottom: _propTypes2["default"].number,
 
   /**
    * 在顶部时添加的class
    */
-  topClassName: _react2["default"].PropTypes.string,
+  topClassName: _propTypes2["default"].string,
 
   /**
    * 在顶部添加的style
    */
-  topStyle: _react2["default"].PropTypes.object,
+  topStyle: _propTypes2["default"].object,
 
   /**
    * 当固定定位时，添加的class
    */
-  affixClassName: _react2["default"].PropTypes.string,
+  affixClassName: _propTypes2["default"].string,
   /**
    * 当固定定位时，添加的style
    */
-  affixStyle: _react2["default"].PropTypes.object,
+  affixStyle: _propTypes2["default"].object,
 
   /**
    * 在底部时添加的class
    */
-  bottomClassName: _react2["default"].PropTypes.string,
+  bottomClassName: _propTypes2["default"].string,
 
   /**
    * 在底部时添加的style
    */
-  bottomStyle: _react2["default"].PropTypes.object,
+  bottomStyle: _propTypes2["default"].object,
 
   /**
    * 在affixstyle和affixClassName添加之前的钩子函数
    */
-  onAffix: _react2["default"].PropTypes.func,
+  onAffix: _propTypes2["default"].func,
   /**
    * 在affixstyle和affixClassName添加之后的钩子函数
    */
-  onAffixed: _react2["default"].PropTypes.func,
+  onAffixed: _propTypes2["default"].func,
 
   /**
    * 在topStyle和topClassName添加之前的钩子函数
    */
-  onAffixTop: _react2["default"].PropTypes.func,
+  onAffixTop: _propTypes2["default"].func,
 
   /**
    * 在topStyle和topClassName添加之后的钩子函数
    */
-  onAffixedTop: _react2["default"].PropTypes.func,
+  onAffixedTop: _propTypes2["default"].func,
 
   /**
    * 在bottomStyle和bottomClassName添加之前的钩子函数
    */
-  onAffixBottom: _react2["default"].PropTypes.func,
+  onAffixBottom: _propTypes2["default"].func,
 
   /**
    * 在bottomStyle和bottomClassName添加之后的钩子函数
    */
-  onAffixedBottom: _react2["default"].PropTypes.func
+  onAffixedBottom: _propTypes2["default"].func
 };
 
 var defaultProps = {

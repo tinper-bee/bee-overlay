@@ -1,6 +1,7 @@
 import getOffset from 'dom-helpers/query/offset';
 import requestAnimationFrame from 'dom-helpers/util/requestAnimationFrame';
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { componentOrElement } from 'tinper-bee-core';
 
 import Affix from './Affix';

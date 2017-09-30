@@ -1,6 +1,7 @@
 
 import classNames from 'classnames';
-import React, { cloneElement, PropTypes, Component } from 'react';
+import React, { cloneElement, Component } from 'react';
+import PropTypes from 'prop-types';
 import BaseOverlay from './BaseOverlay';
 import { elementType } from 'tinper-bee-core';
 import Fade from './Fade';

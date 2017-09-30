@@ -14,6 +14,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -56,73 +60,73 @@ function isOneOf(one, of) {
   return one === of;
 }
 
-var triggerType = _react.PropTypes.oneOf(['click', 'hover', 'focus']);
+var triggerType = _propTypes2["default"].oneOf(['click', 'hover', 'focus']);
 
 var propTypes = _extends({}, _Overlay2["default"].propTypes, {
 
   /**
   * 指定哪些操作或操作触发叠加层可见性
   */
-  trigger: _react.PropTypes.oneOfType([triggerType, _react.PropTypes.arrayOf(triggerType)]),
+  trigger: _propTypes2["default"].oneOfType([triggerType, _propTypes2["default"].arrayOf(triggerType)]),
 
   /**
    * 显示和隐藏覆盖一旦触发的毫秒延迟量
    */
-  delay: _react.PropTypes.number,
+  delay: _propTypes2["default"].number,
   /**
    * 触发后显示叠加层之前的延迟毫秒
    */
-  delayShow: _react.PropTypes.number,
+  delayShow: _propTypes2["default"].number,
   /**
    * 触发后隐藏叠加层的延迟毫秒
    */
-  delayHide: _react.PropTypes.number,
+  delayHide: _propTypes2["default"].number,
 
   // FIXME: This should be `defaultShow`.
   /**
    * 覆盖的初始可见性状态。对于更细微的可见性控制，请考虑直接使用覆盖组件。
    */
-  defaultOverlayShown: _react.PropTypes.bool,
+  defaultOverlayShown: _propTypes2["default"].bool,
 
   /**
    * 要覆盖在目标旁边的元素或文本。
    */
-  overlay: _react.PropTypes.node.isRequired,
+  overlay: _propTypes2["default"].node.isRequired,
 
   /**
    * @private
    */
-  onBlur: _react.PropTypes.func,
+  onBlur: _propTypes2["default"].func,
   /**
    * @private
    */
-  onClick: _react.PropTypes.func,
+  onClick: _propTypes2["default"].func,
   /**
    * @private
    */
-  onFocus: _react.PropTypes.func,
+  onFocus: _propTypes2["default"].func,
   /**
    * @private
    */
-  onMouseOut: _react.PropTypes.func,
+  onMouseOut: _propTypes2["default"].func,
   /**
    * @private
    */
-  onMouseOver: _react.PropTypes.func,
+  onMouseOver: _propTypes2["default"].func,
 
   // Overridden props from `<Overlay>`.
   /**
    * @private
    */
-  target: _react.PropTypes.oneOf([null]),
+  target: _propTypes2["default"].oneOf([null]),
   /**
   * @private
   */
-  onHide: _react.PropTypes.oneOf([null]),
+  onHide: _propTypes2["default"].oneOf([null]),
   /**
    * @private
    */
-  show: _react.PropTypes.oneOf([null])
+  show: _propTypes2["default"].oneOf([null])
 });
 
 var defaultProps = {
