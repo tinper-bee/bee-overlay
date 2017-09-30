@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Trigger = exports.Fade = exports.RootCloseWrapper = exports.OverlayTrigger = exports.Overlay = exports.Transition = exports.Position = exports.Portal = exports.BaseOverlay = exports.BaseModal = exports.AutoAffix = exports.Affix = undefined;
+exports.Trigger = exports.RootCloseWrapper = exports.OverlayTrigger = exports.Overlay = exports.Position = exports.Portal = exports.BaseOverlay = exports.BaseModal = exports.AutoAffix = exports.Affix = undefined;
 
 var _Affix2 = require('./Affix');
 
@@ -29,10 +29,6 @@ var _Position2 = require('./Position');
 
 var _Position3 = _interopRequireDefault(_Position2);
 
-var _Transition2 = require('./Transition');
-
-var _Transition3 = _interopRequireDefault(_Transition2);
-
 var _Overlay2 = require('./Overlay');
 
 var _Overlay3 = _interopRequireDefault(_Overlay2);
@@ -44,10 +40,6 @@ var _OverlayTrigger3 = _interopRequireDefault(_OverlayTrigger2);
 var _RootCloseWrapper2 = require('./RootCloseWrapper');
 
 var _RootCloseWrapper3 = _interopRequireDefault(_RootCloseWrapper2);
-
-var _Fade2 = require('./Fade');
-
-var _Fade3 = _interopRequireDefault(_Fade2);
 
 var _src = require('./src');
 
@@ -61,9 +53,7 @@ exports.BaseModal = _Modal2["default"];
 exports.BaseOverlay = _BaseOverlay3["default"];
 exports.Portal = _Portal3["default"];
 exports.Position = _Position3["default"];
-exports.Transition = _Transition3["default"];
 exports.Overlay = _Overlay3["default"];
 exports.OverlayTrigger = _OverlayTrigger3["default"];
 exports.RootCloseWrapper = _RootCloseWrapper3["default"];
-exports.Fade = _Fade3["default"];
 exports.Trigger = _src2["default"];

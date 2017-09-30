@@ -77,9 +77,7 @@
 |onFocus|焦点事件|function|-|
 |onMouseOut|鼠标离开事件|function|-|
 |onMouseOver|鼠标滑过事件|function|-|
-|target|当前触发叠加层的元素|function|-|
-|onHide|隐藏事件|function|-|
-|show|显示事件|function|-|
+
 
 - RootCloseWrapper 代理外部组件事件
 
