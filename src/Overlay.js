@@ -26,7 +26,7 @@ const propTypes = {
   /**
    * 使用动画
    */
-  animation: React.PropTypes.oneOfType([
+  animation: PropTypes.oneOfType([
     elementType,
     PropTypes.func
   ]),
@@ -34,37 +34,37 @@ const propTypes = {
   /**
    * Callback fired before the Overlay transitions in
    */
-  onEnter: React.PropTypes.func,
+  onEnter: PropTypes.func,
 
   /**
    * Callback fired as the Overlay begins to transition in
    */
-  onEntering: React.PropTypes.func,
+  onEntering: PropTypes.func,
 
   /**
    * Callback fired after the Overlay finishes transitioning in
    */
-  onEntered: React.PropTypes.func,
+  onEntered: PropTypes.func,
 
   /**
    * Callback fired right before the Overlay transitions out
    */
-  onExit: React.PropTypes.func,
+  onExit: PropTypes.func,
 
   /**
    * Callback fired as the Overlay begins to transition out
    */
-  onExiting: React.PropTypes.func,
+  onExiting: PropTypes.func,
 
   /**
    * Callback fired after the Overlay finishes transitioning out
    */
-  onExited: React.PropTypes.func,
+  onExited: PropTypes.func,
 
   /**
    * Sets the direction of the Overlay.
    */
-  placement: React.PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
 };
 
 const defaultProps = {

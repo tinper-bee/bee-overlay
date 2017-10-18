@@ -58,42 +58,42 @@ var propTypes = _extends({}, _BaseOverlay2["default"].propTypes, {
   /**
    * 使用动画
    */
-  animation: _react2["default"].PropTypes.oneOfType([_tinperBeeCore.elementType, _propTypes2["default"].func]),
+  animation: _propTypes2["default"].oneOfType([_tinperBeeCore.elementType, _propTypes2["default"].func]),
 
   /**
    * Callback fired before the Overlay transitions in
    */
-  onEnter: _react2["default"].PropTypes.func,
+  onEnter: _propTypes2["default"].func,
 
   /**
    * Callback fired as the Overlay begins to transition in
    */
-  onEntering: _react2["default"].PropTypes.func,
+  onEntering: _propTypes2["default"].func,
 
   /**
    * Callback fired after the Overlay finishes transitioning in
    */
-  onEntered: _react2["default"].PropTypes.func,
+  onEntered: _propTypes2["default"].func,
 
   /**
    * Callback fired right before the Overlay transitions out
    */
-  onExit: _react2["default"].PropTypes.func,
+  onExit: _propTypes2["default"].func,
 
   /**
    * Callback fired as the Overlay begins to transition out
    */
-  onExiting: _react2["default"].PropTypes.func,
+  onExiting: _propTypes2["default"].func,
 
   /**
    * Callback fired after the Overlay finishes transitioning out
    */
-  onExited: _react2["default"].PropTypes.func,
+  onExited: _propTypes2["default"].func,
 
   /**
    * Sets the direction of the Overlay.
    */
-  placement: _react2["default"].PropTypes.oneOf(['top', 'right', 'bottom', 'left'])
+  placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left'])
 });
 
 var defaultProps = {
