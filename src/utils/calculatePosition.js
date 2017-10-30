@@ -79,6 +79,7 @@ export default function calculatePosition(
       positionTop, overlayHeight, container, padding
     );
 
+
     positionTop += topDelta;
     arrowOffsetTop = 50 * (1 - 2 * topDelta / overlayHeight) + '%';
     arrowOffsetLeft = void 0;

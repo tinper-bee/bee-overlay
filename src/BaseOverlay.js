@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import Portal from './Portal';
 import Position from './Position';
 import RootCloseWrapper from './RootCloseWrapper';
 import { elementType } from 'tinper-bee-core';
 
+const isReact16 = ReactDOM.createPortal !== undefined;
 
 const propTypes = {
-    ...Portal.propTypes,
     ...Position.propTypes,
 
     /**
@@ -177,11 +178,16 @@ class BaseOverlay extends Component {
       );
     }
 
-    return (
-      <Portal container={container}>
-        {child}
-      </Portal>
+    if(isReact16){
+        return child;
+    }else{
+        return (
+            <Portal container={container}>
+            {child}
+            </Portal>
     );
+    }
+
   }
 
 

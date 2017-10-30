@@ -36,6 +36,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
+var isReact16 = _reactDom2["default"].createPortal !== undefined;
+var createPortal = isReact16 ? _reactDom2["default"].createPortal : _reactDom2["default"].unstable_renderSubtreeIntoContainer;
+
 var propTypes = {
   /**
    * 存放子组件的容器
@@ -63,17 +66,32 @@ var Portal = function (_Component) {
     _this.unmountOverlayTarget = _this.unmountOverlayTarget.bind(_this);
     _this.renderOverlay = _this.renderOverlay.bind(_this);
     _this.unrenderOverlay = _this.unrenderOverlay.bind(_this);
+
+    _this.overlayTarget = isReact16 ? document.createElement('div') : null;
     return _this;
   }
 
   Portal.prototype.componentDidMount = function componentDidMount() {
-    this.renderOverlay();
+    if (isReact16) {
+      this.portalContainerNode = (0, _getContainer2["default"])(this.props.container, (0, _ownerDocument2["default"])(this).body);
+      this.portalContainerNode.appendChild(this.overlayTarget);
+    } else {
+      this.renderOverlay();
+    }
 
     this.mounted = true;
   };
 
   Portal.prototype.componentDidUpdate = function componentDidUpdate() {
-    this.renderOverlay();
+    if (isReact16) {
+      var overlay = !this.props.children ? null : _react2["default"].Children.only(this.props.children);
+      if (overlay === null) {
+        this.unrenderOverlay();
+        this.unmountOverlayTarget();
+      } else {}
+    } else {
+      this.renderOverlay();
+    }
   };
   //this._overlayTarget为当前的要添加的子组件， this._portalContainerNode要添加组件的容器元素
 
@@ -158,13 +176,19 @@ var Portal = function (_Component) {
 
   Portal.prototype.unrenderOverlay = function unrenderOverlay() {
     if (this.overlayTarget) {
-      _reactDom2["default"].unmountComponentAtNode(this.overlayTarget);
+      !isReact16 && _reactDom2["default"].unmountComponentAtNode(this.overlayTarget);
       this.overlayInstance = null;
     }
   };
 
   Portal.prototype.render = function render() {
-    return null;
+    if (!isReact16) {
+      return null;
+    }
+
+    var overlay = !this.props.children ? null : _react2["default"].Children.only(this.props.children);
+
+    return _reactDom2["default"].createPortal(overlay, this.overlayTarget);
   };
 
   return Portal;

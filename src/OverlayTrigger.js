@@ -3,10 +3,16 @@ import React, { cloneElement, Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import warning from 'warning';
+import Portal from './Portal';
 
 import Overlay from './Overlay';
 
 import createChainedFunction from './utils/createChainedFunction';
+
+const isReact16 = ReactDOM.createPortal !== undefined;
+const createPortal = isReact16
+    ? ReactDOM.createPortal
+    : ReactDOM.unstable_renderSubtreeIntoContainer;
 
 /**
  * 检查值是属于这个值，还是等于这个值
@@ -25,6 +31,7 @@ function isOneOf(one, of) {
 const triggerType = PropTypes.oneOf(['click', 'hover', 'focus']);
 
 const propTypes = {
+  ...Portal.propTypes,
   ...Overlay.propTypes,
 
    /**
@@ -126,15 +133,15 @@ class OverlayTrigger extends Component {
 
   componentDidMount() {
     this._mountNode = document.createElement('div');
-    this.renderOverlay();
+    !isReact16 && this.renderOverlay();
   }
 
   componentDidUpdate() {
-    this.renderOverlay();
+    !isReact16 && this.renderOverlay();
   }
 
   componentWillUnmount() {
-    ReactDOM.unmountComponentAtNode(this._mountNode);
+    !isReact16 && ReactDOM.unmountComponentAtNode(this._mountNode);
     this._mountNode = null;
 
     clearTimeout(this._hoverShowDelay);
@@ -238,8 +245,8 @@ class OverlayTrigger extends Component {
   }
 
   renderOverlay() {
-    ReactDOM.unstable_renderSubtreeIntoContainer(
-      this, this._overlay, this._mountNode
+      ReactDOM.unstable_renderSubtreeIntoContainer(
+          this, this._overlay, this._mountNode
     );
   }
 
@@ -305,7 +312,25 @@ class OverlayTrigger extends Component {
 
     this._overlay = this.makeOverlay(overlay, props);
 
-    return cloneElement(child, triggerProps);
+    if(!isReact16){
+        return cloneElement(child, triggerProps);
+    }
+
+    let portal = (
+        <Portal
+        container={props.container}>
+        { this._overlay }
+        </Portal>
+        )
+
+
+
+    return [
+        cloneElement(child, triggerProps),
+        portal
+    ]
+
+
   }
 }
 

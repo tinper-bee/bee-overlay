@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -40,7 +44,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
-var propTypes = _extends({}, _Portal2["default"].propTypes, _Position2["default"].propTypes, {
+var isReact16 = _reactDom2["default"].createPortal !== undefined;
+
+var propTypes = _extends({}, _Position2["default"].propTypes, {
 
   /**
    * 是否显示
@@ -224,11 +230,15 @@ var BaseOverlay = function (_Component) {
       );
     }
 
-    return _react2["default"].createElement(
-      _Portal2["default"],
-      { container: container },
-      child
-    );
+    if (isReact16) {
+      return child;
+    } else {
+      return _react2["default"].createElement(
+        _Portal2["default"],
+        { container: container },
+        child
+      );
+    }
   };
 
   return BaseOverlay;
