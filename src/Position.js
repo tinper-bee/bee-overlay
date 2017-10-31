@@ -153,11 +153,6 @@ class Position extends Component {
     return cloneElement(
       child,
       {
-        ...props,
-        ...arrowPosition,
-        // FIXME:不要使用props来转发下面两个参数
-        positionLeft,
-        positionTop,
         className: classNames(className, child.props.className),
         style: {
           ...child.props.style,

@@ -190,16 +190,13 @@ var Position = function (_Component) {
     delete props.shouldUpdatePosition;
 
     var child = _react2["default"].Children.only(children);
-    return (0, _react.cloneElement)(child, _extends({}, props, arrowPosition, {
-      // FIXME:不要使用props来转发下面两个参数
-      positionLeft: positionLeft,
-      positionTop: positionTop,
+    return (0, _react.cloneElement)(child, {
       className: (0, _classnames2["default"])(className, child.props.className),
       style: _extends({}, child.props.style, {
         left: positionLeft,
         top: positionTop
       })
-    }));
+    });
   };
 
   return Position;

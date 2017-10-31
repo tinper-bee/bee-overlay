@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -61,296 +61,298 @@ var createPortal = isReact16 ? _reactDom2["default"].createPortal : _reactDom2["
  * @returns {boolean}
  */
 function isOneOf(one, of) {
-  if (Array.isArray(of)) {
-    return of.indexOf(one) >= 0;
-  }
-  return one === of;
+    if (Array.isArray(of)) {
+        return of.indexOf(one) >= 0;
+    }
+    return one === of;
 }
 
 var triggerType = _propTypes2["default"].oneOf(['click', 'hover', 'focus']);
 
 var propTypes = _extends({}, _Portal2["default"].propTypes, _Overlay2["default"].propTypes, {
 
-  /**
-  * 指定哪些操作或操作触发叠加层可见性
-  */
-  trigger: _propTypes2["default"].oneOfType([triggerType, _propTypes2["default"].arrayOf(triggerType)]),
+    /**
+     * 指定哪些操作或操作触发叠加层可见性
+     */
+    trigger: _propTypes2["default"].oneOfType([triggerType, _propTypes2["default"].arrayOf(triggerType)]),
 
-  /**
-   * 显示和隐藏覆盖一旦触发的毫秒延迟量
-   */
-  delay: _propTypes2["default"].number,
-  /**
-   * 触发后显示叠加层之前的延迟毫秒
-   */
-  delayShow: _propTypes2["default"].number,
-  /**
-   * 触发后隐藏叠加层的延迟毫秒
-   */
-  delayHide: _propTypes2["default"].number,
+    /**
+     * 显示和隐藏覆盖一旦触发的毫秒延迟量
+     */
+    delay: _propTypes2["default"].number,
+    /**
+     * 触发后显示叠加层之前的延迟毫秒
+     */
+    delayShow: _propTypes2["default"].number,
+    /**
+     * 触发后隐藏叠加层的延迟毫秒
+     */
+    delayHide: _propTypes2["default"].number,
 
-  // FIXME: This should be `defaultShow`.
-  /**
-   * 覆盖的初始可见性状态。对于更细微的可见性控制，请考虑直接使用覆盖组件。
-   */
-  defaultOverlayShown: _propTypes2["default"].bool,
+    // FIXME: This should be `defaultShow`.
+    /**
+     * 覆盖的初始可见性状态。对于更细微的可见性控制，请考虑直接使用覆盖组件。
+     */
+    defaultOverlayShown: _propTypes2["default"].bool,
 
-  /**
-   * 要覆盖在目标旁边的元素或文本。
-   */
-  overlay: _propTypes2["default"].node.isRequired,
+    /**
+     * 要覆盖在目标旁边的元素或文本。
+     */
+    overlay: _propTypes2["default"].node.isRequired,
 
-  /**
-   * @private
-   */
-  onBlur: _propTypes2["default"].func,
-  /**
-   * @private
-   */
-  onClick: _propTypes2["default"].func,
-  /**
-   * @private
-   */
-  onFocus: _propTypes2["default"].func,
-  /**
-   * @private
-   */
-  onMouseOut: _propTypes2["default"].func,
-  /**
-   * @private
-   */
-  onMouseOver: _propTypes2["default"].func,
+    /**
+     * @private
+     */
+    onBlur: _propTypes2["default"].func,
+    /**
+     * @private
+     */
+    onClick: _propTypes2["default"].func,
+    /**
+     * @private
+     */
+    onFocus: _propTypes2["default"].func,
+    /**
+     * @private
+     */
+    onMouseOut: _propTypes2["default"].func,
+    /**
+     * @private
+     */
+    onMouseOver: _propTypes2["default"].func,
 
-  // Overridden props from `<Overlay>`.
-  /**
-   * @private
-   */
-  target: _propTypes2["default"].oneOf([null]),
-  /**
-  * @private
-  */
-  onHide: _propTypes2["default"].oneOf([null]),
-  /**
-   * @private
-   */
-  show: _propTypes2["default"].oneOf([null])
+    // Overridden props from `<Overlay>`.
+    /**
+     * @private
+     */
+    target: _propTypes2["default"].oneOf([null]),
+    /**
+     * @private
+     */
+    onHide: _propTypes2["default"].oneOf([null]),
+    /**
+     * @private
+     */
+    show: _propTypes2["default"].oneOf([null])
 });
 
 var defaultProps = {
-  defaultOverlayShown: false,
-  trigger: ['hover', 'focus']
+    defaultOverlayShown: false,
+    trigger: ['hover', 'focus']
 };
 
 var OverlayTrigger = function (_Component) {
-  _inherits(OverlayTrigger, _Component);
+    _inherits(OverlayTrigger, _Component);
 
-  function OverlayTrigger(props, context) {
-    _classCallCheck(this, OverlayTrigger);
+    function OverlayTrigger(props, context) {
+        _classCallCheck(this, OverlayTrigger);
 
-    var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
+        var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 
-    _this.handleToggle = _this.handleToggle.bind(_this);
-    _this.handleDelayedShow = _this.handleDelayedShow.bind(_this);
-    _this.handleDelayedHide = _this.handleDelayedHide.bind(_this);
-    _this.handleHide = _this.handleHide.bind(_this);
-    _this.makeOverlay = _this.makeOverlay.bind(_this);
+        _this.handleToggle = _this.handleToggle.bind(_this);
+        _this.handleDelayedShow = _this.handleDelayedShow.bind(_this);
+        _this.handleDelayedHide = _this.handleDelayedHide.bind(_this);
+        _this.handleHide = _this.handleHide.bind(_this);
+        _this.makeOverlay = _this.makeOverlay.bind(_this);
 
-    _this.handleMouseOver = function (e) {
-      return _this.handleMouseOverOut(_this.handleDelayedShow, e);
-    };
-    _this.handleMouseOut = function (e) {
-      return _this.handleMouseOverOut(_this.handleDelayedHide, e);
-    };
+        _this.handleMouseOver = function (e) {
+            return _this.handleMouseOverOut(_this.handleDelayedShow, e);
+        };
+        _this.handleMouseOut = function (e) {
+            return _this.handleMouseOverOut(_this.handleDelayedHide, e);
+        };
 
-    _this._mountNode = null;
+        _this._mountNode = null;
 
-    _this.state = {
-      show: props.defaultOverlayShown
-    };
-    return _this;
-  }
-
-  OverlayTrigger.prototype.componentDidMount = function componentDidMount() {
-    this._mountNode = document.createElement('div');
-    !isReact16 && this.renderOverlay();
-  };
-
-  OverlayTrigger.prototype.componentDidUpdate = function componentDidUpdate() {
-    !isReact16 && this.renderOverlay();
-  };
-
-  OverlayTrigger.prototype.componentWillUnmount = function componentWillUnmount() {
-    !isReact16 && _reactDom2["default"].unmountComponentAtNode(this._mountNode);
-    this._mountNode = null;
-
-    clearTimeout(this._hoverShowDelay);
-    clearTimeout(this._hoverHideDelay);
-  };
-
-  OverlayTrigger.prototype.handleToggle = function handleToggle() {
-    if (this.state.show) {
-      this.hide();
-    } else {
-      this.show();
-    }
-  };
-
-  OverlayTrigger.prototype.handleDelayedShow = function handleDelayedShow() {
-    var _this2 = this;
-
-    if (this._hoverHideDelay != null) {
-      clearTimeout(this._hoverHideDelay);
-      this._hoverHideDelay = null;
-      return;
+        _this.state = {
+            show: props.defaultOverlayShown
+        };
+        return _this;
     }
 
-    if (this.state.show || this._hoverShowDelay != null) {
-      return;
-    }
-
-    var delay = this.props.delayShow != null ? this.props.delayShow : this.props.delay;
-
-    if (!delay) {
-      this.show();
-      return;
-    }
-
-    this._hoverShowDelay = setTimeout(function () {
-      _this2._hoverShowDelay = null;
-      _this2.show();
-    }, delay);
-  };
-
-  OverlayTrigger.prototype.handleDelayedHide = function handleDelayedHide() {
-    var _this3 = this;
-
-    if (this._hoverShowDelay != null) {
-      clearTimeout(this._hoverShowDelay);
-      this._hoverShowDelay = null;
-      return;
-    }
-
-    if (!this.state.show || this._hoverHideDelay != null) {
-      return;
-    }
-
-    var delay = this.props.delayHide != null ? this.props.delayHide : this.props.delay;
-
-    if (!delay) {
-      this.hide();
-      return;
-    }
-
-    this._hoverHideDelay = setTimeout(function () {
-      _this3._hoverHideDelay = null;
-      _this3.hide();
-    }, delay);
-  };
-
-  // 简单实现mouseEnter和mouseLeave。
-  // React的内置版本是有问题的：https://github.com/facebook/react/issues/4251
-  //在触发器被禁用的情况下，mouseOut / Over可能导致闪烁
-  //从一个子元素移动到另一个子元素。
-
-
-  OverlayTrigger.prototype.handleMouseOverOut = function handleMouseOverOut(handler, e) {
-    var target = e.currentTarget;
-    var related = e.relatedTarget || e.nativeEvent.toElement;
-
-    if (!related || related !== target && !(0, _contains2["default"])(target, related)) {
-      handler(e);
-    }
-  };
-
-  OverlayTrigger.prototype.handleHide = function handleHide() {
-    this.hide();
-  };
-
-  OverlayTrigger.prototype.show = function show() {
-    this.setState({ show: true });
-  };
-
-  OverlayTrigger.prototype.hide = function hide() {
-    this.setState({ show: false });
-  };
-
-  OverlayTrigger.prototype.makeOverlay = function makeOverlay(overlay, props) {
-    return _react2["default"].createElement(
-      _Overlay2["default"],
-      _extends({}, props, {
-        show: this.state.show,
-        onHide: this.handleHide,
-        target: this
-      }),
-      overlay
-    );
-  };
-
-  OverlayTrigger.prototype.renderOverlay = function renderOverlay() {
-    _reactDom2["default"].unstable_renderSubtreeIntoContainer(this, this._overlay, this._mountNode);
-  };
-
-  OverlayTrigger.prototype.render = function render() {
-    var _props = this.props,
-        trigger = _props.trigger,
-        overlay = _props.overlay,
-        children = _props.children,
-        onBlur = _props.onBlur,
-        onClick = _props.onClick,
-        onFocus = _props.onFocus,
-        onMouseOut = _props.onMouseOut,
-        onMouseOver = _props.onMouseOver,
-        props = _objectWithoutProperties(_props, ['trigger', 'overlay', 'children', 'onBlur', 'onClick', 'onFocus', 'onMouseOut', 'onMouseOver']);
-
-    delete props.delay;
-    delete props.delayShow;
-    delete props.delayHide;
-    delete props.defaultOverlayShown;
-
-    var child = _react2["default"].Children.only(children);
-    var childProps = child.props;
-
-    var triggerProps = {
-      'aria-describedby': overlay.props.id
+    OverlayTrigger.prototype.componentDidMount = function componentDidMount() {
+        this._mountNode = document.createElement('div');
+        !isReact16 && this.renderOverlay();
     };
 
-    // FIXME: 这里用于传递这个组件上的处理程序的逻辑是不一致的。我们不应该通过任何这些道具。
+    OverlayTrigger.prototype.componentDidUpdate = function componentDidUpdate() {
+        !isReact16 && this.renderOverlay();
+    };
 
-    triggerProps.onClick = (0, _createChainedFunction2["default"])(childProps.onClick, onClick);
+    OverlayTrigger.prototype.componentWillUnmount = function componentWillUnmount() {
+        !isReact16 && _reactDom2["default"].unmountComponentAtNode(this._mountNode);
+        this._mountNode = null;
 
-    if (isOneOf('click', trigger)) {
-      triggerProps.onClick = (0, _createChainedFunction2["default"])(triggerProps.onClick, this.handleToggle);
-    }
+        clearTimeout(this._hoverShowDelay);
+        clearTimeout(this._hoverHideDelay);
+    };
 
-    if (isOneOf('hover', trigger)) {
-      (0, _warning2["default"])(!(trigger === 'hover'), '[react-bootstrap] Specifying only the `"hover"` trigger limits the ' + 'visibility of the overlay to just mouse users. Consider also ' + 'including the `"focus"` trigger so that touch and keyboard only ' + 'users can see the overlay as well.');
+    OverlayTrigger.prototype.handleToggle = function handleToggle() {
+        if (this.state.show) {
+            this.hide();
+        } else {
+            this.show();
+        }
+    };
 
-      triggerProps.onMouseOver = (0, _createChainedFunction2["default"])(childProps.onMouseOver, onMouseOver, this.handleMouseOver);
-      triggerProps.onMouseOut = (0, _createChainedFunction2["default"])(childProps.onMouseOut, onMouseOut, this.handleMouseOut);
-    }
+    OverlayTrigger.prototype.handleDelayedShow = function handleDelayedShow() {
+        var _this2 = this;
 
-    if (isOneOf('focus', trigger)) {
-      triggerProps.onFocus = (0, _createChainedFunction2["default"])(childProps.onFocus, onFocus, this.handleDelayedShow);
-      triggerProps.onBlur = (0, _createChainedFunction2["default"])(childProps.onBlur, onBlur, this.handleDelayedHide);
-    }
+        if (this._hoverHideDelay != null) {
+            clearTimeout(this._hoverHideDelay);
+            this._hoverHideDelay = null;
+            return;
+        }
 
-    this._overlay = this.makeOverlay(overlay, props);
+        if (this.state.show || this._hoverShowDelay != null) {
+            return;
+        }
 
-    if (!isReact16) {
-      return (0, _react.cloneElement)(child, triggerProps);
-    }
+        var delay = this.props.delayShow != null ? this.props.delayShow : this.props.delay;
 
-    var portal = _react2["default"].createElement(
-      _Portal2["default"],
-      {
-        container: props.container },
-      this._overlay
-    );
+        if (!delay) {
+            this.show();
+            return;
+        }
 
-    return [(0, _react.cloneElement)(child, triggerProps), portal];
-  };
+        this._hoverShowDelay = setTimeout(function () {
+            _this2._hoverShowDelay = null;
+            _this2.show();
+        }, delay);
+    };
 
-  return OverlayTrigger;
+    OverlayTrigger.prototype.handleDelayedHide = function handleDelayedHide() {
+        var _this3 = this;
+
+        if (this._hoverShowDelay != null) {
+            clearTimeout(this._hoverShowDelay);
+            this._hoverShowDelay = null;
+            return;
+        }
+
+        if (!this.state.show || this._hoverHideDelay != null) {
+            return;
+        }
+
+        var delay = this.props.delayHide != null ? this.props.delayHide : this.props.delay;
+
+        if (!delay) {
+            this.hide();
+            return;
+        }
+
+        this._hoverHideDelay = setTimeout(function () {
+            _this3._hoverHideDelay = null;
+            _this3.hide();
+        }, delay);
+    };
+
+    // 简单实现mouseEnter和mouseLeave。
+    // React的内置版本是有问题的：https://github.com/facebook/react/issues/4251
+    //在触发器被禁用的情况下，mouseOut / Over可能导致闪烁
+    //从一个子元素移动到另一个子元素。
+
+
+    OverlayTrigger.prototype.handleMouseOverOut = function handleMouseOverOut(handler, e) {
+        var target = e.currentTarget;
+        var related = e.relatedTarget || e.nativeEvent.toElement;
+
+        if (!related || related !== target && !(0, _contains2["default"])(target, related)) {
+            handler(e);
+        }
+    };
+
+    OverlayTrigger.prototype.handleHide = function handleHide() {
+        this.hide();
+    };
+
+    OverlayTrigger.prototype.show = function show() {
+        this.setState({ show: true });
+    };
+
+    OverlayTrigger.prototype.hide = function hide() {
+        this.setState({ show: false });
+    };
+
+    OverlayTrigger.prototype.makeOverlay = function makeOverlay(overlay, props) {
+        return _react2["default"].createElement(
+            _Overlay2["default"],
+            _extends({}, props, {
+                show: this.state.show,
+                onHide: this.handleHide,
+                target: this
+            }),
+            overlay
+        );
+    };
+
+    OverlayTrigger.prototype.renderOverlay = function renderOverlay() {
+        _reactDom2["default"].unstable_renderSubtreeIntoContainer(this, this._overlay, this._mountNode);
+    };
+
+    OverlayTrigger.prototype.render = function render() {
+        var _props = this.props,
+            trigger = _props.trigger,
+            overlay = _props.overlay,
+            children = _props.children,
+            onBlur = _props.onBlur,
+            onClick = _props.onClick,
+            onFocus = _props.onFocus,
+            onMouseOut = _props.onMouseOut,
+            onMouseOver = _props.onMouseOver,
+            props = _objectWithoutProperties(_props, ['trigger', 'overlay', 'children', 'onBlur', 'onClick', 'onFocus', 'onMouseOut', 'onMouseOver']);
+
+        delete props.delay;
+        delete props.delayShow;
+        delete props.delayHide;
+        delete props.defaultOverlayShown;
+
+        var child = _react2["default"].Children.only(children);
+        var childProps = child.props;
+
+        var triggerProps = {
+            'aria-describedby': overlay.props.id
+        };
+
+        // FIXME: 这里用于传递这个组件上的处理程序的逻辑是不一致的。我们不应该通过任何这些道具。
+
+        triggerProps.onClick = (0, _createChainedFunction2["default"])(childProps.onClick, onClick);
+
+        if (isOneOf('click', trigger)) {
+            triggerProps.onClick = (0, _createChainedFunction2["default"])(triggerProps.onClick, this.handleToggle);
+        }
+
+        if (isOneOf('hover', trigger)) {
+            (0, _warning2["default"])(!(trigger === 'hover'), '[react-bootstrap] Specifying only the `"hover"` trigger limits the ' + 'visibility of the overlay to just mouse users. Consider also ' + 'including the `"focus"` trigger so that touch and keyboard only ' + 'users can see the overlay as well.');
+
+            triggerProps.onMouseOver = (0, _createChainedFunction2["default"])(childProps.onMouseOver, onMouseOver, this.handleMouseOver);
+            triggerProps.onMouseOut = (0, _createChainedFunction2["default"])(childProps.onMouseOut, onMouseOut, this.handleMouseOut);
+        }
+
+        if (isOneOf('focus', trigger)) {
+            triggerProps.onFocus = (0, _createChainedFunction2["default"])(childProps.onFocus, onFocus, this.handleDelayedShow);
+            triggerProps.onBlur = (0, _createChainedFunction2["default"])(childProps.onBlur, onBlur, this.handleDelayedHide);
+        }
+
+        this._overlay = this.makeOverlay(overlay, props);
+
+        if (!isReact16) {
+            return (0, _react.cloneElement)(child, triggerProps);
+        }
+        triggerProps.key = 'overlay';
+
+        var portal = _react2["default"].createElement(
+            _Portal2["default"],
+            {
+                key: 'portal',
+                container: props.container },
+            this._overlay
+        );
+
+        return [(0, _react.cloneElement)(child, triggerProps), portal];
+    };
+
+    return OverlayTrigger;
 }(_react.Component);
 
 OverlayTrigger.propTypes = propTypes;
