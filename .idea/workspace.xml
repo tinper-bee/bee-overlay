@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b71d4f3b-1b5f-4a12-ac42-3b8f9dc9b5d0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/OverlayTrigger.js" afterPath="$PROJECT_DIR$/build/OverlayTrigger.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/Position.js" afterPath="$PROJECT_DIR$/build/Position.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OverlayTrigger.js" afterPath="$PROJECT_DIR$/src/OverlayTrigger.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/utils/calculatePosition.js" afterPath="$PROJECT_DIR$/build/utils/calculatePosition.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Position.js" afterPath="$PROJECT_DIR$/src/Position.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/calculatePosition.js" afterPath="$PROJECT_DIR$/src/utils/calculatePosition.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,92 +21,14 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ModalManager.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ModalManager.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1196">
-              <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="18" />
-              <folding>
-                <marker date="1509417522902" expanded="true" signature="7:274" ph="..." />
-                <marker date="1509417522902" expanded="true" signature="307:428" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="345:357" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="365:406" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="474:546" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="606:946" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="663:755" ph="{&quot;overflow&quot;: container.style.overflow...}" />
-                <marker date="1509417522902" expanded="true" signature="782:918" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="1012:1094" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="1095:1125" ph="/** 容器的正确状态管理和那些容器中的模态。 ...*/" />
-                <marker date="1509417522902" expanded="true" signature="1145:3507" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="1228:1407" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="1444:2359" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="1578:1608" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="1706:1761" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="1792:1872" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="1889:2106" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="2147:2195" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="2376:3388" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="2451:2472" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="2727:2802" ph="//..." />
-                <marker date="1509417522902" expanded="true" signature="2836:3202" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="2959:3014" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="3049:3108" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="3239:3384" ph="{...}" />
-                <marker date="1509417522902" expanded="true" signature="3410:3505" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Portal.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Portal.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3900">
-              <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-              <folding>
-                <marker date="1509417522905" expanded="false" signature="7:15" ph="..." />
-                <marker date="1509417522905" expanded="true" signature="4367:4459" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OverlayTrigger.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/OverlayTrigger.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="317" column="37" lean-forward="false" selection-start-line="317" selection-start-column="37" selection-end-line="317" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Overlay.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Overlay.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="813">
-              <caret line="97" column="14" lean-forward="false" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Position.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Position.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Position.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="154" column="7" lean-forward="false" selection-start-line="154" selection-start-column="7" selection-end-line="154" selection-end-column="7" />
-              <folding />
+            <state relative-caret-position="1066">
+              <caret line="162" column="13" lean-forward="false" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -115,96 +36,10 @@
       <file leaf-file-name="calculatePosition.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/calculatePosition.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1560">
-              <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
+            <state relative-caret-position="-64">
+              <caret line="99" column="44" lean-forward="false" selection-start-line="99" selection-start-column="44" selection-end-line="99" selection-end-column="44" />
               <folding>
-                <marker date="1509417522916" expanded="true" signature="7:205" ph="..." />
-                <marker date="1509417522916" expanded="true" signature="254:655" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="326:512" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="518:617" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="718:1210" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="1053:1085" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="1131:1183" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="1189:1208" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="1274:1661" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="1519:1552" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="1596:1646" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="1761:3271" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="2079:2552" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="2190:2251" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="2257:2323" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="2609:3082" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="2719:2779" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="2785:2850" ph="{...}" />
-                <marker date="1509417522916" expanded="true" signature="3088:3195" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseOverlay.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BaseOverlay.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-949">
-              <caret line="132" column="13" lean-forward="false" selection-start-line="132" selection-start-column="8" selection-end-line="132" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getContainer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/getContainer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1509417522918" expanded="true" signature="34:204" ph="/** 获取容器组件 ...*/" />
-                <marker date="1509417522918" expanded="true" signature="270:408" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Modal.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Modal.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10348">
-              <caret line="411" column="0" lean-forward="false" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
-              <folding>
-                <marker date="1509417522901" expanded="false" signature="0:36" ph="/*...*/" />
-                <marker date="1509417522901" expanded="false" signature="44:669" ph="..." />
-                <marker date="1509417522901" expanded="true" signature="711:725" ph="/** 模态框 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="777:800" ph="/** 是否显示 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="832:853" ph="/** 容器 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="889:947" ph="[...]" />
-                <marker date="1509417522901" expanded="true" signature="955:986" ph="/** 当模态框打开时的钩子函数 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="1020:1067" ph="/** 当show参数为false时触发的模态框关闭时的钩子函数 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="1101:1126" ph="/** 是否包含背景 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="1161:1224" ph="[...]" />
-                <marker date="1509417522901" expanded="true" signature="1232:1259" ph="/** 返回背景组件的函数 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="1301:1332" ph="/** 设置esc键特殊钩子函数 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="1373:1403" ph="/** 当点击背景时触发的函数 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="1446:1473" ph="/** 背景的style ...*/" />
-                <marker date="1509417522901" expanded="true" signature="1516:1543" ph="/** 背景的class ...*/" />
-                <marker date="1509417522901" expanded="true" signature="1590:1616" ph="/** 容器的class ...*/" />
-                <marker date="1509417522901" expanded="true" signature="1664:1695" ph="/** 按esc键是否关闭模态框 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="1731:1754" ph="/** 动画组件 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="1789:1816" ph="/** 设置动画超时时间 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="1869:1898" ph="/** 设置背景动画超时时间 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="1953:1980" ph="/** 是否自动设置焦点 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="2017:2045" ph="/** 防止焦点离开模态框 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="2085:2115" ph="/** 模态框进入时的钩子函数 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="2150:2182" ph="/** 模态框开始进入时的钩子函数 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="2220:2250" ph="/** 模态框进入后的钩子函数 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="2287:2317" ph="/** 模态框退出时的钩子函数 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="2351:2383" ph="/** 模态框开始退出时的钩子函数 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="2420:2450" ph="/** 模态框推出后的钩子函数 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="2486:2516" ph="/** 管理model状态的实例 ...*/" />
-                <marker date="1509417522901" expanded="true" signature="2583:2703" ph="{...}" />
-                <marker date="1509417522901" expanded="true" signature="2824:2953" ph="{...}" />
-                <marker date="1509417522901" expanded="true" signature="2858:2953" ph="{...}" />
-                <marker date="1509417522901" expanded="true" signature="2903:2951" ph="{...}" />
-                <marker date="1509417522901" expanded="true" signature="9938:10150" ph="{...}" />
+                <element signature="e#0#49#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -230,6 +65,7 @@
       <find>show</find>
       <find>console</find>
       <find>updatePosition</find>
+      <find>calculatePosition</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -244,10 +80,10 @@
         <option value="$PROJECT_DIR$/src/compatibleModal.js" />
         <option value="$PROJECT_DIR$/src/CompatibleModal.js" />
         <option value="$PROJECT_DIR$/src/Portal.js" />
-        <option value="$PROJECT_DIR$/src/utils/calculatePosition.js" />
         <option value="$PROJECT_DIR$/src/BaseOverlay.js" />
-        <option value="$PROJECT_DIR$/src/Position.js" />
         <option value="$PROJECT_DIR$/src/OverlayTrigger.js" />
+        <option value="$PROJECT_DIR$/src/utils/calculatePosition.js" />
+        <option value="$PROJECT_DIR$/src/Position.js" />
       </list>
     </option>
   </component>
@@ -350,6 +186,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee-overlay" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee-overlay" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee-overlay" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee-overlay" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="trigger" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -395,24 +267,28 @@
       <workItem from="1509263053555" duration="1195000" />
       <workItem from="1509343408147" duration="6195000" />
       <workItem from="1509417572728" duration="563000" />
+      <workItem from="1509671408697" duration="16000" />
+      <workItem from="1509687587700" duration="597000" />
+      <workItem from="1509933435835" duration="270000" />
+      <workItem from="1510121014710" duration="4010000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11903000" />
+    <option name="totallyTimeSpent" value="19692000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21812434" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21812434" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2827443" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2827443" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -454,268 +330,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ModalManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1196">
-          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="18" />
-          <folding>
-            <marker date="1509417522902" expanded="true" signature="7:274" ph="..." />
-            <marker date="1509417522902" expanded="true" signature="307:428" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="345:357" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="365:406" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="474:546" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="606:946" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="663:755" ph="{&quot;overflow&quot;: container.style.overflow...}" />
-            <marker date="1509417522902" expanded="true" signature="782:918" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1012:1094" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1095:1125" ph="/** 容器的正确状态管理和那些容器中的模态。 ...*/" />
-            <marker date="1509417522902" expanded="true" signature="1145:3507" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1228:1407" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1444:2359" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1578:1608" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1706:1761" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1792:1872" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1889:2106" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2147:2195" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2376:3388" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2451:2472" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2727:2802" ph="//..." />
-            <marker date="1509417522902" expanded="true" signature="2836:3202" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2959:3014" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="3049:3108" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="3239:3384" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="3410:3505" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Portal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4576">
-          <caret line="181" column="0" lean-forward="false" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
-          <folding>
-            <marker date="1509417522905" expanded="false" signature="7:15" ph="..." />
-            <marker date="1509417522905" expanded="true" signature="4367:4459" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Overlay.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2080">
-          <caret line="85" column="38" lean-forward="false" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Position.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3224">
-          <caret line="132" column="35" lean-forward="false" selection-start-line="132" selection-start-column="18" selection-end-line="132" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/calculatePosition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
-          <folding>
-            <marker date="1509417522916" expanded="true" signature="7:205" ph="..." />
-            <marker date="1509417522916" expanded="true" signature="254:655" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="326:512" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="518:617" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="718:1210" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1053:1085" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1131:1183" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1189:1208" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1274:1661" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1519:1552" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1596:1646" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1761:3271" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="2079:2552" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="2190:2251" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="2257:2323" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="2609:3082" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="2719:2779" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="2785:2850" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="3088:3195" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BaseOverlay.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4784">
-          <caret line="184" column="12" lean-forward="false" selection-start-line="184" selection-start-column="12" selection-end-line="184" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/getContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1509417522918" expanded="true" signature="34:204" ph="/** 获取容器组件 ...*/" />
-            <marker date="1509417522918" expanded="true" signature="270:408" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10374">
-          <caret line="412" column="0" lean-forward="true" selection-start-line="412" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
-          <folding>
-            <marker date="1509417522901" expanded="false" signature="0:36" ph="/*...*/" />
-            <marker date="1509417522901" expanded="false" signature="44:669" ph="..." />
-            <marker date="1509417522901" expanded="true" signature="711:725" ph="/** 模态框 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="777:800" ph="/** 是否显示 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="832:853" ph="/** 容器 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="889:947" ph="[...]" />
-            <marker date="1509417522901" expanded="true" signature="955:986" ph="/** 当模态框打开时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1020:1067" ph="/** 当show参数为false时触发的模态框关闭时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1101:1126" ph="/** 是否包含背景 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1161:1224" ph="[...]" />
-            <marker date="1509417522901" expanded="true" signature="1232:1259" ph="/** 返回背景组件的函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1301:1332" ph="/** 设置esc键特殊钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1373:1403" ph="/** 当点击背景时触发的函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1446:1473" ph="/** 背景的style ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1516:1543" ph="/** 背景的class ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1590:1616" ph="/** 容器的class ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1664:1695" ph="/** 按esc键是否关闭模态框 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1731:1754" ph="/** 动画组件 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1789:1816" ph="/** 设置动画超时时间 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1869:1898" ph="/** 设置背景动画超时时间 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1953:1980" ph="/** 是否自动设置焦点 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2017:2045" ph="/** 防止焦点离开模态框 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2085:2115" ph="/** 模态框进入时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2150:2182" ph="/** 模态框开始进入时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2220:2250" ph="/** 模态框进入后的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2287:2317" ph="/** 模态框退出时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2351:2383" ph="/** 模态框开始退出时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2420:2450" ph="/** 模态框推出后的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2486:2516" ph="/** 管理model状态的实例 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2583:2703" ph="{...}" />
-            <marker date="1509417522901" expanded="true" signature="2824:2953" ph="{...}" />
-            <marker date="1509417522901" expanded="true" signature="2858:2953" ph="{...}" />
-            <marker date="1509417522901" expanded="true" signature="2903:2951" ph="{...}" />
-            <marker date="1509417522901" expanded="true" signature="9938:10150" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OverlayTrigger.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ModalManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="18" />
-          <folding>
-            <marker date="1509417522902" expanded="true" signature="7:274" ph="..." />
-            <marker date="1509417522902" expanded="true" signature="307:428" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="345:357" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="365:406" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="474:546" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="606:946" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="663:755" ph="{&quot;overflow&quot;: container.style.overflow...}" />
-            <marker date="1509417522902" expanded="true" signature="782:918" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1012:1094" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1095:1125" ph="/** 容器的正确状态管理和那些容器中的模态。 ...*/" />
-            <marker date="1509417522902" expanded="true" signature="1145:3507" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1228:1407" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1444:2359" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1578:1608" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1706:1761" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1792:1872" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1889:2106" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2147:2195" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2376:3388" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2451:2472" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2727:2802" ph="//..." />
-            <marker date="1509417522902" expanded="true" signature="2836:3202" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2959:3014" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="3049:3108" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="3239:3384" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="3410:3505" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/getContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1509417522918" expanded="true" signature="34:204" ph="/** 获取容器组件 ...*/" />
-            <marker date="1509417522918" expanded="true" signature="270:408" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Modal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5985">
-          <caret line="412" column="64" lean-forward="false" selection-start-line="412" selection-start-column="58" selection-end-line="412" selection-end-column="64" />
-          <folding>
-            <marker date="1509417522901" expanded="false" signature="0:36" ph="/*...*/" />
-            <marker date="1509417522901" expanded="false" signature="44:669" ph="..." />
-            <marker date="1509417522901" expanded="true" signature="711:725" ph="/** 模态框 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="777:800" ph="/** 是否显示 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="832:853" ph="/** 容器 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="889:947" ph="[...]" />
-            <marker date="1509417522901" expanded="true" signature="955:986" ph="/** 当模态框打开时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1020:1067" ph="/** 当show参数为false时触发的模态框关闭时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1101:1126" ph="/** 是否包含背景 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1161:1224" ph="[...]" />
-            <marker date="1509417522901" expanded="true" signature="1232:1259" ph="/** 返回背景组件的函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1301:1332" ph="/** 设置esc键特殊钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1373:1403" ph="/** 当点击背景时触发的函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1446:1473" ph="/** 背景的style ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1516:1543" ph="/** 背景的class ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1590:1616" ph="/** 容器的class ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1664:1695" ph="/** 按esc键是否关闭模态框 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1731:1754" ph="/** 动画组件 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1789:1816" ph="/** 设置动画超时时间 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1869:1898" ph="/** 设置背景动画超时时间 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1953:1980" ph="/** 是否自动设置焦点 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2017:2045" ph="/** 防止焦点离开模态框 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2085:2115" ph="/** 模态框进入时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2150:2182" ph="/** 模态框开始进入时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2220:2250" ph="/** 模态框进入后的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2287:2317" ph="/** 模态框退出时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2351:2383" ph="/** 模态框开始退出时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2420:2450" ph="/** 模态框推出后的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2486:2516" ph="/** 管理model状态的实例 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2583:2703" ph="{...}" />
-            <marker date="1509417522901" expanded="true" signature="2824:2953" ph="{...}" />
-            <marker date="1509417522901" expanded="true" signature="2858:2953" ph="{...}" />
-            <marker date="1509417522901" expanded="true" signature="2903:2951" ph="{...}" />
-            <marker date="1509417522901" expanded="true" signature="9938:10150" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -723,80 +341,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Portal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="79" column="45" lean-forward="false" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="45" />
-          <folding>
-            <marker date="1509417522905" expanded="false" signature="7:15" ph="..." />
-            <marker date="1509417522905" expanded="true" signature="4367:4459" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ModalManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="18" />
-          <folding>
-            <marker date="1509417522902" expanded="true" signature="7:274" ph="..." />
-            <marker date="1509417522902" expanded="true" signature="307:428" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="345:357" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="365:406" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="474:546" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="606:946" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="663:755" ph="{&quot;overflow&quot;: container.style.overflow...}" />
-            <marker date="1509417522902" expanded="true" signature="782:918" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1012:1094" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1095:1125" ph="/** 容器的正确状态管理和那些容器中的模态。 ...*/" />
-            <marker date="1509417522902" expanded="true" signature="1145:3507" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1228:1407" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1444:2359" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1578:1608" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1706:1761" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1792:1872" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1889:2106" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2147:2195" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2376:3388" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2451:2472" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2727:2802" ph="//..." />
-            <marker date="1509417522902" expanded="true" signature="2836:3202" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2959:3014" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="3049:3108" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="3239:3384" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="3410:3505" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Portal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <marker date="1509417522905" expanded="false" signature="7:15" ph="..." />
-            <marker date="1509417522905" expanded="true" signature="4367:4459" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -805,15 +349,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -821,34 +356,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1196">
           <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="18" />
-          <folding>
-            <marker date="1509417522902" expanded="true" signature="7:274" ph="..." />
-            <marker date="1509417522902" expanded="true" signature="307:428" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="345:357" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="365:406" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="474:546" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="606:946" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="663:755" ph="{&quot;overflow&quot;: container.style.overflow...}" />
-            <marker date="1509417522902" expanded="true" signature="782:918" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1012:1094" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1095:1125" ph="/** 容器的正确状态管理和那些容器中的模态。 ...*/" />
-            <marker date="1509417522902" expanded="true" signature="1145:3507" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1228:1407" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1444:2359" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1578:1608" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1706:1761" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1792:1872" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="1889:2106" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2147:2195" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2376:3388" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2451:2472" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2727:2802" ph="//..." />
-            <marker date="1509417522902" expanded="true" signature="2836:3202" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="2959:3014" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="3049:3108" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="3239:3384" ph="{...}" />
-            <marker date="1509417522902" expanded="true" signature="3410:3505" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -856,42 +363,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10348">
           <caret line="411" column="0" lean-forward="false" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
-          <folding>
-            <marker date="1509417522901" expanded="false" signature="0:36" ph="/*...*/" />
-            <marker date="1509417522901" expanded="false" signature="44:669" ph="..." />
-            <marker date="1509417522901" expanded="true" signature="711:725" ph="/** 模态框 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="777:800" ph="/** 是否显示 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="832:853" ph="/** 容器 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="889:947" ph="[...]" />
-            <marker date="1509417522901" expanded="true" signature="955:986" ph="/** 当模态框打开时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1020:1067" ph="/** 当show参数为false时触发的模态框关闭时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1101:1126" ph="/** 是否包含背景 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1161:1224" ph="[...]" />
-            <marker date="1509417522901" expanded="true" signature="1232:1259" ph="/** 返回背景组件的函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1301:1332" ph="/** 设置esc键特殊钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1373:1403" ph="/** 当点击背景时触发的函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1446:1473" ph="/** 背景的style ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1516:1543" ph="/** 背景的class ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1590:1616" ph="/** 容器的class ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1664:1695" ph="/** 按esc键是否关闭模态框 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1731:1754" ph="/** 动画组件 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1789:1816" ph="/** 设置动画超时时间 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1869:1898" ph="/** 设置背景动画超时时间 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="1953:1980" ph="/** 是否自动设置焦点 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2017:2045" ph="/** 防止焦点离开模态框 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2085:2115" ph="/** 模态框进入时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2150:2182" ph="/** 模态框开始进入时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2220:2250" ph="/** 模态框进入后的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2287:2317" ph="/** 模态框退出时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2351:2383" ph="/** 模态框开始退出时的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2420:2450" ph="/** 模态框推出后的钩子函数 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2486:2516" ph="/** 管理model状态的实例 ...*/" />
-            <marker date="1509417522901" expanded="true" signature="2583:2703" ph="{...}" />
-            <marker date="1509417522901" expanded="true" signature="2824:2953" ph="{...}" />
-            <marker date="1509417522901" expanded="true" signature="2858:2953" ph="{...}" />
-            <marker date="1509417522901" expanded="true" signature="2903:2951" ph="{...}" />
-            <marker date="1509417522901" expanded="true" signature="9938:10150" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -899,10 +370,264 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/calculatePosition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1560">
+          <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
           <folding>
-            <marker date="1509417522918" expanded="true" signature="34:204" ph="/** 获取容器组件 ...*/" />
-            <marker date="1509417522918" expanded="true" signature="270:408" ph="{...}" />
+            <element signature="e#0#49#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Portal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BaseOverlay.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3276">
+          <caret line="132" column="13" lean-forward="false" selection-start-line="132" selection-start-column="8" selection-end-line="132" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Position.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="107" column="23" lean-forward="false" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Overlay.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/trigger/Trigger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1726">
+          <caret line="389" column="28" lean-forward="false" selection-start-line="389" selection-start-column="21" selection-end-line="389" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Overlay.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2366">
+          <caret line="97" column="14" lean-forward="false" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OverlayTrigger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4316">
+          <caret line="139" column="43" lean-forward="false" selection-start-line="139" selection-start-column="43" selection-end-line="139" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="13" column="95" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ModalManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1196">
+          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Portal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4576">
+          <caret line="181" column="0" lean-forward="false" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Overlay.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2080">
+          <caret line="85" column="38" lean-forward="false" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Position.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3224">
+          <caret line="132" column="35" lean-forward="false" selection-start-line="132" selection-start-column="18" selection-end-line="132" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/calculatePosition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1560">
+          <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BaseOverlay.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4784">
+          <caret line="184" column="12" lean-forward="false" selection-start-line="184" selection-start-column="12" selection-end-line="184" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/getContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10374">
+          <caret line="412" column="0" lean-forward="true" selection-start-line="412" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OverlayTrigger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ModalManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/getContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5985">
+          <caret line="412" column="64" lean-forward="false" selection-start-line="412" selection-start-column="58" selection-end-line="412" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Portal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1110">
+          <caret line="79" column="45" lean-forward="false" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ModalManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Portal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CompatibleModal.js" />
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ModalManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1196">
+          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Modal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10348">
+          <caret line="411" column="0" lean-forward="false" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/getContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -917,35 +642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/calculatePosition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
-          <folding>
-            <marker date="1509417522916" expanded="true" signature="7:205" ph="..." />
-            <marker date="1509417522916" expanded="true" signature="254:655" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="326:512" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="518:617" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="718:1210" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1053:1085" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1131:1183" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1189:1208" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1274:1661" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1519:1552" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1596:1646" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="1761:3271" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="2079:2552" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="2190:2251" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="2257:2323" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="2609:3082" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="2719:2779" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="2785:2850" ph="{...}" />
-            <marker date="1509417522916" expanded="true" signature="3088:3195" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -953,10 +649,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3900">
           <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
-          <folding>
-            <marker date="1509417522905" expanded="false" signature="7:15" ph="..." />
-            <marker date="1509417522905" expanded="true" signature="4367:4459" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -964,15 +656,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="813">
           <caret line="97" column="14" lean-forward="false" selection-start-line="97" selection-start-column="9" selection-end-line="97" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Position.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="154" column="7" lean-forward="false" selection-start-line="154" selection-start-column="7" selection-end-line="154" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -980,7 +663,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-949">
           <caret line="132" column="13" lean-forward="false" selection-start-line="132" selection-start-column="8" selection-end-line="132" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -988,7 +670,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="317" column="37" lean-forward="false" selection-start-line="317" selection-start-column="37" selection-end-line="317" selection-end-column="37" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/calculatePosition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-64">
+          <caret line="99" column="44" lean-forward="false" selection-start-line="99" selection-start-column="44" selection-end-line="99" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Position.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1066">
+          <caret line="162" column="13" lean-forward="false" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
