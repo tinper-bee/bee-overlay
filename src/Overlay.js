@@ -4,7 +4,7 @@ import React, { cloneElement, Component } from 'react';
 import PropTypes from 'prop-types';
 import BaseOverlay from './BaseOverlay';
 import { elementType } from 'tinper-bee-core';
-import Fade from 'bee-transition/build/Fade';
+import Fade from './Fade';
 
 
 const propTypes = {

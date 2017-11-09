@@ -24,7 +24,7 @@ var _BaseOverlay2 = _interopRequireDefault(_BaseOverlay);
 
 var _tinperBeeCore = require('tinper-bee-core');
 
-var _Fade = require('bee-transition/build/Fade');
+var _Fade = require('./Fade');
 
 var _Fade2 = _interopRequireDefault(_Fade);
 
