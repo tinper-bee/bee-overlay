@@ -208,6 +208,10 @@ class Trigger extends Component{
       this.clickOutsideHandler = null;
       this.touchOutsideHandler = null;
     }
+    if(this._container){
+        ReactDOM.unmountComponentAtNode(this._container);
+    }
+
     //this.removeContainer();
   }
 

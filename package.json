@@ -1,6 +1,6 @@
 {
  "name": "bee-overlay",
- "version": "1.0.7",
+ "version": "1.0.8",
  "description": "overlay ui component for react",
  "keywords": [
   "react",
@@ -20,7 +20,10 @@
  "license": "MIT",
  "main": "./build/index",
  "config": {
-  "port": 8000
+  "port": 8000,
+  "commitizen": {
+   "path": "./node_modules/cz-conventional-changelog"
+  }
  },
  "scripts": {
   "dev": "bee-tools run start",
@@ -45,9 +48,10 @@
  },
  "devDependencies": {
   "chai": "^3.5.0",
-  "enzyme": "^2.4.1",
-  "react-addons-test-utils": "^15.3.2",
   "console-polyfill": "~0.2.1",
-  "es5-shim": "~4.1.10"
+  "cz-conventional-changelog": "^2.1.0",
+  "enzyme": "^2.4.1",
+  "es5-shim": "~4.1.10",
+  "react-addons-test-utils": "^15.3.2"
  }
 }

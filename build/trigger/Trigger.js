@@ -242,6 +242,10 @@ var Trigger = function (_Component) {
       this.clickOutsideHandler = null;
       this.touchOutsideHandler = null;
     }
+    if (this._container) {
+      _reactDom2["default"].unmountComponentAtNode(this._container);
+    }
+
     //this.removeContainer();
   };
 
