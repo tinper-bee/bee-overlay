@@ -88,7 +88,8 @@ function calculatePosition(placement, overlayNode, target, container, padding) {
     var positionLeft = void 0,
         positionTop = void 0,
         arrowOffsetLeft = void 0,
-        arrowOffsetTop = void 0;
+        arrowOffsetTop = void 0,
+        inverseArrow = void 0;
 
     if (/^left|^right/.test(placement)) {
         positionTop = childOffset.top + (childOffset.height - overlayHeight) / 2;
@@ -106,7 +107,17 @@ function calculatePosition(placement, overlayNode, target, container, padding) {
         }
 
         var topDelta = getTopDelta(positionTop, overlayHeight, container, padding);
-
+        var leftDelta = getLeftDelta(positionLeft, overlayWidth, container, padding);
+        //内容超出
+        if (leftDelta > 0) {
+            inverseArrow = true;
+            positionLeft = childOffset.left + childOffset.width + 6;
+        } else if (leftDelta < 0) {
+            inverseArrow = true;
+            positionLeft = childOffset.left - overlayWidth - 6;
+        } else {
+            positionLeft += leftDelta;
+        }
         positionTop += topDelta;
         arrowOffsetTop = 50 * (1 - 2 * topDelta / overlayHeight) + '%';
         arrowOffsetLeft = void 0;
@@ -125,15 +136,36 @@ function calculatePosition(placement, overlayNode, target, container, padding) {
             positionLeft = childOffset.left + (childOffset.width - overlayWidth);
         }
 
-        var leftDelta = getLeftDelta(positionLeft, overlayWidth, container, padding);
-
-        positionLeft += leftDelta;
-        arrowOffsetLeft = 50 * (1 - 2 * leftDelta / overlayWidth) + '%';
+        var _leftDelta = getLeftDelta(positionLeft, overlayWidth, container, padding);
+        var _topDelta = getTopDelta(positionTop, overlayHeight, container, padding);
+        positionLeft += _leftDelta;
+        arrowOffsetLeft = 50 * (1 - 2 * _leftDelta / overlayWidth) + '%';
         arrowOffsetTop = void 0;
+        if (_topDelta > 0) {
+            inverseArrow = true;
+            positionTop = childOffset.top + childOffset.height + 6;
+        } else if (_topDelta < 0) {
+            inverseArrow = true;
+            positionTop = childOffset.top - overlayHeight - 6;
+        } else {
+            positionTop += _topDelta;
+        }
+
+        // if((positionLeft + panelWidth) > docWidth)
+        //         left = docWidth - panelWidth - 10;
+        //     if(left < 0)
+        //         left = 0;
+
+        //      if((top + panelHeight) > docHeight) {
+        //  top = docHeight - panelHeight - 10;
+        //  }
+
+        //      if(top < 0)
+        //          top = 0;
     } else {
         throw new Error('calcOverlayPosition(): No such placement of "' + placement + '" found.');
     }
 
-    return { positionLeft: positionLeft, positionTop: positionTop, arrowOffsetLeft: arrowOffsetLeft, arrowOffsetTop: arrowOffsetTop };
+    return { positionLeft: positionLeft, positionTop: positionTop, arrowOffsetLeft: arrowOffsetLeft, arrowOffsetTop: arrowOffsetTop, inverseArrow: inverseArrow };
 }
 module.exports = exports['default'];

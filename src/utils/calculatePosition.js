@@ -62,7 +62,7 @@ export default function calculatePosition(placement, overlayNode, target, contai
     const {height: overlayHeight, width: overlayWidth} =
         getOffset(overlayNode);
 
-    let positionLeft, positionTop, arrowOffsetLeft, arrowOffsetTop;
+    let positionLeft, positionTop, arrowOffsetLeft, arrowOffsetTop,inverseArrow;
 
     if (/^left|^right/.test(placement)) {
         positionTop = childOffset.top + (childOffset.height - overlayHeight) / 2;
@@ -82,7 +82,19 @@ export default function calculatePosition(placement, overlayNode, target, contai
         const topDelta = getTopDelta(
             positionTop, overlayHeight, container, padding
         );
-
+        const leftDelta = getLeftDelta(
+            positionLeft, overlayWidth, container, padding
+        );
+        //内容超出
+        if(leftDelta >0){
+            inverseArrow = true;
+            positionLeft = childOffset.left + childOffset.width +6;
+        }else if(leftDelta <0){
+            inverseArrow = true;
+            positionLeft = childOffset.left - overlayWidth - 6;
+        }else{
+            positionLeft += leftDelta;
+        }
         positionTop += topDelta;
         arrowOffsetTop = 50 * (1 - 2 * topDelta / overlayHeight) + '%';
         arrowOffsetLeft = void 0;
@@ -106,10 +118,33 @@ export default function calculatePosition(placement, overlayNode, target, contai
         const leftDelta = getLeftDelta(
             positionLeft, overlayWidth, container, padding
         );
-
+        const topDelta = getTopDelta(
+            positionTop, overlayHeight, container, padding
+        );
         positionLeft += leftDelta;
         arrowOffsetLeft = 50 * (1 - 2 * leftDelta / overlayWidth) + '%';
         arrowOffsetTop = void 0;
+        if(topDelta >0){
+            inverseArrow = true;
+            positionTop = childOffset.top + childOffset.height +6;
+        }else if(topDelta <0){
+            inverseArrow = true;
+            positionTop = childOffset.top - overlayHeight - 6;
+        }else{
+            positionTop += topDelta;
+        }
+
+        // if((positionLeft + panelWidth) > docWidth)
+	    //         left = docWidth - panelWidth - 10;
+	    //     if(left < 0)
+	    //         left = 0;
+
+	    //      if((top + panelHeight) > docHeight) {
+		//  top = docHeight - panelHeight - 10;
+		//  }
+
+	    //      if(top < 0)
+	    //          top = 0;
 
     } else {
         throw new Error(
@@ -117,5 +152,5 @@ export default function calculatePosition(placement, overlayNode, target, contai
         );
     }
 
-    return {positionLeft, positionTop, arrowOffsetLeft, arrowOffsetTop};
+    return {positionLeft, positionTop, arrowOffsetLeft, arrowOffsetTop,inverseArrow};
 }

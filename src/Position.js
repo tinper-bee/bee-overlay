@@ -142,7 +142,7 @@ class Position extends Component {
 
     render() {
         const {children, className, ...props} = this.props;
-        const {positionLeft, positionTop, ...arrowPosition} = this.state;
+        const {positionLeft, positionTop, inverseArrow,...arrowPosition} = this.state;
 
         // These should not be forwarded to the child.
         delete props.target;
@@ -154,7 +154,7 @@ class Position extends Component {
         return cloneElement(
             child,
             {
-                className: classNames(className, child.props.className),
+                className: classNames(className, child.props.className,{'inverse-arrow':inverseArrow}),
                 style: {
                     ...child.props.style,
                     left: positionLeft,

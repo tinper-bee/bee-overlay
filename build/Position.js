@@ -181,7 +181,8 @@ var Position = function (_Component) {
         var _state = this.state,
             positionLeft = _state.positionLeft,
             positionTop = _state.positionTop,
-            arrowPosition = _objectWithoutProperties(_state, ['positionLeft', 'positionTop']);
+            inverseArrow = _state.inverseArrow,
+            arrowPosition = _objectWithoutProperties(_state, ['positionLeft', 'positionTop', 'inverseArrow']);
 
         // These should not be forwarded to the child.
 
@@ -193,7 +194,7 @@ var Position = function (_Component) {
 
         var child = _react2["default"].Children.only(children);
         return (0, _react.cloneElement)(child, {
-            className: (0, _classnames2["default"])(className, child.props.className),
+            className: (0, _classnames2["default"])(className, child.props.className, { 'inverse-arrow': inverseArrow }),
             style: _extends({}, child.props.style, {
                 left: positionLeft,
                 top: positionTop
