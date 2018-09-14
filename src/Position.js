@@ -142,7 +142,7 @@ class Position extends Component {
 
     render() {
         const {children, className, ...props} = this.props;
-        const {positionLeft, positionTop, inverseArrow,...arrowPosition} = this.state;
+        const {positionLeft, positionTop, inverseArrow, width, ...arrowPosition} = this.state;
 
         // These should not be forwarded to the child.
         delete props.target;
@@ -157,6 +157,7 @@ class Position extends Component {
                 className: classNames(className, child.props.className,{'inverse-arrow':inverseArrow}),
                 style: {
                     ...child.props.style,
+                    width,
                     left: positionLeft,
                     top: positionTop
                 }

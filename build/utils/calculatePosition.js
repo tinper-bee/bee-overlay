@@ -29,8 +29,8 @@ function getContainerDimensions(containerNode) {
         scroll = void 0;
 
     if (containerNode.tagName === 'BODY') {
-        width = window.innerWidth;
-        height = window.innerHeight;
+        width = document.body.scrollWidth;
+        height = document.body.scrollHeight;
 
         scroll = (0, _scrollTop2["default"])((0, _ownerDocument2["default"])(containerNode).documentElement) || (0, _scrollTop2["default"])(containerNode);
     } else {
@@ -166,6 +166,6 @@ function calculatePosition(placement, overlayNode, target, container, padding) {
         throw new Error('calcOverlayPosition(): No such placement of "' + placement + '" found.');
     }
 
-    return { positionLeft: positionLeft, positionTop: positionTop, arrowOffsetLeft: arrowOffsetLeft, arrowOffsetTop: arrowOffsetTop, inverseArrow: inverseArrow };
+    return { positionLeft: positionLeft, positionTop: positionTop, arrowOffsetLeft: arrowOffsetLeft, arrowOffsetTop: arrowOffsetTop, inverseArrow: inverseArrow, width: overlayWidth };
 }
 module.exports = exports['default'];

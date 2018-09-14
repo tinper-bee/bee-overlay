@@ -8,8 +8,8 @@ function getContainerDimensions(containerNode) {
     let width, height, scroll;
 
     if (containerNode.tagName === 'BODY') {
-        width = window.innerWidth;
-        height = window.innerHeight;
+        width = document.body.scrollWidth;
+        height = document.body.scrollHeight;
 
         scroll =
             getScrollTop(ownerDocument(containerNode).documentElement) ||
@@ -152,5 +152,5 @@ export default function calculatePosition(placement, overlayNode, target, contai
         );
     }
 
-    return {positionLeft, positionTop, arrowOffsetLeft, arrowOffsetTop,inverseArrow};
+    return {positionLeft, positionTop, arrowOffsetLeft, arrowOffsetTop,inverseArrow, width: overlayWidth};
 }
