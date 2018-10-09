@@ -1,5 +1,15 @@
+<a name="1.0.15"></a>
+## [1.0.15](https://github.com/tinper-bee/overlay/compare/v1.0.9...v1.0.15) (2018-10-09)
+
+
+### Features
+
+* **bee-overlay:** clearTimeout前加判断 ([4a55d52](https://github.com/tinper-bee/overlay/commit/4a55d52))
+
+
+
 <a name="1.0.9"></a>
-## 1.0.9 (2018-08-12)
+## [1.0.9](https://github.com/tinper-bee/overlay/compare/6ba52d9...v1.0.9) (2018-08-12)
 
 
 ### Bug Fixes
