@@ -143,9 +143,9 @@ class OverlayTrigger extends Component {
     componentWillUnmount() {
         !isReact16 && ReactDOM.unmountComponentAtNode(this._mountNode);
         this._mountNode = null;
-
-        clearTimeout(this._hoverShowDelay);
-        clearTimeout(this._hoverHideDelay);
+        // 加判断去掉 clearTimeout
+        this._hoverShowDelay&&clearTimeout(this._hoverShowDelay);
+        this._hoverShowDelay&&clearTimeout(this._hoverHideDelay);
     }
 
     handleToggle() {

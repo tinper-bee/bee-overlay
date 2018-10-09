@@ -182,9 +182,9 @@ var OverlayTrigger = function (_Component) {
     OverlayTrigger.prototype.componentWillUnmount = function componentWillUnmount() {
         !isReact16 && _reactDom2["default"].unmountComponentAtNode(this._mountNode);
         this._mountNode = null;
-
-        clearTimeout(this._hoverShowDelay);
-        clearTimeout(this._hoverHideDelay);
+        // 加判断去掉 clearTimeout
+        this._hoverShowDelay && clearTimeout(this._hoverShowDelay);
+        this._hoverShowDelay && clearTimeout(this._hoverHideDelay);
     };
 
     OverlayTrigger.prototype.handleToggle = function handleToggle() {
