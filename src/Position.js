@@ -155,6 +155,7 @@ class Position extends Component {
             child,
             {
                 className: classNames(className, child.props.className,{'inverse-arrow':inverseArrow}),
+                ...arrowPosition,
                 style: {
                     ...child.props.style,
                     width,

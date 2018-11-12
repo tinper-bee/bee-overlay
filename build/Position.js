@@ -194,14 +194,15 @@ var Position = function (_Component) {
         delete props.shouldUpdatePosition;
 
         var child = _react2["default"].Children.only(children);
-        return (0, _react.cloneElement)(child, {
-            className: (0, _classnames2["default"])(className, child.props.className, { 'inverse-arrow': inverseArrow }),
+        return (0, _react.cloneElement)(child, _extends({
+            className: (0, _classnames2["default"])(className, child.props.className, { 'inverse-arrow': inverseArrow })
+        }, arrowPosition, {
             style: _extends({}, child.props.style, {
                 width: width,
                 left: positionLeft,
                 top: positionTop
             })
-        });
+        }));
     };
 
     return Position;
