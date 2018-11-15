@@ -94,6 +94,7 @@ var propTypes = _extends({}, _Portal2["default"].propTypes, _Overlay2["default"]
      * 覆盖的初始可见性状态。对于更细微的可见性控制，请考虑直接使用覆盖组件。
      */
     defaultOverlayShown: _propTypes2["default"].bool,
+    visible: _propTypes2["default"].bool,
 
     /**
      * 要覆盖在目标旁边的元素或文本。
@@ -164,8 +165,15 @@ var OverlayTrigger = function (_Component) {
 
         _this._mountNode = null;
 
+        var visible = void 0;
+        if ('visible' in props) {
+            visible = !!props.visible;
+        } else {
+            visible = !!props.defaultOverlayShown;
+        }
+
         _this.state = {
-            show: props.defaultOverlayShown
+            show: visible
         };
         return _this;
     }
@@ -175,8 +183,13 @@ var OverlayTrigger = function (_Component) {
         !isReact16 && this.renderOverlay();
     };
 
-    OverlayTrigger.prototype.componentDidUpdate = function componentDidUpdate() {
+    OverlayTrigger.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
         !isReact16 && this.renderOverlay();
+        if ('visible' in this.props && prevProps.visible !== this.props.visible) {
+            this.setState({
+                show: this.props.visible
+            });
+        }
     };
 
     OverlayTrigger.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -318,18 +331,18 @@ var OverlayTrigger = function (_Component) {
 
         triggerProps.onClick = (0, _createChainedFunction2["default"])(childProps.onClick, onClick);
 
-        if (isOneOf('click', trigger)) {
+        if (isOneOf('click', trigger) && !('visible' in this.props)) {
             triggerProps.onClick = (0, _createChainedFunction2["default"])(triggerProps.onClick, this.handleToggle);
         }
 
-        if (isOneOf('hover', trigger)) {
+        if (isOneOf('hover', trigger) && !('visible' in this.props)) {
             (0, _warning2["default"])(!(trigger === 'hover'), '[react-bootstrap] Specifying only the `"hover"` trigger limits the ' + 'visibility of the overlay to just mouse users. Consider also ' + 'including the `"focus"` trigger so that touch and keyboard only ' + 'users can see the overlay as well.');
 
             triggerProps.onMouseOver = (0, _createChainedFunction2["default"])(childProps.onMouseOver, onMouseOver, this.handleMouseOver);
             triggerProps.onMouseOut = (0, _createChainedFunction2["default"])(childProps.onMouseOut, onMouseOut, this.handleMouseOut);
         }
 
-        if (isOneOf('focus', trigger)) {
+        if (isOneOf('focus', trigger) && !('visible' in this.props)) {
             triggerProps.onFocus = (0, _createChainedFunction2["default"])(childProps.onFocus, onFocus, this.handleDelayedShow);
             triggerProps.onBlur = (0, _createChainedFunction2["default"])(childProps.onBlur, onBlur, this.handleDelayedHide);
         }

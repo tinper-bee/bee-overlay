@@ -59,6 +59,7 @@ const propTypes = {
      * 覆盖的初始可见性状态。对于更细微的可见性控制，请考虑直接使用覆盖组件。
      */
     defaultOverlayShown: PropTypes.bool,
+    visible: PropTypes.bool,
 
     /**
      * 要覆盖在目标旁边的元素或文本。
@@ -126,8 +127,15 @@ class OverlayTrigger extends Component {
 
         this._mountNode = null;
 
+        let visible;
+        if ('visible' in props) {
+            visible = !!props.visible;
+        } else {
+            visible = !!props.defaultOverlayShown;
+        }
+
         this.state = {
-            show: props.defaultOverlayShown,
+            show: visible,
         };
     }
 
@@ -136,8 +144,13 @@ class OverlayTrigger extends Component {
         !isReact16 && this.renderOverlay();
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         !isReact16 && this.renderOverlay();
+        if ('visible' in this.props && prevProps.visible !== this.props.visible) {
+            this.setState({
+                show: this.props.visible
+            })
+        }
     }
 
     componentWillUnmount() {
@@ -279,13 +292,13 @@ class OverlayTrigger extends Component {
 
         triggerProps.onClick = createChainedFunction(childProps.onClick, onClick);
 
-        if (isOneOf('click', trigger)) {
+        if (isOneOf('click', trigger) && !('visible' in this.props)) {
             triggerProps.onClick = createChainedFunction(
                 triggerProps.onClick, this.handleToggle
             );
         }
 
-        if (isOneOf('hover', trigger)) {
+        if (isOneOf('hover', trigger) && !('visible' in this.props)) {
             warning(!(trigger === 'hover'),
                 '[react-bootstrap] Specifying only the `"hover"` trigger limits the ' +
                 'visibility of the overlay to just mouse users. Consider also ' +
@@ -301,7 +314,7 @@ class OverlayTrigger extends Component {
             );
         }
 
-        if (isOneOf('focus', trigger)) {
+        if (isOneOf('focus', trigger) && !('visible' in this.props)) {
             triggerProps.onFocus = createChainedFunction(
                 childProps.onFocus, onFocus, this.handleDelayedShow
             );
