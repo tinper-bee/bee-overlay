@@ -1,3 +1,13 @@
+<a name="1.0.18"></a>
+## [1.0.18](https://github.com/tinper-bee/overlay/compare/v1.0.15...v1.0.18) (2018-12-07)
+
+
+### Features
+
+* **增加滚轮事件，滚动时显示的隐藏显示的menu:** g ([01cd267](https://github.com/tinper-bee/overlay/commit/01cd267))
+
+
+
 <a name="1.0.15"></a>
 ## [1.0.15](https://github.com/tinper-bee/overlay/compare/v1.0.9...v1.0.15) (2018-10-09)
 
