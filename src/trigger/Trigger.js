@@ -188,6 +188,8 @@ class Trigger extends Component{
             'mousedown', this.onDocumentClick);
           this.touchOutsideHandler = addEventListener(document,
             'touchstart', this.onDocumentClick);
+          this.mouseWheelOutsideHandler = addEventListener(document,
+            'mousewheel', this.onDocumentClick);
         }
         return;
       }
@@ -195,8 +197,10 @@ class Trigger extends Component{
     if (this.clickOutsideHandler) {
       this.clickOutsideHandler.remove();
       this.touchOutsideHandler.remove();
+      this.mouseWheelOutsideHandler.remove();
       this.clickOutsideHandler = null;
       this.touchOutsideHandler = null;
+      this.mouseWheelOutsideHandler = null;
     }
   }
 
@@ -205,8 +209,10 @@ class Trigger extends Component{
     if (this.clickOutsideHandler) {
       this.clickOutsideHandler.remove();
       this.touchOutsideHandler.remove();
+      this.mouseWheelOutsideHandler.remove();
       this.clickOutsideHandler = null;
       this.touchOutsideHandler = null;
+      this.mouseWheelOutsideHandler = null;
     }
     if(this._container){
         ReactDOM.unmountComponentAtNode(this._container);

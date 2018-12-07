@@ -222,6 +222,7 @@ var Trigger = function (_Component) {
         if (!this.clickOutsideHandler) {
           this.clickOutsideHandler = (0, _tinperBeeCore.addEventListener)(document, 'mousedown', this.onDocumentClick);
           this.touchOutsideHandler = (0, _tinperBeeCore.addEventListener)(document, 'touchstart', this.onDocumentClick);
+          this.mouseWheelOutsideHandler = (0, _tinperBeeCore.addEventListener)(document, 'mousewheel', this.onDocumentClick);
         }
         return;
       }
@@ -229,8 +230,10 @@ var Trigger = function (_Component) {
     if (this.clickOutsideHandler) {
       this.clickOutsideHandler.remove();
       this.touchOutsideHandler.remove();
+      this.mouseWheelOutsideHandler.remove();
       this.clickOutsideHandler = null;
       this.touchOutsideHandler = null;
+      this.mouseWheelOutsideHandler = null;
     }
   };
 
@@ -239,8 +242,10 @@ var Trigger = function (_Component) {
     if (this.clickOutsideHandler) {
       this.clickOutsideHandler.remove();
       this.touchOutsideHandler.remove();
+      this.mouseWheelOutsideHandler.remove();
       this.clickOutsideHandler = null;
       this.touchOutsideHandler = null;
+      this.mouseWheelOutsideHandler = null;
     }
     if (this._container) {
       _reactDom2["default"].unmountComponentAtNode(this._container);
