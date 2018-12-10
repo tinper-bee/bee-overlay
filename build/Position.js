@@ -24,6 +24,10 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _tinperBeeCore = require('tinper-bee-core');
 
+var _requestAnimationFrame = require('dom-helpers/util/requestAnimationFrame');
+
+var _requestAnimationFrame2 = _interopRequireDefault(_requestAnimationFrame);
+
 var _calculatePosition = require('./utils/calculatePosition');
 
 var _calculatePosition2 = _interopRequireDefault(_calculatePosition);
@@ -35,6 +39,14 @@ var _getContainer2 = _interopRequireDefault(_getContainer);
 var _ownerDocument = require('./utils/ownerDocument');
 
 var _ownerDocument2 = _interopRequireDefault(_ownerDocument);
+
+var _ownerWindow = require('./utils/ownerWindow');
+
+var _ownerWindow2 = _interopRequireDefault(_ownerWindow);
+
+var _addEventListener = require('./utils/addEventListener');
+
+var _addEventListener2 = _interopRequireDefault(_addEventListener);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -103,10 +115,19 @@ var Position = function (_Component) {
         _this.getTarget = _this.getTarget.bind(_this);
         _this.maybeUpdatePosition = _this.maybeUpdatePosition.bind(_this);
         _this.updatePosition = _this.updatePosition.bind(_this);
+        _this.onWindowResize = _this.onWindowResize.bind(_this);
         return _this;
     }
 
     Position.prototype.componentDidMount = function componentDidMount() {
+        var _this2 = this;
+
+        this._isMounted = true;
+
+        this._windowResizeListener = (0, _addEventListener2["default"])((0, _ownerWindow2["default"])(this), 'resize', function () {
+            return _this2.onWindowResize();
+        });
+
         this.updatePosition(this.getTarget());
     };
 
@@ -119,6 +140,14 @@ var Position = function (_Component) {
             this.needsFlush = false;
 
             this.maybeUpdatePosition();
+        }
+    };
+
+    Position.prototype.componentWillUnmount = function componentWillUnmount() {
+        this._isMounted = false;
+
+        if (this._windowResizeListener) {
+            this._windowResizeListener.remove();
         }
     };
 
@@ -148,11 +177,22 @@ var Position = function (_Component) {
         this.updatePosition(target);
     };
 
+    Position.prototype.onWindowResize = function onWindowResize() {
+        var _this3 = this;
+
+        (0, _requestAnimationFrame2["default"])(function () {
+            return _this3.updatePosition(_this3.getTarget());
+        });
+    };
+
     /**
      * 更新位置
      */
 
     Position.prototype.updatePosition = function updatePosition(target) {
+        if (!this._isMounted) {
+            return;
+        }
         this.lastTarget = target;
 
         if (!target) {

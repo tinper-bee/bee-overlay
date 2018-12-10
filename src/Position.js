@@ -3,10 +3,13 @@ import React, {cloneElement, Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import {componentOrElement} from 'tinper-bee-core';
+import requestAnimationFrame from 'dom-helpers/util/requestAnimationFrame';
 
 import calculatePosition from './utils/calculatePosition';
 import getContainer from './utils/getContainer';
 import ownerDocument from './utils/ownerDocument';
+import ownerWindow from './utils/ownerWindow';
+import addEventListener from './utils/addEventListener';
 
 const propTypes = {
     /**
@@ -65,9 +68,16 @@ class Position extends Component {
         this.getTarget = this.getTarget.bind(this);
         this.maybeUpdatePosition = this.maybeUpdatePosition.bind(this);
         this.updatePosition = this.updatePosition.bind(this);
+        this.onWindowResize = this.onWindowResize.bind(this);
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
+        this._windowResizeListener = addEventListener(
+            ownerWindow(this), 'resize', () => this.onWindowResize()
+        );
+
         this.updatePosition(this.getTarget());
     }
 
@@ -80,6 +90,14 @@ class Position extends Component {
             this.needsFlush = false;
 
             this.maybeUpdatePosition();
+        }
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+
+        if (this._windowResizeListener) {
+            this._windowResizeListener.remove();
         }
     }
 
@@ -108,11 +126,18 @@ class Position extends Component {
         this.updatePosition(target);
     }
 
+    onWindowResize() {
+        requestAnimationFrame(() => this.updatePosition(this.getTarget()));
+    }
+
     /**
      * 更新位置
      */
 
     updatePosition(target) {
+        if (!this._isMounted) {
+            return;
+        }
         this.lastTarget = target;
 
         if (!target) {
