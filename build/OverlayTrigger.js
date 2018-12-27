@@ -190,6 +190,11 @@ var OverlayTrigger = function (_Component) {
                 show: this.props.visible
             });
         }
+        if ('isHoverShow' in this.props && prevProps.isHoverShow !== this.props.isHoverShow) {
+            this.setState({
+                show: this.props.isHoverShow
+            });
+        }
     };
 
     OverlayTrigger.prototype.componentWillUnmount = function componentWillUnmount() {
