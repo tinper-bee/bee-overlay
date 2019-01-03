@@ -1,3 +1,23 @@
+<a name="1.0.21"></a>
+## [1.0.21](https://github.com/tinper-bee/overlay/compare/v1.0.20...v1.0.21) (2019-01-03)
+
+
+### Features
+
+* **bee-overlay:** 当渲染内容不在当前document时候，新增获得document的props ([73f57f1](https://github.com/tinper-bee/overlay/commit/73f57f1))
+
+
+
+<a name="1.0.20"></a>
+## [1.0.20](https://github.com/tinper-bee/overlay/compare/v1.0.19...v1.0.20) (2018-12-27)
+
+
+
+<a name="1.0.19"></a>
+## [1.0.19](https://github.com/tinper-bee/overlay/compare/v1.0.18...v1.0.19) (2018-12-10)
+
+
+
 <a name="1.0.18"></a>
 ## [1.0.18](https://github.com/tinper-bee/overlay/compare/v1.0.15...v1.0.18) (2018-12-07)
 
