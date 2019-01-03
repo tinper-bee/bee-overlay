@@ -79,7 +79,8 @@ var propTypes = {
   popupAlign: _propTypes2["default"].object,
   popupVisible: _propTypes2["default"].bool,
   maskTransitionName: _propTypes2["default"].string,
-  maskAnimation: _propTypes2["default"].string
+  maskAnimation: _propTypes2["default"].string,
+  getDocument: _propTypes2["default"].func //获得点击消失的document对象，适用于getPopupContainer渲染到非当前document情况，例如iframe
 };
 
 var defaultProps = {
@@ -101,7 +102,10 @@ var defaultProps = {
   maskClosable: true,
   action: [],
   showAction: [],
-  hideAction: []
+  hideAction: [],
+  getDocument: function getDocument() {
+    return document;
+  }
 };
 
 var Trigger = function (_Component) {
@@ -111,6 +115,12 @@ var Trigger = function (_Component) {
     _classCallCheck(this, Trigger);
 
     var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+
+    _this.getDocument = function () {
+      var doc = document;
+      if (_this.props.getDocument) doc = _this.props.getDocument();
+      return doc;
+    };
 
     _this.state = {
       popupVisible: !!_this.props.popupVisible || _this.props.defaultPopupVisible
@@ -220,9 +230,9 @@ var Trigger = function (_Component) {
     if (this.isClickToHide()) {
       if (state.popupVisible) {
         if (!this.clickOutsideHandler) {
-          this.clickOutsideHandler = (0, _tinperBeeCore.addEventListener)(document, 'mousedown', this.onDocumentClick);
-          this.touchOutsideHandler = (0, _tinperBeeCore.addEventListener)(document, 'touchstart', this.onDocumentClick);
-          this.mouseWheelOutsideHandler = (0, _tinperBeeCore.addEventListener)(document, 'mousewheel', this.onDocumentClick);
+          this.clickOutsideHandler = (0, _tinperBeeCore.addEventListener)(this.getDocument(), 'mousedown', this.onDocumentClick);
+          this.touchOutsideHandler = (0, _tinperBeeCore.addEventListener)(this.getDocument(), 'touchstart', this.onDocumentClick);
+          this.mouseWheelOutsideHandler = (0, _tinperBeeCore.addEventListener)(this.getDocument(), 'mousewheel', this.onDocumentClick);
         }
         return;
       }

@@ -50,6 +50,7 @@ const propTypes = {
     popupVisible: PropTypes.bool,
     maskTransitionName: PropTypes.string,
     maskAnimation: PropTypes.string,
+    getDocument:PropTypes.func //获得点击消失的document对象，适用于getPopupContainer渲染到非当前document情况，例如iframe
 }
 
 const defaultProps = {
@@ -72,6 +73,7 @@ const defaultProps = {
     action: [],
     showAction: [],
     hideAction: [],
+    getDocument: ()=>document
 }
 
 class Trigger extends Component{
@@ -120,6 +122,12 @@ class Trigger extends Component{
     this.fireEvents = this.fireEvents.bind(this);
     this.close = this.close.bind(this);
     this.onClick = this.onClick.bind(this);
+  }
+
+  getDocument=()=>{
+    let doc = document;
+    if(this.props.getDocument)doc = this.props.getDocument();
+    return doc;
   }
 
   isVisible(instance) {
@@ -184,11 +192,11 @@ class Trigger extends Component{
     if (this.isClickToHide()) {
       if (state.popupVisible) {
         if (!this.clickOutsideHandler) {
-          this.clickOutsideHandler = addEventListener(document,
+          this.clickOutsideHandler = addEventListener(this.getDocument(),
             'mousedown', this.onDocumentClick);
-          this.touchOutsideHandler = addEventListener(document,
+          this.touchOutsideHandler = addEventListener(this.getDocument(),
             'touchstart', this.onDocumentClick);
-          this.mouseWheelOutsideHandler = addEventListener(document,
+          this.mouseWheelOutsideHandler = addEventListener(this.getDocument(),
             'mousewheel', this.onDocumentClick);
         }
         return;
