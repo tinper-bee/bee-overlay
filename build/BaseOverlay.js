@@ -161,13 +161,14 @@ var BaseOverlay = function (_Component) {
         containerPadding = _props2.containerPadding,
         target = _props2.target,
         placement = _props2.placement,
+        secondPlacement = _props2.secondPlacement,
         shouldUpdatePosition = _props2.shouldUpdatePosition,
         rootClose = _props2.rootClose,
         positionLeft = _props2.positionLeft,
         positionTop = _props2.positionTop,
         children = _props2.children,
         Transition = _props2.transition,
-        props = _objectWithoutProperties(_props2, ['container', 'containerPadding', 'target', 'placement', 'shouldUpdatePosition', 'rootClose', 'positionLeft', 'positionTop', 'children', 'transition']);
+        props = _objectWithoutProperties(_props2, ['container', 'containerPadding', 'target', 'placement', 'secondPlacement', 'shouldUpdatePosition', 'rootClose', 'positionLeft', 'positionTop', 'children', 'transition']);
 
     // Don't un-render the overlay while it's transitioning out.
 
@@ -191,6 +192,7 @@ var BaseOverlay = function (_Component) {
         positionLeft: positionLeft,
         positionTop: positionTop,
         placement: placement,
+        secondPlacement: secondPlacement,
         shouldUpdatePosition: shouldUpdatePosition },
       child
     );

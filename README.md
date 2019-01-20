@@ -61,6 +61,7 @@
 |onExiting|隐藏进行时的钩子函数|function|-|
 |onExited|隐藏结束时的钩子函数|function|-|
 |placement|显示位置设置|top\left\bottom\right|right|
+|placement|第二优先级显示位置设置|top\left\bottom\right|right|
 
 - OverlayTrigger 挂载组件，依赖Overlay组件，继承Overlay组件的接口
 

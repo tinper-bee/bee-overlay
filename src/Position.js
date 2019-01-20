@@ -35,6 +35,12 @@ const propTypes = {
      * 位置设置
      */
     placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+
+    /**
+     * 第二优先级位置设置
+     */
+    secondPlacement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+
     /**
      * 是否需要更新位置
      */
@@ -135,6 +141,11 @@ class Position extends Component {
      */
 
     updatePosition(target) {
+        let {
+            placement,
+            secondPlacement
+        } = this.props;
+
         if (!this._isMounted) {
             return;
         }
@@ -156,13 +167,50 @@ class Position extends Component {
             this.props.container, ownerDocument(this).body
         );
 
-        this.setState(calculatePosition(
-            this.props.placement,
-            overlay,
-            target,
-            container,
-            this.props.containerPadding
-        ));
+        // 若设置了第二渲染位置，placement的优先级是： placement > secondPlacement > placement的反方向
+        if ("secondPlacement" in this.props && secondPlacement) {
+            let initPosition = calculatePosition(
+                placement,
+                overlay,
+                target,
+                container,
+                this.props.containerPadding
+            )
+            if (initPosition.inverseArrow) {
+                let secondPosition = calculatePosition(
+                    secondPlacement,
+                    overlay,
+                    target,
+                    container,
+                    this.props.containerPadding
+                )
+
+                if (secondPosition.inverseArrow) {
+                    this.setState({
+                        ...initPosition,
+                        renderPlacement: placement
+                    });
+                } else {
+                    this.setState({
+                        ...secondPosition,
+                        renderPlacement: secondPlacement
+                    });
+                }
+            } else {
+                this.setState({
+                    ...initPosition,
+                    renderPlacement: placement
+                });
+            }
+        } else {
+            this.setState(calculatePosition(
+                placement,
+                overlay,
+                target,
+                container,
+                this.props.containerPadding
+            ));
+        }
     }
 
     render() {

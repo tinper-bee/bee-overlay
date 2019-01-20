@@ -78,6 +78,12 @@ var propTypes = {
      * 位置设置
      */
     placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
+
+    /**
+     * 第二优先级位置设置
+     */
+    secondPlacement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
+
     /**
      * 是否需要更新位置
      */
@@ -190,6 +196,11 @@ var Position = function (_Component) {
      */
 
     Position.prototype.updatePosition = function updatePosition(target) {
+        var _props = this.props,
+            placement = _props.placement,
+            secondPlacement = _props.secondPlacement;
+
+
         if (!this._isMounted) {
             return;
         }
@@ -209,14 +220,36 @@ var Position = function (_Component) {
         var overlay = _reactDom2["default"].findDOMNode(this);
         var container = (0, _getContainer2["default"])(this.props.container, (0, _ownerDocument2["default"])(this).body);
 
-        this.setState((0, _calculatePosition2["default"])(this.props.placement, overlay, target, container, this.props.containerPadding));
+        // 若设置了第二渲染位置，placement的优先级是： placement > secondPlacement > placement的反方向
+        if ("secondPlacement" in this.props && secondPlacement) {
+            var initPosition = (0, _calculatePosition2["default"])(placement, overlay, target, container, this.props.containerPadding);
+            if (initPosition.inverseArrow) {
+                var secondPosition = (0, _calculatePosition2["default"])(secondPlacement, overlay, target, container, this.props.containerPadding);
+
+                if (secondPosition.inverseArrow) {
+                    this.setState(_extends({}, initPosition, {
+                        renderPlacement: placement
+                    }));
+                } else {
+                    this.setState(_extends({}, secondPosition, {
+                        renderPlacement: secondPlacement
+                    }));
+                }
+            } else {
+                this.setState(_extends({}, initPosition, {
+                    renderPlacement: placement
+                }));
+            }
+        } else {
+            this.setState((0, _calculatePosition2["default"])(placement, overlay, target, container, this.props.containerPadding));
+        }
     };
 
     Position.prototype.render = function render() {
-        var _props = this.props,
-            children = _props.children,
-            className = _props.className,
-            props = _objectWithoutProperties(_props, ['children', 'className']);
+        var _props2 = this.props,
+            children = _props2.children,
+            className = _props2.className,
+            props = _objectWithoutProperties(_props2, ['children', 'className']);
 
         var _state = this.state,
             positionLeft = _state.positionLeft,

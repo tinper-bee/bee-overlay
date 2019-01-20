@@ -114,6 +114,7 @@ class BaseOverlay extends Component {
       , containerPadding
       , target
       , placement
+      , secondPlacement
       , shouldUpdatePosition
       , rootClose
       , positionLeft
@@ -143,6 +144,7 @@ class BaseOverlay extends Component {
          positionLeft,
          positionTop,
          placement,
+         secondPlacement,
          shouldUpdatePosition}}>
         {child}
       </Position>

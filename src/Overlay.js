@@ -65,6 +65,11 @@ const propTypes = {
    * Sets the direction of the Overlay.
    */
   placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+
+  /**
+   * 当Overlay在placement方向放不下时的第二优先级方向
+   */
+  secondPlacement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
 };
 
 const defaultProps = {
