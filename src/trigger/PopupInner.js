@@ -1,3 +1,7 @@
+/**
+* This source code is quoted from rc-trigger.
+* homepage: https://github.com/react-component/trigger
+*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import LazyRenderBox from './LazyRenderBox';
