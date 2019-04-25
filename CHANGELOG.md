@@ -1,3 +1,18 @@
+<a name="1.0.23"></a>
+## [1.0.23](https://github.com/tinper-bee/overlay/compare/v1.0.22...v1.0.23) (2019-04-25)
+
+
+### Features
+
+* **bee-overlay:** trigger新增自定义属性 ([482f637](https://github.com/tinper-bee/overlay/commit/482f637))
+
+
+
+<a name="1.0.22"></a>
+## [1.0.22](https://github.com/tinper-bee/overlay/compare/v1.0.21...v1.0.22) (2019-01-20)
+
+
+
 <a name="1.0.21"></a>
 ## [1.0.21](https://github.com/tinper-bee/overlay/compare/v1.0.20...v1.0.21) (2019-01-03)
 
