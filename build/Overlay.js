@@ -93,7 +93,7 @@ var propTypes = _extends({}, _BaseOverlay2["default"].propTypes, {
   /**
    * Sets the direction of the Overlay.
    */
-  placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
+  placement: _propTypes2["default"].oneOf(["top", "right", "bottom", "left", "topLeft", "rightTop", "bottomLeft", "leftTop", "topRight", "rightBottom", "bottomRight", "leftBottom"]),
 
   /**
    * 当Overlay在placement方向放不下时的第二优先级方向

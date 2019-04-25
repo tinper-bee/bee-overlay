@@ -77,7 +77,7 @@ var propTypes = {
     /**
      * 位置设置
      */
-    placement: _propTypes2["default"].oneOf(['top', 'right', 'bottom', 'left']),
+    placement: _propTypes2["default"].oneOf(["top", "right", "bottom", "left", "topLeft", "rightTop", "bottomLeft", "leftTop", "topRight", "rightBottom", "bottomRight", "leftBottom"]),
 
     /**
      * 第二优先级位置设置

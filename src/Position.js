@@ -34,7 +34,7 @@ const propTypes = {
     /**
      * 位置设置
      */
-    placement: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+    placement: PropTypes.oneOf(["top", "right", "bottom", "left", "topLeft", "rightTop", "bottomLeft", "leftTop", "topRight", "rightBottom", "bottomRight", "leftBottom"]),
 
     /**
      * 第二优先级位置设置
