@@ -38,7 +38,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); } /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * This source code is quoted from rc-trigger.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               * homepage: https://github.com/react-component/trigger
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+
 
 //import getContainerRenderMixin from './getContainerRenderMixin';
 
@@ -80,7 +84,8 @@ var propTypes = {
   popupVisible: _propTypes2["default"].bool,
   maskTransitionName: _propTypes2["default"].string,
   maskAnimation: _propTypes2["default"].string,
-  getDocument: _propTypes2["default"].func //获得点击消失的document对象，适用于getPopupContainer渲染到非当前document情况，例如iframe
+  getDocument: _propTypes2["default"].func, //获得点击消失的document对象，适用于getPopupContainer渲染到非当前document情况，例如iframe
+  popData: _propTypes2["default"].object //弹窗层自定义属性
 };
 
 var defaultProps = {
@@ -105,7 +110,8 @@ var defaultProps = {
   hideAction: [],
   getDocument: function getDocument() {
     return document;
-  }
+  },
+  popData: {}
 };
 
 var Trigger = function (_Component) {
@@ -423,7 +429,8 @@ var Trigger = function (_Component) {
         zIndex: props.zIndex,
         transitionName: props.popupTransitionName,
         maskAnimation: props.maskAnimation,
-        maskTransitionName: props.maskTransitionName
+        maskTransitionName: props.maskTransitionName,
+        popData: props.popData
       }),
       typeof props.popup === 'function' ? props.popup() : props.popup
     );
@@ -573,7 +580,6 @@ var Trigger = function (_Component) {
       newChildProps.onFocus = this.createTwoChains('onFocus');
       newChildProps.onBlur = this.createTwoChains('onBlur');
     }
-
     return _react2["default"].cloneElement(child, newChildProps);
   };
 

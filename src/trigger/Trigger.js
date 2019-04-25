@@ -54,8 +54,9 @@ const propTypes = {
     popupVisible: PropTypes.bool,
     maskTransitionName: PropTypes.string,
     maskAnimation: PropTypes.string,
-    getDocument:PropTypes.func //获得点击消失的document对象，适用于getPopupContainer渲染到非当前document情况，例如iframe
-}
+    getDocument:PropTypes.func, //获得点击消失的document对象，适用于getPopupContainer渲染到非当前document情况，例如iframe
+    popData:PropTypes.object //弹窗层自定义属性
+  }
 
 const defaultProps = {
     clsPrefix: 'rc-trigger-popup',
@@ -77,7 +78,8 @@ const defaultProps = {
     action: [],
     showAction: [],
     hideAction: [],
-    getDocument: ()=>document
+    getDocument: ()=>document,
+    popData:{}
 }
 
 class Trigger extends Component{
@@ -386,6 +388,7 @@ class Trigger extends Component{
         transitionName={props.popupTransitionName}
         maskAnimation={props.maskAnimation}
         maskTransitionName={props.maskTransitionName}
+        popData={props.popData}
       >
         {typeof props.popup === 'function' ? props.popup() : props.popup}
       </Popup>
@@ -515,7 +518,6 @@ class Trigger extends Component{
       newChildProps.onFocus = this.createTwoChains('onFocus');
       newChildProps.onBlur = this.createTwoChains('onBlur');
     }
-
     return React.cloneElement(child, newChildProps);
   }
 };

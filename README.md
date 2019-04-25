@@ -78,6 +78,7 @@
 |onFocus|焦点事件|function|-|
 |onMouseOut|鼠标离开事件|function|-|
 |onMouseOver|鼠标滑过事件|function|-|
+|popData|trigger的自定义属性，例如 `{"data-name":"lucian","data-sex":"man"}`，属性名不能和其它属性名重复，否则会被覆盖|Object|-|
 
 
 - RootCloseWrapper 代理外部组件事件

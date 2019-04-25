@@ -23,7 +23,7 @@ class PopupInner extends Component{
     if (!props.visible) {
       className += ` ${props.hiddenClassName}`;
     }
-    return (<div
+    return (<div {...props.popData}
       className={className}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}

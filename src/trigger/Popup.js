@@ -108,6 +108,7 @@ class Popup extends Component{
       onMouseEnter: props.onMouseEnter,
       onMouseLeave: props.onMouseLeave,
       style: newStyle,
+      popData:props.popData
     };
     if (destroyPopupOnHide) {
       return (<Animate
@@ -170,7 +171,7 @@ class Popup extends Component{
     return style;
   }
 
-  getMaskElement() {
+  getMaskElement() { 
     const props = this.props;
     let maskElement;
     if (props.mask) {
