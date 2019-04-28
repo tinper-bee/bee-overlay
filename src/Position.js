@@ -44,7 +44,19 @@ const propTypes = {
     /**
      * 是否需要更新位置
      */
-    shouldUpdatePosition: PropTypes.bool
+    shouldUpdatePosition: PropTypes.bool,
+    /**
+     * 弹出框向上偏移量
+     */
+    positionTop: PropTypes.oneOfType([
+        PropTypes.number, PropTypes.string,
+    ]),
+    /**
+     * 弹出框向左偏移量
+     */
+    positionLeft: PropTypes.oneOfType([
+        PropTypes.number, PropTypes.string,
+    ]), 
 };
 
 const defaultProps = {
@@ -143,7 +155,9 @@ class Position extends Component {
     updatePosition(target) {
         let {
             placement,
-            secondPlacement
+            secondPlacement,
+            positionLeft,
+            positionTop
         } = this.props;
 
         if (!this._isMounted) {
@@ -167,15 +181,15 @@ class Position extends Component {
             this.props.container, ownerDocument(this).body
         );
 
+        let initPosition = calculatePosition(
+            placement,
+            overlay,
+            target,
+            container,
+            this.props.containerPadding
+        )
         // 若设置了第二渲染位置，placement的优先级是： placement > secondPlacement > placement的反方向
         if ("secondPlacement" in this.props && secondPlacement) {
-            let initPosition = calculatePosition(
-                placement,
-                overlay,
-                target,
-                container,
-                this.props.containerPadding
-            )
             if (initPosition.inverseArrow) {
                 let secondPosition = calculatePosition(
                     secondPlacement,
@@ -202,7 +216,25 @@ class Position extends Component {
                     renderPlacement: placement
                 });
             }
-        } else {
+        } else if ("positionLeft" in this.props && positionLeft){
+            if("positionTop" in this.props && positionTop){
+                this.setState({
+                    ...initPosition,
+                    positionLeft: positionLeft,
+                    positionTop: positionTop
+                });
+            }else{
+                this.setState({
+                    ...initPosition,
+                    positionLeft: positionLeft
+                });
+            }
+        } else if ("positionTop" in this.props && positionTop){
+            this.setState({
+                ...initPosition,
+                positionTop: positionTop
+            });
+        } else{
             this.setState(calculatePosition(
                 placement,
                 overlay,
