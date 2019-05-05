@@ -344,7 +344,7 @@ class BaseModal extends Component {
 
     //instead of a ref, which might conflict with one the parent applied.
     getDialogElement() {
-      let node = this.refs.modal;
+      let node = this.modal;
       return node && node.lastChild;
     }
 
@@ -449,7 +449,7 @@ class BaseModal extends Component {
         container={container}
       >
         <div
-          ref={'modal'}
+          ref={(el)=>{this.modal = el}}
           role={role || 'dialog'}
           style={style}
           className={className}

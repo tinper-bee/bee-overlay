@@ -401,7 +401,7 @@ var BaseModal = function (_Component) {
 
 
   BaseModal.prototype.getDialogElement = function getDialogElement() {
-    var node = this.refs.modal;
+    var node = this.modal;
     return node && node.lastChild;
   };
 
@@ -451,6 +451,8 @@ var BaseModal = function (_Component) {
   };
 
   BaseModal.prototype.render = function render() {
+    var _this3 = this;
+
     var _props4 = this.props,
         show = _props4.show,
         container = _props4.container,
@@ -514,7 +516,9 @@ var BaseModal = function (_Component) {
       _react2["default"].createElement(
         'div',
         {
-          ref: 'modal',
+          ref: function ref(el) {
+            _this3.modal = el;
+          },
           role: role || 'dialog',
           style: style,
           className: className
