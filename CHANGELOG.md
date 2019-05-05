@@ -1,3 +1,13 @@
+<a name="1.0.26"></a>
+## [1.0.26](https://github.com/tinper-bee/overlay/compare/v1.0.25...v1.0.26) (2019-05-05)
+
+
+### Features
+
+* **Modal.js:** Refs Must Have Owner Warning ([0980c2e](https://github.com/tinper-bee/overlay/commit/0980c2e))
+
+
+
 <a name="1.0.25"></a>
 ## [1.0.25](https://github.com/tinper-bee/overlay/compare/v1.0.24...v1.0.25) (2019-04-28)
 
