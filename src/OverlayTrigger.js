@@ -247,6 +247,7 @@ class OverlayTrigger extends Component {
 
     hide() {
         this.setState({show: false});
+        this.props.onHide && this.props.onHide();
     }
 
     makeOverlay(overlay, props) {

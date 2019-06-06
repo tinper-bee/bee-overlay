@@ -138,7 +138,8 @@ var Overlay = function (_Component) {
     return _react2["default"].createElement(
       _BaseOverlay2["default"],
       _extends({}, props, {
-        transition: transition
+        transition: transition,
+        onHide: props.onHide
       }),
       child
     );

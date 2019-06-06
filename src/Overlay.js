@@ -99,6 +99,7 @@ class Overlay extends Component {
       <BaseOverlay
         {...props}
         transition={transition}
+        onHide={props.onHide}
       >
         {child}
       </BaseOverlay>

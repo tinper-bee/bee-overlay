@@ -290,6 +290,7 @@ var OverlayTrigger = function (_Component) {
 
     OverlayTrigger.prototype.hide = function hide() {
         this.setState({ show: false });
+        this.props.onHide && this.props.onHide();
     };
 
     OverlayTrigger.prototype.makeOverlay = function makeOverlay(overlay, props) {
