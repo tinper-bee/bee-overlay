@@ -95,11 +95,11 @@ const propTypes = {
     /**
      * @private
      */
-    onHide: PropTypes.oneOf([null]),
+    onHide: PropTypes.func,
     /**
      * @private
      */
-    show: PropTypes.oneOf([null]),
+    show: PropTypes.func,
 };
 
 const defaultProps = {

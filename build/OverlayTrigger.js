@@ -130,11 +130,11 @@ var propTypes = _extends({}, _Portal2["default"].propTypes, _Overlay2["default"]
     /**
      * @private
      */
-    onHide: _propTypes2["default"].oneOf([null]),
+    onHide: _propTypes2["default"].func,
     /**
      * @private
      */
-    show: _propTypes2["default"].oneOf([null])
+    show: _propTypes2["default"].func
 });
 
 var defaultProps = {
