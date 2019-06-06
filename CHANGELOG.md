@@ -1,3 +1,8 @@
+<a name="1.0.28"></a>
+## [1.0.28](https://github.com/tinper-bee/overlay/compare/v1.0.27...v1.0.28) (2019-06-06)
+
+
+
 <a name="1.0.27"></a>
 ## [1.0.27](https://github.com/tinper-bee/overlay/compare/v1.0.26...v1.0.27) (2019-06-06)
 
