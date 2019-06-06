@@ -134,7 +134,7 @@ var propTypes = _extends({}, _Portal2["default"].propTypes, _Overlay2["default"]
     /**
      * @private
      */
-    show: _propTypes2["default"].func
+    show: _propTypes2["default"].bool
 });
 
 var defaultProps = {

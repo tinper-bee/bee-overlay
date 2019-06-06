@@ -99,7 +99,7 @@ const propTypes = {
     /**
      * @private
      */
-    show: PropTypes.func,
+    show: PropTypes.bool,
 };
 
 const defaultProps = {
