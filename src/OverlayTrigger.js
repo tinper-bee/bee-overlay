@@ -305,12 +305,12 @@ class OverlayTrigger extends Component {
         }
 
         if (isOneOf('hover', trigger) && !('visible' in this.props)) {
-            warning(!(trigger === 'hover'),
-                '[react-bootstrap] Specifying only the `"hover"` trigger limits the ' +
-                'visibility of the overlay to just mouse users. Consider also ' +
-                'including the `"focus"` trigger so that touch and keyboard only ' +
-                'users can see the overlay as well.'
-            );
+            // warning(!(trigger === 'hover'),
+            //     '[react-bootstrap] Specifying only the `"hover"` trigger limits the ' +
+            //     'visibility of the overlay to just mouse users. Consider also ' +
+            //     'including the `"focus"` trigger so that touch and keyboard only ' +
+            //     'users can see the overlay as well.'
+            // );
 
             triggerProps.onMouseOver = createChainedFunction(
                 childProps.onMouseOver, onMouseOver, this.handleMouseOver
