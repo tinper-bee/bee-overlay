@@ -1,6 +1,6 @@
 {
  "name": "bee-overlay",
- "version": "1.0.30-alpha.0",
+ "version": "1.0.30",
  "description": "overlay ui component for react",
  "keywords": [
   "react",
