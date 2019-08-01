@@ -1,3 +1,13 @@
+<a name="1.0.31"></a>
+## [1.0.31](https://github.com/tinper-bee/overlay/compare/v1.0.30...v1.0.31) (2019-08-01)
+
+
+### Features
+
+* **bee-overlay:** getDocument可传数组 ([ab21a61](https://github.com/tinper-bee/overlay/commit/ab21a61))
+
+
+
 <a name="1.0.30"></a>
 ## [1.0.30](https://github.com/tinper-bee/overlay/compare/v1.0.29...v1.0.30) (2019-06-13)
 
