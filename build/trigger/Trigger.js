@@ -128,6 +128,55 @@ var Trigger = function (_Component) {
       return doc;
     };
 
+    _this.bindDocument = function () {
+      var doc = document;
+      if (_this.props.getDocument) {
+        doc = _this.props.getDocument();
+      }
+      if (Array.isArray(doc)) {
+        var doc1 = doc[0];
+        var doc2 = doc[1];
+        _this.clickOutsideHandler = (0, _tinperBeeCore.addEventListener)(doc1, 'mousedown', _this.onDocumentClick);
+        _this.touchOutsideHandler = (0, _tinperBeeCore.addEventListener)(doc1, 'touchstart', _this.onDocumentClick);
+        _this.mouseWheelOutsideHandler = (0, _tinperBeeCore.addEventListener)(doc1, 'mousewheel', _this.onDocumentClick);
+        _this.clickOutsideHandlerIframe = (0, _tinperBeeCore.addEventListener)(doc2, 'mousedown', _this.onDocumentClick);
+        _this.touchOutsideHandlerIframe = (0, _tinperBeeCore.addEventListener)(doc2, 'touchstart', _this.onDocumentClick);
+        _this.mouseWheelOutsideHandlerIframe = (0, _tinperBeeCore.addEventListener)(doc2, 'mousewheel', _this.onDocumentClick);
+      } else {
+        _this.clickOutsideHandler = (0, _tinperBeeCore.addEventListener)(doc, 'mousedown', _this.onDocumentClick);
+        _this.touchOutsideHandler = (0, _tinperBeeCore.addEventListener)(doc, 'touchstart', _this.onDocumentClick);
+        _this.mouseWheelOutsideHandler = (0, _tinperBeeCore.addEventListener)(doc, 'mousewheel', _this.onDocumentClick);
+      }
+    };
+
+    _this.removeDocument = function () {
+      var doc = document;
+      if (_this.props.getDocument) {
+        doc = _this.props.getDocument();
+      }
+      if (Array.isArray(doc)) {
+        _this.clickOutsideHandler.remove();
+        _this.touchOutsideHandler.remove();
+        _this.mouseWheelOutsideHandler.remove();
+        _this.clickOutsideHandlerIframe.remove();
+        _this.touchOutsideHandlerIframe.remove();
+        _this.mouseWheelOutsideHandlerIframe.remove();
+        _this.clickOutsideHandler = null;
+        _this.touchOutsideHandler = null;
+        _this.mouseWheelOutsideHandler = null;
+        _this.clickOutsideHandlerIframe = null;
+        _this.touchOutsideHandlerIframe = null;
+        _this.mouseWheelOutsideHandlerIframe = null;
+      } else {
+        _this.clickOutsideHandler.remove();
+        _this.touchOutsideHandler.remove();
+        _this.mouseWheelOutsideHandler.remove();
+        _this.clickOutsideHandler = null;
+        _this.touchOutsideHandler = null;
+        _this.mouseWheelOutsideHandler = null;
+      }
+    };
+
     _this.state = {
       popupVisible: !!_this.props.popupVisible || _this.props.defaultPopupVisible
       //this.removeContainer = this.removeContainer.bind(this);
@@ -236,32 +285,20 @@ var Trigger = function (_Component) {
     if (this.isClickToHide()) {
       if (state.popupVisible) {
         if (!this.clickOutsideHandler) {
-          this.clickOutsideHandler = (0, _tinperBeeCore.addEventListener)(this.getDocument(), 'mousedown', this.onDocumentClick);
-          this.touchOutsideHandler = (0, _tinperBeeCore.addEventListener)(this.getDocument(), 'touchstart', this.onDocumentClick);
-          this.mouseWheelOutsideHandler = (0, _tinperBeeCore.addEventListener)(this.getDocument(), 'mousewheel', this.onDocumentClick);
+          this.bindDocument();
         }
         return;
       }
     }
     if (this.clickOutsideHandler) {
-      this.clickOutsideHandler.remove();
-      this.touchOutsideHandler.remove();
-      this.mouseWheelOutsideHandler.remove();
-      this.clickOutsideHandler = null;
-      this.touchOutsideHandler = null;
-      this.mouseWheelOutsideHandler = null;
+      this.removeDocument();
     }
   };
 
   Trigger.prototype.componentWillUnmount = function componentWillUnmount() {
     this.clearDelayTimer();
     if (this.clickOutsideHandler) {
-      this.clickOutsideHandler.remove();
-      this.touchOutsideHandler.remove();
-      this.mouseWheelOutsideHandler.remove();
-      this.clickOutsideHandler = null;
-      this.touchOutsideHandler = null;
-      this.mouseWheelOutsideHandler = null;
+      this.removeDocument();
     }
     if (this._container) {
       _reactDom2["default"].unmountComponentAtNode(this._container);

@@ -135,6 +135,63 @@ class Trigger extends Component{
     if(this.props.getDocument)doc = this.props.getDocument();
     return doc;
   }
+  bindDocument=()=>{
+    let doc = document;
+    if(this.props.getDocument){
+      doc=this.props.getDocument();
+    }
+    if(Array.isArray(doc)){
+      let doc1 = doc[0];
+      let doc2 = doc[1]
+      this.clickOutsideHandler = addEventListener(doc1,
+        'mousedown', this.onDocumentClick);
+      this.touchOutsideHandler = addEventListener(doc1,
+        'touchstart', this.onDocumentClick);
+      this.mouseWheelOutsideHandler = addEventListener(doc1,
+        'mousewheel', this.onDocumentClick);
+      this.clickOutsideHandlerIframe = addEventListener(doc2,
+        'mousedown', this.onDocumentClick);
+      this.touchOutsideHandlerIframe = addEventListener(doc2,
+        'touchstart', this.onDocumentClick);
+      this.mouseWheelOutsideHandlerIframe = addEventListener(doc2,
+        'mousewheel', this.onDocumentClick);
+    }else{
+      this.clickOutsideHandler = addEventListener(doc,
+        'mousedown', this.onDocumentClick);
+      this.touchOutsideHandler = addEventListener(doc,
+        'touchstart', this.onDocumentClick);
+      this.mouseWheelOutsideHandler = addEventListener(doc,
+        'mousewheel', this.onDocumentClick);
+    }
+  }
+  removeDocument=()=>{
+    let doc = document;
+    if(this.props.getDocument){
+      doc=this.props.getDocument();
+    }
+    if(Array.isArray(doc)){
+      this.clickOutsideHandler.remove();
+      this.touchOutsideHandler.remove();
+      this.mouseWheelOutsideHandler.remove();
+      this.clickOutsideHandlerIframe.remove();
+      this.touchOutsideHandlerIframe.remove();
+      this.mouseWheelOutsideHandlerIframe.remove();
+      this.clickOutsideHandler = null;
+      this.touchOutsideHandler = null;
+      this.mouseWheelOutsideHandler = null;
+      this.clickOutsideHandlerIframe = null;
+      this.touchOutsideHandlerIframe = null;
+      this.mouseWheelOutsideHandlerIframe = null;
+
+    }else{
+      this.clickOutsideHandler.remove();
+      this.touchOutsideHandler.remove();
+      this.mouseWheelOutsideHandler.remove();
+      this.clickOutsideHandler = null;
+      this.touchOutsideHandler = null;
+      this.mouseWheelOutsideHandler = null;
+    }
+  }
 
   isVisible(instance) {
     return instance.state.popupVisible;
@@ -198,35 +255,20 @@ class Trigger extends Component{
     if (this.isClickToHide()) {
       if (state.popupVisible) {
         if (!this.clickOutsideHandler) {
-          this.clickOutsideHandler = addEventListener(this.getDocument(),
-            'mousedown', this.onDocumentClick);
-          this.touchOutsideHandler = addEventListener(this.getDocument(),
-            'touchstart', this.onDocumentClick);
-          this.mouseWheelOutsideHandler = addEventListener(this.getDocument(),
-            'mousewheel', this.onDocumentClick);
+          this.bindDocument()
         }
         return;
       }
     }
     if (this.clickOutsideHandler) {
-      this.clickOutsideHandler.remove();
-      this.touchOutsideHandler.remove();
-      this.mouseWheelOutsideHandler.remove();
-      this.clickOutsideHandler = null;
-      this.touchOutsideHandler = null;
-      this.mouseWheelOutsideHandler = null;
+      this.removeDocument()
     }
   }
 
   componentWillUnmount() {
     this.clearDelayTimer();
     if (this.clickOutsideHandler) {
-      this.clickOutsideHandler.remove();
-      this.touchOutsideHandler.remove();
-      this.mouseWheelOutsideHandler.remove();
-      this.clickOutsideHandler = null;
-      this.touchOutsideHandler = null;
-      this.mouseWheelOutsideHandler = null;
+      this.removeDocument()
     }
     if(this._container){
         ReactDOM.unmountComponentAtNode(this._container);
