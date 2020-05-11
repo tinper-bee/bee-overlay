@@ -150,6 +150,8 @@ var OverlayTrigger = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
 
+        _initialiseProps.call(_this);
+
         _this.handleToggle = _this.handleToggle.bind(_this);
         _this.handleDelayedShow = _this.handleDelayedShow.bind(_this);
         _this.handleDelayedHide = _this.handleDelayedHide.bind(_this);
@@ -294,11 +296,19 @@ var OverlayTrigger = function (_Component) {
     };
 
     OverlayTrigger.prototype.makeOverlay = function makeOverlay(overlay, props) {
+        var _this4 = this;
+
         return _react2["default"].createElement(
             _Overlay2["default"],
             _extends({}, props, {
                 show: this.state.show,
                 onHide: this.handleHide,
+                onEntered: function onEntered() {
+                    return _this4.handleVisibleChange(true);
+                },
+                onExited: function onExited() {
+                    return _this4.handleVisibleChange(false);
+                },
                 target: this
             }),
             overlay
@@ -378,6 +388,14 @@ var OverlayTrigger = function (_Component) {
 
     return OverlayTrigger;
 }(_react.Component);
+
+var _initialiseProps = function _initialiseProps() {
+    var _this5 = this;
+
+    this.handleVisibleChange = function (visible) {
+        _this5.props.onVisibleChange && _this5.props.onVisibleChange(visible);
+    };
+};
 
 OverlayTrigger.propTypes = propTypes;
 OverlayTrigger.defaultProps = defaultProps;

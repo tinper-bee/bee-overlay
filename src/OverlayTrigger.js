@@ -241,6 +241,10 @@ class OverlayTrigger extends Component {
         this.hide();
     }
 
+    handleVisibleChange = (visible) => {
+        this.props.onVisibleChange && this.props.onVisibleChange(visible);
+    }
+
     show() {
         this.setState({show: true});
     }
@@ -256,6 +260,8 @@ class OverlayTrigger extends Component {
                 {...props}
                 show={this.state.show}
                 onHide={this.handleHide}
+                onEntered={() => this.handleVisibleChange(true)}
+                onExited={() => this.handleVisibleChange(false)}
                 target={this}
             >
                 {overlay}
