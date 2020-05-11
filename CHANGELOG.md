@@ -1,3 +1,13 @@
+## [1.0.32](https://github.com/tinper-bee/overlay/compare/v1.0.31...v1.0.32) (2020-05-11)
+
+
+### Bug Fixes
+
+* Tooltip onVisibleChange单独使用不生效 ([7bc1627](https://github.com/tinper-bee/overlay/commit/7bc1627fa668ea2357de553d4cf3aebb5012ec33))
+* 自动化 ([dd83b9c](https://github.com/tinper-bee/overlay/commit/dd83b9c7b5498efaca6c7a6cf1e986285e1512d8))
+
+
+
 <a name="1.0.31"></a>
 ## [1.0.31](https://github.com/tinper-bee/overlay/compare/v1.0.30...v1.0.31) (2019-08-01)
 
