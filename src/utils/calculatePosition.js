@@ -32,8 +32,8 @@ function getTopDelta(top, overlayHeight, container, padding) {
 
     if (topEdgeOffset < 0) {
         return -topEdgeOffset;
-    } else if (bottomEdgeOffset > containerHeight) {
-        return containerHeight - bottomEdgeOffset;
+    } else if (bottomEdgeOffset > (containerHeight - containerScroll)) {
+        return containerHeight - bottomEdgeOffset - containerScroll;
     } else {
         return 0;
     }
