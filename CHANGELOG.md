@@ -1,3 +1,12 @@
+## [1.0.33](https://github.com/tinper-bee/overlay/compare/v1.0.32...v1.0.33) (2021-01-15)
+
+
+### Bug Fixes
+
+* 修改calculatePosition 计算逻辑,增加滚动条高度的计算 ([2b1ca26](https://github.com/tinper-bee/overlay/commit/2b1ca26d5f8805d87350daff24324e1b40aba6cd))
+
+
+
 ## [1.0.32](https://github.com/tinper-bee/overlay/compare/v1.0.31...v1.0.32) (2020-05-11)
 
 
